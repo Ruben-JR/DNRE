@@ -56,7 +56,7 @@
           </group>
           <notebook>
             <page string="Funcionários DGA">
-              <field name="dga_lines">
+              <field name="dga">
                 <tree>
                   <field name="nums"/>
                   <field name="ns"/>
