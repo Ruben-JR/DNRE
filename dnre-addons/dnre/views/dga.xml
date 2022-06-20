@@ -7,8 +7,8 @@
     <menuitem name="FOS" id="dnre.menu_1" parent="dnre.menu_root"/>
 
     <!-- actions -->
-    <menuitem name="DGA" id="dnre.menu_1_list" parent="dnre.menu_1" action="dnre.action_dga"/>
-    <menuitem name="DGCI" id="dnre.menu_2_list" parent="dnre.menu_1" action="dnre.action_dgci"/>
+    <menuitem name="DGA" id="dnre.menu_dga" parent="dnre.menu_1" action="dnre.action_dga"/>
+    <menuitem name="DGCI" id="dnre.menu_dgci" parent="dnre.menu_1" action="dnre.action_dgci"/>
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="dnre.action_dga">
