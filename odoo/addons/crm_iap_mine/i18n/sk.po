@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* crm_iap_mine
-# 
+#
 # Translators:
 # sakodoo <sak@odoo.com>, 2022
 # Martin Trigaux, 2022
@@ -11,7 +11,7 @@
 # Alexandra Brencicova <alexandra.brencicova@gmail.com>, 2022
 # Rastislav Brencic <rastislav.brencic@azet.sk>, 2022
 # Lívia Dudejová <livia.dudejova@26house.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.5\n"

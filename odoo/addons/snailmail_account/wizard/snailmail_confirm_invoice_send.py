@@ -1,15 +1,14 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import api, fields, models
 
 
 class SnailmailConfirmInvoiceSend(models.TransientModel):
-    _name = 'snailmail.confirm.invoice'
-    _inherit = ['snailmail.confirm']
-    _description = 'Snailmail Confirm Invoice'
+    _name = "snailmail.confirm.invoice"
+    _inherit = ["snailmail.confirm"]
+    _description = "Snailmail Confirm Invoice"
 
-    invoice_send_id = fields.Many2one('account.invoice.send')
+    invoice_send_id = fields.Many2one("account.invoice.send")
 
     def _confirm(self):
         self.ensure_one()

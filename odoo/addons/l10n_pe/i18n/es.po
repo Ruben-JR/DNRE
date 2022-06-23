@@ -249,4 +249,3 @@ msgstr "Este código ayudará con la identificación de cada distrito en Perú."
 #: model:ir.model.fields.selection,name:l10n_pe.selection__account_tax_template__l10n_pe_edi_unece_category__z
 msgid "Zero rated goods"
 msgstr "Bienes libres de impuestos"
-

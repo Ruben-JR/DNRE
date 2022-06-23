@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* base_import
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # Goh Gangtai <gangtai.goh@gmail.com>, 2021
 # JH CHOI <hwangtog@gmail.com>, 2021
 # Linkup <link-up@naver.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

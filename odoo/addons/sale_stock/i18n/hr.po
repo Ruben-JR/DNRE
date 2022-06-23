@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* sale_stock
-# 
+#
 # Translators:
 # Mario Jureša <mario.juresa@uvid.hr>, 2022
 # Hrvoje Sić <hrvoje.sic@gmail.com>, 2022
@@ -14,7 +14,7 @@
 # Vladimir Olujić <olujic.vladimir@storm.hr>, 2022
 # Martin Trigaux, 2022
 # Bole <bole@dajmi5.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* gamification_sale_crm
-# 
+#
 # Translators:
 # Triine Aavik <triine@avalah.ee>, 2022
 # Arma Gedonsky <armagedonsky@hot.ee>, 2022
 # Algo Kärp <algokarp@gmail.com>, 2022
 # Piia Paurson <piia@avalah.ee>, 2022
 # Martin Aavastik <martin@avalah.ee>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~13.1\n"

@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * association
-# 
+#
 # Translators:
 # thanh nguyen <thanhnguyen.icsc@gmail.com>, 2018
 msgid ""

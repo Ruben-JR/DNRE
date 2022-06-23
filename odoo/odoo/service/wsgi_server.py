@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 """
@@ -27,11 +26,12 @@ _logger = logging.getLogger(__name__)
 # constants are also defined client-side and must remain in sync.
 # User code must use the exceptions defined in ``odoo.exceptions`` (not
 # create directly ``xmlrpclib.Fault`` objects).
-RPC_FAULT_CODE_CLIENT_ERROR = 1 # indistinguishable from app. error.
+RPC_FAULT_CODE_CLIENT_ERROR = 1  # indistinguishable from app. error.
 RPC_FAULT_CODE_APPLICATION_ERROR = 1
 RPC_FAULT_CODE_WARNING = 2
 RPC_FAULT_CODE_ACCESS_DENIED = 3
 RPC_FAULT_CODE_ACCESS_ERROR = 4
+
 
 def xmlrpc_handle_exception_int(e):
     if isinstance(e, odoo.exceptions.RedirectWarning):
@@ -46,23 +46,24 @@ def xmlrpc_handle_exception_int(e):
         info = sys.exc_info()
         # Which one is the best ?
         formatted_info = "".join(traceback.format_exception(*info))
-        #formatted_info = odoo.tools.exception_to_unicode(e) + '\n' + info
+        # formatted_info = odoo.tools.exception_to_unicode(e) + '\n' + info
         fault = xmlrpclib.Fault(RPC_FAULT_CODE_APPLICATION_ERROR, formatted_info)
 
     return xmlrpclib.dumps(fault, allow_none=None)
 
+
 def xmlrpc_handle_exception_string(e):
     if isinstance(e, odoo.exceptions.RedirectWarning):
-        fault = xmlrpclib.Fault('warning -- Warning\n\n' + str(e), '')
+        fault = xmlrpclib.Fault("warning -- Warning\n\n" + str(e), "")
     elif isinstance(e, odoo.exceptions.MissingError):
-        fault = xmlrpclib.Fault('warning -- MissingError\n\n' + str(e), '')
+        fault = xmlrpclib.Fault("warning -- MissingError\n\n" + str(e), "")
     elif isinstance(e, odoo.exceptions.AccessError):
-        fault = xmlrpclib.Fault('warning -- AccessError\n\n' + str(e), '')
+        fault = xmlrpclib.Fault("warning -- AccessError\n\n" + str(e), "")
     elif isinstance(e, odoo.exceptions.AccessDenied):
-        fault = xmlrpclib.Fault('AccessDenied', str(e))
+        fault = xmlrpclib.Fault("AccessDenied", str(e))
     elif isinstance(e, odoo.exceptions.UserError):
-        fault = xmlrpclib.Fault('warning -- UserError\n\n' + str(e), '')
-    #InternalError
+        fault = xmlrpclib.Fault("warning -- UserError\n\n" + str(e), "")
+    # InternalError
     else:
         info = sys.exc_info()
         formatted_info = "".join(traceback.format_exception(*info))
@@ -70,18 +71,19 @@ def xmlrpc_handle_exception_string(e):
 
     return xmlrpclib.dumps(fault, allow_none=None, encoding=None)
 
+
 def application_unproxied(environ, start_response):
-    """ WSGI entry point."""
+    """WSGI entry point."""
     # cleanup db/uid trackers - they're set at HTTP dispatch in
     # web.session.OpenERPSession.send() and at RPC dispatch in
     # odoo.service.web_services.objects_proxy.dispatch().
     # /!\ The cleanup cannot be done at the end of this `application`
     # method because werkzeug still produces relevant logging afterwards
-    if hasattr(threading.current_thread(), 'uid'):
+    if hasattr(threading.current_thread(), "uid"):
         del threading.current_thread().uid
-    if hasattr(threading.current_thread(), 'dbname'):
+    if hasattr(threading.current_thread(), "dbname"):
         del threading.current_thread().dbname
-    if hasattr(threading.current_thread(), 'url'):
+    if hasattr(threading.current_thread(), "url"):
         del threading.current_thread().url
 
     result = odoo.http.root(environ, start_response)
@@ -91,9 +93,11 @@ def application_unproxied(environ, start_response):
     # We never returned from the loop.
     return werkzeug.exceptions.NotFound("No handler found.\n")(environ, start_response)
 
+
 try:
     # werkzeug >= 0.15
     from werkzeug.middleware.proxy_fix import ProxyFix as ProxyFix_
+
     # 0.15 also supports port and prefix, but 0.14 only forwarded for, proto
     # and host so replicate that
     ProxyFix = lambda app: ProxyFix_(app, x_for=1, x_proto=1, x_host=1)
@@ -101,12 +105,13 @@ except ImportError:
     # werkzeug < 0.15
     from werkzeug.contrib.fixers import ProxyFix
 
+
 def application(environ, start_response):
     # FIXME: is checking for the presence of HTTP_X_FORWARDED_HOST really useful?
     #        we're ignoring the user configuration, and that means we won't
     #        support the standardised Forwarded header once werkzeug supports
     #        it
-    if config['proxy_mode'] and 'HTTP_X_FORWARDED_HOST' in environ:
+    if config["proxy_mode"] and "HTTP_X_FORWARDED_HOST" in environ:
         return ProxyFix(application_unproxied)(environ, start_response)
     else:
         return application_unproxied(environ, start_response)

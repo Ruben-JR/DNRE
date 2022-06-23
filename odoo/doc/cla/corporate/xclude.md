@@ -13,4 +13,3 @@ Daniel Stenlöv daniel.stenlov@xclude.se https://github.com/daniel-stenlov
 List of contributors:
 
 Daniel Stenlöv daniel.stenlov@xclude.se https://github.com/daniel-stenlov
-

@@ -1,11 +1,11 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* mass_mailing_slides
-# 
+#
 # Translators:
 # Maksym <ms@myodoo.pl>, 2021
 # Dawid Prus, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

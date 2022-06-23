@@ -30,7 +30,7 @@
         </field>
     </record>
 
-    <record id="crm_team_view_kanban_dashboard" model="ir.ui.view"> 
+    <record id="crm_team_view_kanban_dashboard" model="ir.ui.view">
         <field name="name">crm.team.view.kanban.dashboard.inherit.pos</field>
         <field name="model">crm.team</field>
         <field name="inherit_id" ref="sales_team.crm_team_view_kanban_dashboard"/>

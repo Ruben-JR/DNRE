@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* fetchmail_gmail
-# 
+#
 # Translators:
 # Eric Antones <eantones@users.noreply.github.com>, 2022
 # Marc Tormo i Bochaca <mtbochaca@gmail.com>, 2022
 # marcescu, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"

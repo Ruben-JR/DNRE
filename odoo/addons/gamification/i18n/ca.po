@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* gamification
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # Marc Tormo i Bochaca <mtbochaca@gmail.com>, 2021
@@ -14,7 +14,7 @@
 # jabelchi, 2021
 # Jonatan Gk, 2022
 # marcescu, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

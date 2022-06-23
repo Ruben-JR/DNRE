@@ -77,7 +77,7 @@
         groups="crm.group_use_lead"
         sequence="2"/>
     <menuitem
-        id="crm_opportunity_report_menu" 
+        id="crm_opportunity_report_menu"
         name="Pipeline"
         parent="crm_menu_report"
         action="crm.crm_opportunity_report_action"

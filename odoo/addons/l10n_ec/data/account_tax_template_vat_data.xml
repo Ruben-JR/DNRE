@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data >
-        <!-- 
+        <!--
         VAT TAXES *IMPUESTO AL VALOR AGREGADO
         -->
         <record id="tax_vat_411" model="account.tax.template">

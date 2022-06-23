@@ -1,5 +1,5 @@
 
-Portugal, 2018-03-14 
+Portugal, 2018-03-14
 
 I hereby agree to the terms of the Odoo Individual Contributor License
 Agreement v1.0.

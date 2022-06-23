@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * link_tracker
-# 
+#
 # Translators:
 # Sengtha Chay <sengtha@gmail.com>, 2018
 # Chan Nath <channath@gmail.com>, 2018

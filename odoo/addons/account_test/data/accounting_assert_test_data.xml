@@ -7,7 +7,7 @@
         <field name="desc">Check the balance: Debit sum = Credit sum</field>
         <field name="code_exec"><![CDATA[sql="""SELECT
 sum(debit)-sum(credit) as balance
-FROM  account_move_line 
+FROM  account_move_line
 """
 cr.execute(sql)
 result=[]

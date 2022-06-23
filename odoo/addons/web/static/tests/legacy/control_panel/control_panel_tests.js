@@ -255,7 +255,7 @@ odoo.define('web.control_panel_tests', function (require) {
 
         QUnit.test('search field should be autofocused', async function (assert) {
             assert.expect(2);
-    
+
             const controlPanel = await createControlPanel({
                 model: 'partner',
                 arch: '<search/>',
@@ -266,17 +266,17 @@ odoo.define('web.control_panel_tests', function (require) {
                     },
                 },
             });
-    
+
             assert.containsOnce(controlPanel, '.o_searchview_input', "has a search field");
             assert.containsOnce(controlPanel, '.o_searchview_input:focus-within',
                 "has autofocused search field");
-    
+
             controlPanel.destroy();
         });
-    
+
         QUnit.test("search field's autofocus should be disabled on mobile device", async function (assert) {
             assert.expect(2);
-    
+
             const controlPanel = await createControlPanel({
                 model: 'partner',
                 arch: '<search/>',
@@ -287,11 +287,11 @@ odoo.define('web.control_panel_tests', function (require) {
                     },
                 },
             });
-    
+
             assert.containsOnce(controlPanel, '.o_searchview_input', "has a search field");
             assert.containsNone(controlPanel, '.o_searchview_input:focus-within',
                 "hasn't autofocused search field");
-    
+
             controlPanel.destroy();
         });
 

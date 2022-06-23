@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* coupon
-# 
+#
 # Translators:
 # Eino Mäkitalo <eino.makitalo@netitbe.fi>, 2021
 # Martin Trigaux, 2021
@@ -16,7 +16,7 @@
 # Simo Suurla <simo@suurla.fi>, 2021
 # Kim Asplund <kim.asplund@gmail.com>, 2021
 # Joakim Weckman, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.5\n"

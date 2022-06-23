@@ -6,7 +6,7 @@ Updated:
     2020-10-08
     2021-03-02
 
-Therp BV agrees to the terms of the Odoo Corporate 
+Therp BV agrees to the terms of the Odoo Corporate
 Contributor License Agreement v1.0.
 
 We declare that we are authorized and able to make this agreement and sign
@@ -26,4 +26,3 @@ List of contributors:
 *  Nikos Tsirintanis ntsirintanis@therp.nl https://github.com/ntsirintanis
 *  Jan Verbeek jverbeek@therp.nl https://github.com/janverb
 *  Danny de Jong ddejong@therp.nl https://github.com/bamilab
-

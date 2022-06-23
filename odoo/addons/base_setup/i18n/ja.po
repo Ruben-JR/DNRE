@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* base_setup
-# 
+#
 # Translators:
 # Kawakami Taro <ratorin@gmail.com>, 2022
 # SHIMIZU Taku <shimizu.taku@gmail.com>, 2022
@@ -12,7 +12,7 @@
 # Noma Yuki, 2022
 # Yoshi Tashiro (Quartile) <tashiro@roomsfor.hk>, 2022
 # Tim Siu Lai <tl@roomsfor.hk>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.5\n"

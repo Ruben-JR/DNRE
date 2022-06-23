@@ -405,4 +405,3 @@ var CrossTabBus = Longpolling.extend({
 return CrossTabBus;
 
 });
-

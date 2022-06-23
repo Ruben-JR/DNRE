@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 # NOTE Use black to automatically format this code.
@@ -67,7 +66,7 @@ class PosConfig(models.Model):
             )
             raise UserError(f"{intro}\n{invalid_reward_products_msg}")
 
-        return super(PosConfig, self).open_session_cb()
+        return super().open_session_cb()
 
     def use_coupon_code(self, code, creation_date, partner_id, reserved_program_ids):
         coupon_to_check = self.env["coupon.coupon"].search(

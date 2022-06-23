@@ -41,7 +41,7 @@
                 <div class="oe_button_box o_full">
                     <t t-foreach="state.data.buttons" t-as="button" t-key="button.order">
                         <button class="btn oe_stat_button" t-if="button.show"
-                            t-on-click="onProjectActionClick" 
+                            t-on-click="onProjectActionClick"
                             t-att-data-action="button.action"
                             t-att-data-additional_context="button.additional_context"
                             t-att-data-type="button.action_type">

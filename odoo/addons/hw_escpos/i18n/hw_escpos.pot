@@ -38,4 +38,3 @@ msgstr ""
 #, python-format
 msgid "Subtotal"
 msgstr ""
-

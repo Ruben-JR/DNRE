@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* web_editor
-# 
+#
 # Translators:
 # ExcaliberX <excaliberx@gmail.com>, 2021
 # Yihya Hugirat <hugirat@gmail.com>, 2021
@@ -10,7 +10,7 @@
 # Netta Waizer, 2022
 # Martin Trigaux, 2022
 # ZVI BLONDER <ZVIBLONDER@gmail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

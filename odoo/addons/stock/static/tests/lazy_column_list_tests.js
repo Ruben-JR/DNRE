@@ -103,7 +103,7 @@ QUnit.module(
                         var record_ids = args.args[0];
                         if (route === "/web/dataset/call_kw/person/search_read"){
                             record_ids = [1, 2]
-                        } 
+                        }
                         const fields = args.args[1];
                         const recs = [];
                         for (const d of this.data.person.records) {
@@ -135,7 +135,7 @@ QUnit.module(
             assert.strictEqual(list.$('.o_data_row').first().find('.o_priority a.fa-star').length, 0,
                 "widget shouldn't be considered set");
             await testUtils.dom.click(list.$('.o_data_row').first().find('.o_priority a.fa-star-o').first());
-            
+
             assert.strictEqual(list.$('.o_data_row').first().find('.o_priority a.fa-star').length, 1,
                 "widget should be considered set");
             $spin = list.$el.find("th[data-name='slowField'] .fa.fa-spin");
@@ -143,7 +143,7 @@ QUnit.module(
             assert.equal($spin.length, 1);
             assert.equal($spin.hasClass("invisible"), false);
             assert.equal($results.length, 2);
-            assert.equal($results.first().text(), "Daniel Fortesque 1 1", 
+            assert.equal($results.first().text(), "Daniel Fortesque 1 1",
                 "It should be read by the click on priority");
             assert.equal($results.last().text(), "");
 
@@ -155,7 +155,7 @@ QUnit.module(
             assert.equal($spin.length, 1);
             assert.equal($spin.hasClass("invisible"), true);
             assert.equal($results.length, 2);
-            assert.equal($results.first().text(), "Daniel Fortesque 1 1", 
+            assert.equal($results.first().text(), "Daniel Fortesque 1 1",
                 "It shouldn't be erase the data from priority click because this data is newer");
             assert.equal($results.last().text(), "Samuel Oak 2 0");
 

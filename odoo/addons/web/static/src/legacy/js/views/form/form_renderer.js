@@ -1218,7 +1218,7 @@ var FormRenderer = BasicRenderer.extend({
      * targeted by a link will be visible in a notebook.
      * @param {CustomEvent} ev
      * @param {object} ev[detail] payload containing the element and the id to look for
-     * 
+     *
      */
     _onAnchorLinkClicked(ev) {
         // Todo: we might need to search for the element elsewhere to know wich tab to activate
@@ -1242,7 +1242,7 @@ var FormRenderer = BasicRenderer.extend({
                 navLink[0].click();
             }
         }
-        
+
         const notebook = _getNotebookParent();
 
         // If the element is contained in a notebook, the page must be visible

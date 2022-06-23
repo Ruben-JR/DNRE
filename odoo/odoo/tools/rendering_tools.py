@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import dateutil.relativedelta as relativedelta
@@ -12,35 +11,38 @@ from odoo.tools import safe_eval
 
 INLINE_TEMPLATE_REGEX = re.compile(r"\{\{(.+?)\}\}")
 
+
 def relativedelta_proxy(*args, **kwargs):
     # dateutil.relativedelta is an old-style class and cannot be directly
     # instanciated wihtin a jinja2 expression, so a lambda "proxy" is
     # is needed, apparently
     return relativedelta.relativedelta(*args, **kwargs)
 
+
 template_env_globals = {
-    'str': str,
-    'quote': urls.url_quote,
-    'urlencode': urls.url_encode,
-    'datetime': safe_eval.datetime,
-    'len': len,
-    'abs': abs,
-    'min': min,
-    'max': max,
-    'sum': sum,
-    'filter': filter,
-    'reduce': functools.reduce,
-    'map': map,
-    'relativedelta': relativedelta.relativedelta,
-    'round': round,
-    'hasattr': hasattr,
+    "str": str,
+    "quote": urls.url_quote,
+    "urlencode": urls.url_encode,
+    "datetime": safe_eval.datetime,
+    "len": len,
+    "abs": abs,
+    "min": min,
+    "max": max,
+    "sum": sum,
+    "filter": filter,
+    "reduce": functools.reduce,
+    "map": map,
+    "relativedelta": relativedelta.relativedelta,
+    "round": round,
+    "hasattr": hasattr,
 }
+
 
 def parse_inline_template(text):
     groups = []
     current_literal_index = 0
     for match in INLINE_TEMPLATE_REGEX.finditer(text):
-        literal = text[current_literal_index:match.start()]
+        literal = text[current_literal_index : match.start()]
         expression = match.group(1)
         groups.append((literal, expression))
         current_literal_index = match.end()
@@ -48,19 +50,23 @@ def parse_inline_template(text):
     # string past last regex match
     literal = text[current_literal_index:]
     if literal:
-        groups.append((literal, ''))
+        groups.append((literal, ""))
 
     return groups
 
+
 def convert_inline_template_to_qweb(template):
-    template_instructions = parse_inline_template(template or '')
+    template_instructions = parse_inline_template(template or "")
     preview_markup = []
     for string, expression in template_instructions:
         if expression:
-            preview_markup.append(Markup('{}<t t-out="{}"/>').format(string, expression))
+            preview_markup.append(
+                Markup('{}<t t-out="{}"/>').format(string, expression)
+            )
         else:
             preview_markup.append(string)
-    return Markup('').join(preview_markup)
+    return Markup("").join(preview_markup)
+
 
 def render_inline_template(template_instructions, variables):
     results = []
@@ -72,4 +78,4 @@ def render_inline_template(template_instructions, variables):
             if result:
                 results.append(str(result))
 
-    return ''.join(results)
+    return "".join(results)

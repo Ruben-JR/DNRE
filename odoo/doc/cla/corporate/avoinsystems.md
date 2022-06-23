@@ -23,4 +23,3 @@ Oskars Zālītis oskars.zalitis@avoin.systems https://github.com/n17
 Emīls Goško emils.gosko@avoin.systems https://github.com/EmailsGmails
 Daniels Andersons daniels.andersons@avoin.systems https://github.com/Menestrels
 Tatiana Deribina tatiana.deribina@avoin.systems https://github.com/Tatider
-

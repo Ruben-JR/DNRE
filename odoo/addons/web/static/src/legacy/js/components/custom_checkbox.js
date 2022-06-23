@@ -7,16 +7,16 @@ odoo.define('web.CustomCheckbox', function (require) {
 
     /**
      * Custom checkbox
-     * 
+     *
      * Component that can be used in templates to render the custom checkbox of Odoo.
-     * 
+     *
      * <CustomCheckbox
      *     value="boolean"
      *     disabled="boolean"
      *     text="'Change the label text'"
      *     t-on-change="_onValueChange"
      *     />
-     * 
+     *
      * @extends Component
      */
     class CustomCheckbox extends Component {

@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * note_pad
-# 
+#
 # Translators:
 # Anders Wallenquist <anders.wallenquist@vertel.se>, 2018
 # Martin Wilderoth <martin.wilderoth@linserv.se>, 2018

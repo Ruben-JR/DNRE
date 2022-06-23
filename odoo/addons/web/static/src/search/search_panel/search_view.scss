@@ -104,7 +104,7 @@
         .o_generator_menu_delete {
             @include o-hover-opacity(0.8, 1);
             @include o-position-absolute($dropdown-item-padding-x*.3, $dropdown-item-padding-x*.2, auto, auto);
-            
+
             &:hover {
                 background-color: gray('100');
             }

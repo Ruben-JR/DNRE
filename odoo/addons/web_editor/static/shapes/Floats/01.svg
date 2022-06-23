@@ -37,7 +37,7 @@
 		<g id="paths">
 			<path id="owb_top_shape_oval" fill="url(#owb_top_shape_1_gradient)" d="M 378.1,121.2 C 408.4,150 417.2,197.9 411,245.8 404.8,293.7 383.5,341.7 353.4,370.7 303.2,419.1 198.7,427.7 144.5,383.8 86.18,336.5 67.13,221.3 111.9,161 138.6,125 188.9,99.62 240.7,90.92 292.4,82.24 345.6,90.32 378.1,121.2 Z">
 				<animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="25s" values="0;10;-10;10;0" repeatCount="indefinite" calcMode="spline" keySplines=".445 .05 .55 .95;.445 .05 .55 .95;.445 .05 .55 .95;.445 .05 .55 .95"/>
-				<animate attributeName="d" dur="30s" repeatCount="indefinite" 
+				<animate attributeName="d" dur="30s" repeatCount="indefinite"
 				values="
 				M 378.1,121.2 C 408.4,150 417.2,197.9 411,245.8 404.8,293.7 383.5,341.7 353.4,370.7 303.2,419.1 198.7,427.7 144.5,383.8 86.18,336.5 67.13,221.3 111.9,161 138.6,125 188.9,99.62 240.7,90.92 292.4,82.24 345.6,90.32 378.1,121.2 Z;
 				M 418.1,159.8 C 460.9,222.9 497,321.5 452.4,383.4 417.2,432.4 371.2,405.6 271.3,420.3 137.2,440 90.45,500.6 42.16,442.8 -9.572,381 86.33,289.1 117.7,215.5 144.3,153.4 145.7,54.21 212.7,36.25 290.3,15.36 373.9,94.6 418.1,159.8 Z;
@@ -47,7 +47,7 @@
 			</path>
 			<polygon id="owb_top_shape_polygon" fill="url(#owb_top_shape_2_gradient)" points="41 41 150.363333 41 259 41 259 150 259 259 150 259 41 259 41 150.363333">
 				<animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="15s" values="0;-20;0" repeatCount="indefinite" calcMode="spline" keySplines=".445 .05 .55 .95;.445 .05 .55 .95"/>
-				<animate attributeName="points" dur="15s" repeatCount="indefinite" 
+				<animate attributeName="points" dur="15s" repeatCount="indefinite"
 				values="
 				41 41 150.363333 41 259 41 259 150 259 259 150 259 41 259 41 150.363333;
 				72 79 150.5 0 226 79 300 150 226 223 150 300 72 223 0 150.5;

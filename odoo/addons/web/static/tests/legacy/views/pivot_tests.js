@@ -2029,7 +2029,7 @@ QUnit.module('Views', {
             [
                 "Total",
                     "xphone",
-                    "xpad" 
+                    "xpad"
             ]
         );
 

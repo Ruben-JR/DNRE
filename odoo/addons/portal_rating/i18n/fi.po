@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* portal_rating
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # Kari Lindgren <kari.lindgren@emsystems.fi>, 2021
@@ -10,7 +10,7 @@
 # Tuomo Aura <tuomo.aura@web-veistamo.fi>, 2021
 # Veikko Väätäjä <veikko.vaataja@gmail.com>, 2021
 # Antti Oksman <antti.oksman@web-veistamo.fi>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.5\n"

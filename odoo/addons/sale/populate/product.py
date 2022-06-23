@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import models
@@ -11,4 +10,5 @@ class ProductProduct(models.Model):
     def _populate_get_product_factories(self):
         """Populate the invoice_policy of product.product & product.template models."""
         return super()._populate_get_product_factories() + [
-            ("invoice_policy", populate.randomize(['order', 'delivery'], [5, 5]))]
+            ("invoice_policy", populate.randomize(["order", "delivery"], [5, 5]))
+        ]

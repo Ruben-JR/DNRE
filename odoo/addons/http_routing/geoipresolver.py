@@ -1,9 +1,8 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 import os.path
 
 try:
-    import GeoIP    # Legacy
+    import GeoIP  # Legacy
 except ImportError:
     GeoIP = None
 
@@ -13,7 +12,8 @@ try:
 except ImportError:
     geoip2 = None
 
-class GeoIPResolver(object):
+
+class GeoIPResolver:
     def __init__(self, fname):
         self.fname = fname
         try:
@@ -25,7 +25,7 @@ class GeoIPResolver(object):
                 self.version = 1
                 assert self._db.database_info is not None
             except Exception:
-                raise ValueError('Invalid GeoIP database: %r' % fname)
+                raise ValueError("Invalid GeoIP database: %r" % fname)
 
     def __del__(self):
         if self.version == 2:
@@ -50,15 +50,19 @@ class GeoIPResolver(object):
             # Compatibility with Legacy database.
             # Some ips cannot be located to a specific country. Legacy DB used to locate them in
             # continent instead of country. Do the same to not change behavior of existing code.
-            country, attr = (r.country, 'iso_code') if r.country.geoname_id else (r.continent, 'code')
+            country, attr = (
+                (r.country, "iso_code")
+                if r.country.geoname_id
+                else (r.continent, "code")
+            )
             return {
-                'city': r.city.name,
-                'country_code': getattr(country, attr),
-                'country_name': country.name,
-                'latitude': r.location.latitude,
-                'longitude': r.location.longitude,
-                'region': r.subdivisions[0].iso_code if r.subdivisions else None,
-                'time_zone': r.location.time_zone,
+                "city": r.city.name,
+                "country_code": getattr(country, attr),
+                "country_name": country.name,
+                "latitude": r.location.latitude,
+                "longitude": r.location.longitude,
+                "region": r.subdivisions[0].iso_code if r.subdivisions else None,
+                "time_zone": r.location.time_zone,
             }
 
     # compat

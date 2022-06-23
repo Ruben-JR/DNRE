@@ -49,7 +49,7 @@
             with reference: <t t-out="object.partner_ref or ''">REF_XXX</t>
         </t>
         amounting in <strong t-out="format_amount(object.amount_total, object.currency_id) or ''">$ 10.00</strong>
-        from <t t-out="object.company_id.name or ''">YourCompany</t>. 
+        from <t t-out="object.company_id.name or ''">YourCompany</t>.
         <br/><br/>
         <t t-if="object.date_planned">
             The receipt is expected for <strong t-out="format_date(object.date_planned) or ''">05/05/2021</strong>.
@@ -82,7 +82,7 @@
         <t t-if="object.partner_ref">
             <strong>(<t t-out="object.partner_ref or ''">REF_XXX</t>)</strong>
         </t>
-        is expected for 
+        is expected for
         <t t-if="object.date_planned">
             <strong t-out="format_date(object.date_planned) or ''">05/05/2021</strong>.
         </t>

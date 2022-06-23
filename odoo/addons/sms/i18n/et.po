@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* sms
-# 
+#
 # Translators:
 # Aveli Kannel <aveli@avalah.ee>, 2022
 # Marek Pontus, 2022
@@ -15,7 +15,7 @@
 # Andre Roomet <andreroomet@gmail.com>, 2022
 # Piia Paurson <piia@avalah.ee>, 2022
 # Martin Trigaux, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

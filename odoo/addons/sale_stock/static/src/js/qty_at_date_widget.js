@@ -55,7 +55,7 @@ var QtyAtDateWidget = Widget.extend({
             }
         }
     },
-    
+
     updateState: function (state) {
         this.$el.popover('dispose');
         var candidate = state.data[this.getParent().currentRow];
@@ -76,7 +76,7 @@ var QtyAtDateWidget = Widget.extend({
     async _openForecast(ev) {
         ev.stopPropagation();
         // TODO: in case of kit product, the forecast view should show the kit's components (get_component)
-        // The forecast_report doesn't not allow for now multiple products 
+        // The forecast_report doesn't not allow for now multiple products
         var action = await this._rpc({
             model: 'product.product',
             method: 'action_product_forecast_report',

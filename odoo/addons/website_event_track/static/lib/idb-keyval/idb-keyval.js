@@ -5,7 +5,7 @@
 
 var idbKeyval = (function (exports) {
     'use strict';
-    
+
     class Store {
         constructor(dbName = 'keyval-store', storeName = 'keyval') {
             this.storeName = storeName;
@@ -68,14 +68,14 @@ var idbKeyval = (function (exports) {
             };
         }).then(() => keys);
     }
-    
+
     exports.Store = Store;
     exports.get = get;
     exports.set = set;
     exports.del = del;
     exports.clear = clear;
     exports.keys = keys;
-    
+
     return exports;
-    
+
     }({}));

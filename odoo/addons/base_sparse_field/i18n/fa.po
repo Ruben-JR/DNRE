@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* base_sparse_field
-# 
+#
 # Translators:
 # Hamid Darabi, 2022
 # Hamed Mohammadi <hamed@dehongi.com>, 2022
 # M.Hossein S.Farvashani <Farvashani@gmail.com>, 2022
 # Far Har <fhari1234@gmail.com>, 2022
 # Martin Trigaux, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

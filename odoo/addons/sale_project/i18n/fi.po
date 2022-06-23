@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* sale_project
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # Kari Lindgren <kari.lindgren@emsystems.fi>, 2021
@@ -12,7 +12,7 @@
 # Veikko Väätäjä <veikko.vaataja@gmail.com>, 2021
 # Janne Rättyä <janne.rattya@web-veistamo.fi>, 2021
 # Simo Suurla <simo@suurla.fi>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

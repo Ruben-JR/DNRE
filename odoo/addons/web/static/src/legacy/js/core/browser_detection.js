@@ -12,4 +12,3 @@ odoo.define('web.BrowserDetection', function (require) {
     });
     return BrowserDetection;
 });
-

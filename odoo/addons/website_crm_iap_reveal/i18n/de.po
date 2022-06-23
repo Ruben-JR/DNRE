@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* crm_iap_lead_website
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # Chris Egal <sodaswed@web.de>, 2021
 # Florian Pose <fp@igh.de>, 2021
 # Kevin Harrings <kha@odoo.com>, 2021
 # Friederike Fasterling-Nesselbosch, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

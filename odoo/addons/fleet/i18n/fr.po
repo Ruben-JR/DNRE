@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* fleet
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # Adriana Ierfino <adriana.ierfino@savoirfairelinux.com>, 2021
@@ -11,7 +11,7 @@
 # SADEBP <sarah.dereix@beproject.fr>, 2021
 # Cécile Collart <cco@odoo.com>, 2022
 # Camille Dantinne <cmd@odoo.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.5\n"

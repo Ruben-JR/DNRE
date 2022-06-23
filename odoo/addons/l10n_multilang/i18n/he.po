@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * l10n_multilang
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # Moshe Flam <pashute@gmail.com>, 2021
 # Yihya Hugirat <hugirat@gmail.com>, 2021
 # דודי מלכה <Dudimalka6@gmail.com>, 2021
 # ZVI BLONDER <ZVIBLONDER@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"

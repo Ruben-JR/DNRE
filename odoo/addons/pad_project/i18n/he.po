@@ -1,11 +1,11 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* pad_project
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # ZVI BLONDER <ZVIBLONDER@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

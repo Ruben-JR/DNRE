@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 # @author -  Fekete Mihai <feketemihai@gmail.com>
@@ -15,6 +14,8 @@ class ResPartner(models.Model):
 
     @api.model
     def _commercial_fields(self):
-        return super(ResPartner, self)._commercial_fields() + ['nrc']
+        return super()._commercial_fields() + ["nrc"]
 
-    nrc = fields.Char(string='NRC', help='Registration number at the Registry of Commerce')
+    nrc = fields.Char(
+        string="NRC", help="Registration number at the Registry of Commerce"
+    )

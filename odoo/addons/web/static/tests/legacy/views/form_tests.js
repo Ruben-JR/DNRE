@@ -35,7 +35,7 @@ let serverData;
 QUnit.module('Views', {
     beforeEach: async function () {
         registry.category("services").add("scroller", scrollerService);
-        
+
         this.data = {
             partner: {
                 fields: {
@@ -1047,7 +1047,7 @@ QUnit.module('Views', {
                             <notebook>
                                 <page string="Non scrollable page">
                                     <div id="anchor1">No scrollbar!</div>
-                                    <a href="#anchor2" class="link2">TO ANCHOR 2</a> 
+                                    <a href="#anchor2" class="link2">TO ANCHOR 2</a>
                                 </page>
                                 <page string="Other scrollable page">
                                     <p style="font-size: large">
@@ -1072,7 +1072,7 @@ QUnit.module('Views', {
                                         at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo
                                         placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum
                                         augue.
-                                    </p>   
+                                    </p>
                                 </page>
                             </notebook>
                         </sheet>

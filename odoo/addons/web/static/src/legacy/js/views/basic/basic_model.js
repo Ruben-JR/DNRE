@@ -2470,7 +2470,7 @@ var BasicModel = AbstractModel.extend({
                 });
                 // Checks the case where the data on the backend side are not synchronized
                 // (modelFieldName != referenceFieldName) when opening the edit view (!_changes).
-                // We want to avoid resynchronization in order not to modify the data 
+                // We want to avoid resynchronization in order not to modify the data
                 // without being requested.
                 if (!record._changes && record.data[fieldName]
                     && result[0].model !== this.localData[record.data[fieldName]].model) {

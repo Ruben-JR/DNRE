@@ -55,5 +55,3 @@
     }
     window.waitForWebfonts = waitForWebfonts;
 })();
-
-

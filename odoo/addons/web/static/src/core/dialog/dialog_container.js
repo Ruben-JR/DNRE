@@ -29,7 +29,7 @@ DialogContainer.template = tags.xml`
         <NotUpdatable>
             <ErrorHandler onError="(error) => handleError(error, dialog.id)">
                 <t t-component="dialog.class" t-props="dialog.props"
-                    t-on-dialog-closed="dialog.props.close()" 
+                    t-on-dialog-closed="dialog.props.close()"
                     t-att-class="{o_inactive_modal: !dialog_last}"/>
             </ErrorHandler>
         </NotUpdatable>

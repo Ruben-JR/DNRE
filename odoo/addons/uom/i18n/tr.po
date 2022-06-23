@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* uom
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # Levent Karakaş <levent@mektup.at>, 2021
@@ -12,7 +12,7 @@
 # Ediz Duman <neps1192@gmail.com>, 2022
 # Tugay Hatıl <tugayh@projetgrup.com>, 2022
 # Ertuğrul Güreş <ertugrulg@projetgrup.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

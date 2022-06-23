@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import tools
@@ -10,19 +9,25 @@ class SaleReport(models.Model):
 
     @api.model
     def _get_done_states(self):
-        done_states = super(SaleReport, self)._get_done_states()
-        done_states.extend(['pos_done', 'invoiced'])
+        done_states = super()._get_done_states()
+        done_states.extend(["pos_done", "invoiced"])
         return done_states
 
-    state = fields.Selection(selection_add=[('pos_draft', 'New'),
-                                            ('paid', 'Paid'),
-                                            ('pos_done', 'Posted'),
-                                            ('invoiced', 'Invoiced')], string='Status', readonly=True)
+    state = fields.Selection(
+        selection_add=[
+            ("pos_draft", "New"),
+            ("paid", "Paid"),
+            ("pos_done", "Posted"),
+            ("invoiced", "Invoiced"),
+        ],
+        string="Status",
+        readonly=True,
+    )
 
     def _select_pos(self, fields=None):
         if not fields:
             fields = {}
-        select_ = '''
+        select_ = """
             -MIN(l.id) AS id,
             l.product_id AS product_id,
             t.uom_id AS product_uom,
@@ -59,14 +64,14 @@ class SaleReport(models.Model):
             l.discount as discount,
             sum((l.price_unit * l.discount * l.qty / 100.0 / CASE COALESCE(pos.currency_rate, 0) WHEN 0 THEN 1.0 ELSE pos.currency_rate END)) as discount_amount,
             NULL as order_id
-        '''
+        """
 
         for field in fields.keys():
-            select_ += ', NULL AS %s' % (field)
+            select_ += ", NULL AS %s" % (field)
         return select_
 
     def _from_pos(self):
-        from_ = '''
+        from_ = """
             pos_order_line l
                   join pos_order pos on (l.order_id=pos.id)
                   left join res_partner partner ON (pos.partner_id = partner.id OR pos.partner_id = NULL)
@@ -76,15 +81,15 @@ class SaleReport(models.Model):
                     LEFT JOIN pos_session session ON (session.id = pos.session_id)
                     LEFT JOIN pos_config config ON (config.id = session.config_id)
                 left join product_pricelist pp on (pos.pricelist_id = pp.id)
-        '''
+        """
         return from_
 
     def _where_pos(self):
-        where_ = 'l.sale_order_line_id is NULL'
+        where_ = "l.sale_order_line_id is NULL"
         return where_
 
     def _group_by_pos(self):
-        groupby_ = '''
+        groupby_ = """
             l.order_id,
             l.product_id,
             l.price_unit,
@@ -105,14 +110,18 @@ class SaleReport(models.Model):
             partner.commercial_partner_id,
             u.factor,
             pos.crm_team_id
-        '''
+        """
         return groupby_
 
-    def _query(self, with_clause='', fields=None, groupby='', from_clause=''):
+    def _query(self, with_clause="", fields=None, groupby="", from_clause=""):
         if not fields:
             fields = {}
         res = super()._query(with_clause, fields, groupby, from_clause)
-        current = '(SELECT %s FROM %s WHERE %s GROUP BY %s)' % \
-                  (self._select_pos(fields), self._from_pos(), self._where_pos(), self._group_by_pos())
+        current = "(SELECT {} FROM {} WHERE {} GROUP BY {})".format(
+            self._select_pos(fields),
+            self._from_pos(),
+            self._where_pos(),
+            self._group_by_pos(),
+        )
 
-        return '%s UNION ALL %s' % (res, current)
+        return f"{res} UNION ALL {current}"

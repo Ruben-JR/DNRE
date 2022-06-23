@@ -8,10 +8,10 @@
 }
 
 #filters li a,
-#filters li.active a, 
+#filters li.active a,
 #filters li.active a.active,
-#filters li.active a:hover, 
-#filters li.active a:focus, 
+#filters li.active a:hover,
+#filters li.active a:focus,
 #filters li a:hover {
   padding: 0px 5px;
   border-radius: 0px;

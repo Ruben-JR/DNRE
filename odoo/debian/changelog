@@ -21,7 +21,7 @@ odoo (8.0.0) stable; urgency=low
 
   * Renamed package
 
- -- Simon Lejeune <sle@odoo.com>  Wed, 17 Sep 2014 15:40:00 +0100 
+ -- Simon Lejeune <sle@odoo.com>  Wed, 17 Sep 2014 15:40:00 +0100
 
 openerp (8.0.0~rc1-0) testing; urgency=low
 
@@ -49,7 +49,7 @@ openerp-server (6.0.1-1) unstable; urgency=low
   * Repackage, together with addons fixes
 
  -- P. Christeas <xrg@openerp.com>  Mon, 24 Jan 2011 12:50:00 +0100
- 
+
 openerp-server (6.0.1-0) testing; urgency=low
 
   * Update to version 6.0.1

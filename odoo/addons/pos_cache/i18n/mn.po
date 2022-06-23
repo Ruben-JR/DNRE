@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* pos_cache
-# 
+#
 # Translators:
 # Baskhuu Lodoikhuu <baskhuujacara@gmail.com>, 2021
 # Martin Trigaux, 2021
 # Батмөнх Ганбат <batmunkh2522@gmail.com>, 2021
 # tserendavaa tsogtoo <tseegii011929@gmail.com>, 2021
 # Mandalbayar Batbayar <bat.mandalbayar@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

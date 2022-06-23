@@ -12,7 +12,7 @@ from odoo.addons.payment.tests.utils import PaymentTestUtils
 
 
 class PaymentHttpCommon(PaymentTestUtils, HttpCase):
-    """ HttpCase common to build and simulate requests going through payment controllers.
+    """HttpCase common to build and simulate requests going through payment controllers.
 
     Only use if you effectively want to test controllers.
     If you only want to test 'models' code, the PaymentCommon should be sufficient.
@@ -25,11 +25,11 @@ class PaymentHttpCommon(PaymentTestUtils, HttpCase):
 
     def _build_jsonrpc_payload(self, params):
         """Helper to properly build jsonrpc payload"""
-        if not getattr(self, 'session', None):
+        if not getattr(self, "session", None):
             # We need to create a session (public if no login & passwd)
             # before generating a csrf token
-            self.authenticate('', '')
-        params['csrf_token'] = http.WebRequest.csrf_token(self)
+            self.authenticate("", "")
+        params["csrf_token"] = http.WebRequest.csrf_token(self)
         return {
             "jsonrpc": "2.0",
             "method": "call",
@@ -70,10 +70,10 @@ class PaymentHttpCommon(PaymentTestUtils, HttpCase):
         values = {}
         for key, val in checkout_form.items():
             if key.startswith("data-"):
-                formatted_key = key[5:].replace('-', '_')
-                if formatted_key.endswith('_id'):
+                formatted_key = key[5:].replace("-", "_")
+                if formatted_key.endswith("_id"):
                     formatted_val = int(val)
-                elif formatted_key == 'amount':
+                elif formatted_key == "amount":
                     formatted_val = float(val)
                 else:
                     formatted_val = val
@@ -85,24 +85,28 @@ class PaymentHttpCommon(PaymentTestUtils, HttpCase):
         for p_o_input in payment_options_inputs:
             data = dict()
             for key, val in p_o_input.items():
-                if key.startswith('data-'):
+                if key.startswith("data-"):
                     data[key[5:]] = val
-            if data['payment-option-type'] == 'acquirer':
-                acquirer_ids.append(int(data['payment-option-id']))
+            if data["payment-option-type"] == "acquirer":
+                acquirer_ids.append(int(data["payment-option-id"]))
             else:
-                token_ids.append(int(data['payment-option-id']))
+                token_ids.append(int(data["payment-option-id"]))
 
-        values.update({
-            'acquirer_ids': acquirer_ids,
-            'token_ids': token_ids,
-        })
+        values.update(
+            {
+                "acquirer_ids": acquirer_ids,
+                "token_ids": token_ids,
+            }
+        )
 
         return values
 
     # payment/pay #
     ###############
 
-    def _prepare_pay_values(self, amount=0.0, currency=None, reference='', partner=None):
+    def _prepare_pay_values(
+        self, amount=0.0, currency=None, reference="", partner=None
+    ):
         """Prepare basic payment/pay route values
 
         NOTE: needs PaymentCommon to enable fallback values.
@@ -114,11 +118,13 @@ class PaymentHttpCommon(PaymentTestUtils, HttpCase):
         reference = reference or self.reference
         partner = partner or self.partner
         return {
-            'amount': amount,
-            'currency_id': currency.id,
-            'reference': reference,
-            'partner_id': partner.id,
-            'access_token': self._generate_test_access_token(partner.id, amount, currency.id),
+            "amount": amount,
+            "currency_id": currency.id,
+            "reference": reference,
+            "partner_id": partner.id,
+            "access_token": self._generate_test_access_token(
+                partner.id, amount, currency.id
+            ),
         }
 
     def portal_pay(self, **route_kwargs):
@@ -127,7 +133,7 @@ class PaymentHttpCommon(PaymentTestUtils, HttpCase):
         NOTE: must be authenticated before calling method.
         Or an access_token should be specified in route_kwargs
         """
-        uri = '/payment/pay'
+        uri = "/payment/pay"
         url = self._build_url(uri)
         return self._make_http_get_request(url, route_kwargs)
 
@@ -136,7 +142,7 @@ class PaymentHttpCommon(PaymentTestUtils, HttpCase):
 
         self.assertEqual(response.status_code, 200)
 
-        return self._get_tx_context(response, 'o_payment_checkout')
+        return self._get_tx_context(response, "o_payment_checkout")
 
     # /my/payment_method #
     ######################
@@ -147,7 +153,7 @@ class PaymentHttpCommon(PaymentTestUtils, HttpCase):
         NOTE: must be authenticated before calling method
             validation flow is restricted to logged users
         """
-        uri = '/my/payment_method'
+        uri = "/my/payment_method"
         url = self._build_url(uri)
         return self._make_http_get_request(url, {})
 
@@ -156,7 +162,7 @@ class PaymentHttpCommon(PaymentTestUtils, HttpCase):
 
         self.assertEqual(response.status_code, 200)
 
-        return self._get_tx_context(response, 'o_payment_manage')
+        return self._get_tx_context(response, "o_payment_manage")
 
     # payment/transaction #
     #######################
@@ -165,7 +171,7 @@ class PaymentHttpCommon(PaymentTestUtils, HttpCase):
 
         :return: The response to the json request
         """
-        uri = '/payment/transaction'
+        uri = "/payment/transaction"
         url = self._build_url(uri)
         response = self._make_json_request(url, route_kwargs)
         self.assertEqual(response.status_code, 200)  # Check the request went through.
@@ -178,4 +184,4 @@ class PaymentHttpCommon(PaymentTestUtils, HttpCase):
         self.assertEqual(response.status_code, 200)
 
         resp_content = json.loads(response.content)
-        return resp_content['result']
+        return resp_content["result"]

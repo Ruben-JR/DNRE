@@ -211,6 +211,6 @@
             <body position="attributes">
                 <attribute name="t-att-data-report-id">report_xml_id</attribute>
             </body>
-        </template> 
+        </template>
     </data>
 </odoo>

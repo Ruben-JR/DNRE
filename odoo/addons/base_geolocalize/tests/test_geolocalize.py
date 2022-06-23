@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo.tests import TransactionCase
 from odoo.exceptions import UserError
@@ -6,12 +5,11 @@ from odoo.exceptions import UserError
 import odoo.tests
 
 
-@odoo.tests.tagged('external', '-standard')
+@odoo.tests.tagged("external", "-standard")
 class TestGeoLocalize(TransactionCase):
-
     def test_default_openstreetmap(self):
-        """ Test that openstreetmap localize service works. """
-        test_partner = self.env.ref('base.res_partner_2')
+        """Test that openstreetmap localize service works."""
+        test_partner = self.env.ref("base.res_partner_2")
         test_partner.geo_localize()
         self.assertTrue(test_partner.partner_longitude)
         self.assertTrue(test_partner.partner_latitude)
@@ -23,11 +21,13 @@ class TestGeoLocalize(TransactionCase):
         self.assertTrue(float(test_partner.partner_latitude) != 0.0)
 
     def test_googlemap_without_api_key(self):
-        """ Without providing API key to google maps,
+        """Without providing API key to google maps,
         the service doesn't work."""
-        test_partner = self.env.ref('base.res_partner_address_4')
-        google_map = self.env.ref('base_geolocalize.geoprovider_google_map').id
-        self.env['ir.config_parameter'].set_param('base_geolocalize.geo_provider', google_map)
+        test_partner = self.env.ref("base.res_partner_address_4")
+        google_map = self.env.ref("base_geolocalize.geoprovider_google_map").id
+        self.env["ir.config_parameter"].set_param(
+            "base_geolocalize.geo_provider", google_map
+        )
         with self.assertRaises(UserError):
             test_partner.geo_localize()
         self.assertFalse(test_partner.partner_longitude)

@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* auth_totp
-# 
+#
 # Translators:
 # Vladimir Olujić <olujic.vladimir@storm.hr>, 2022
 # Vojislav Opačić <vojislav.opacic@gmail.com>, 2022
 # Bole <bole@dajmi5.com>, 2022
 # Martin Trigaux, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.5\n"

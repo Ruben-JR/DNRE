@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* base_address_city
-# 
+#
 # Translators:
 # Ryoko Tsuda <ryoko@quartile.co>, 2022
 # Martin Trigaux, 2022
 # Noma Yuki, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

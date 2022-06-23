@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* account
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # f91684c3ff9ec3e650d5c8461e534581_686eae3 <449b96d9f63071f94d89e129677b83de_366193>, 2021
@@ -16,7 +16,7 @@
 # Robert Förster <hello@suppliot.eu>, 2022
 # qndi <andreas.brueckl@datenpol.at>, 2022
 # Friederike Fasterling-Nesselbosch, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

@@ -57,7 +57,7 @@
                 <p class="o_view_nocontent_smiling_face">
                   Add a new member
                 </p><p>
-                  Odoo helps you easily track all activities related to a member: 
+                  Odoo helps you easily track all activities related to a member:
                   Current Membership Status, Discussions and History of Membership, etc.
                 </p>
             </field>
@@ -110,7 +110,7 @@
                                 <label for="membership_state"/>
                                 <div>
                                     <field name="membership_state"/>
-                                    <button name="%(action_membership_invoice_view)d" type="action" string="Buy Membership" 
+                                    <button name="%(action_membership_invoice_view)d" type="action" string="Buy Membership"
                                         attrs="{'invisible':[('free_member','=',True)]}" class="oe_link"/>
                                 </div>
                             </group>

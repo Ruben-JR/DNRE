@@ -23,9 +23,9 @@
                     <span class="fa fa-info-circle"/> Caution: It won't be possible to send this SMS again to the recipients you did not select.
                 </div>
                 <footer>
-                    <button string="Buy credits" name="action_buy_credits" type="object" class="btn-primary o_mail_send" 
+                    <button string="Buy credits" name="action_buy_credits" type="object" class="btn-primary o_mail_send"
                             attrs="{'invisible': [('has_insufficient_credit', '=', False)]}" data-hotkey="q"/>
-                    <button string="Set up an account" name="action_buy_credits" type="object" class="btn-primary o_mail_send" 
+                    <button string="Set up an account" name="action_buy_credits" type="object" class="btn-primary o_mail_send"
                             attrs="{'invisible': [('has_unregistered_account', '=', False)]}" data-hotkey="q"/>
                     <button string="Resend" name="action_resend" type="object" class="btn-primary o_mail_send" data-hotkey="w"/>
                     <button string="Ignore all" name="action_cancel" type="object" class="btn-secondary" data-hotkey="x"/>
@@ -34,7 +34,7 @@
             </form>
         </field>
     </record>
-    
+
     <record id="sms_resend_action" model="ir.actions.act_window">
         <field name="name">Sending Failures</field>
         <field name="res_model">sms.resend</field>

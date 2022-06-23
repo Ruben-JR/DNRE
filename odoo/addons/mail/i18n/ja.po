@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* mail
-# 
+#
 # Translators:
 # Kakurai Ai <ai@quartile.co>, 2022
 # 高木正勝 <masakatsu.takagi@pro-spire.co.jp>, 2022
@@ -19,7 +19,7 @@
 # Martin Trigaux, 2022
 # 江口和志 <k_eguchi@enzantrades.co.jp>, 2022
 # Ryoko Tsuda <ryoko@quartile.co>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

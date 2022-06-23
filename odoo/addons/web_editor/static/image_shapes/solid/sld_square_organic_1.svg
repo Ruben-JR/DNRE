@@ -5,7 +5,7 @@
         </clipPath>
         <path id="filterPath" d="M.14.1882.99.1l-.0421.8L.188.8574.14.1882z"/>
         <g id="animation">
-            <animateTransform xlink:href="#shape" attributeName="transform" attributeType="XML" type="translate" dur="6s" values="0 0;0 8;0 0" repeatCount="indefinite" calcMode="spline" keySplines=".45 .05 .55 .95;.45 .05 .55 .95"/>    
+            <animateTransform xlink:href="#shape" attributeName="transform" attributeType="XML" type="translate" dur="6s" values="0 0;0 8;0 0" repeatCount="indefinite" calcMode="spline" keySplines=".45 .05 .55 .95;.45 .05 .55 .95"/>
         </g>
     </defs>
     <svg preserveAspectRatio="none" viewBox="0 0 1600 1201" width="96%" height="96%" x="2%" y="2%">

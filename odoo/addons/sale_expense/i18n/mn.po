@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* sale_expense
-# 
+#
 # Translators:
 # Baskhuu Lodoikhuu <baskhuujacara@gmail.com>, 2021
 # Martin Trigaux, 2021
 # nurbakhit nurka <nurbakhit@bumanit.mn>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

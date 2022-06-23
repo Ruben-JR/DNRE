@@ -10,13 +10,18 @@ _logger = logging.getLogger(__name__)
 
 
 class BuckarooController(http.Controller):
-    _return_url = '/payment/buckaroo/return'
+    _return_url = "/payment/buckaroo/return"
 
     @http.route(
-        _return_url, type='http', auth='public', methods=['POST'], csrf=False, save_session=False
+        _return_url,
+        type="http",
+        auth="public",
+        methods=["POST"],
+        csrf=False,
+        save_session=False,
     )
     def buckaroo_return_from_redirect(self, **data):
-        """ Process the data returned by Buckaroo after redirection.
+        """Process the data returned by Buckaroo after redirection.
 
         The route is flagged with `save_session=False` to prevent Odoo from assigning a new session
         to the user if they are redirected to this route with a POST request. Indeed, as the session
@@ -29,5 +34,7 @@ class BuckarooController(http.Controller):
         :param dict data: The feedback data
         """
         _logger.info("received notification data:\n%s", pprint.pformat(data))
-        request.env['payment.transaction'].sudo()._handle_feedback_data('buckaroo', data)
-        return request.redirect('/payment/status')
+        request.env["payment.transaction"].sudo()._handle_feedback_data(
+            "buckaroo", data
+        )
+        return request.redirect("/payment/status")

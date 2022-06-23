@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import pytz
@@ -11,34 +10,54 @@ from odoo.exceptions import UserError
 
 
 class MailGuest(models.Model):
-    _name = 'mail.guest'
+    _name = "mail.guest"
     _description = "Guest"
-    _inherit = ['avatar.mixin']
+    _inherit = ["avatar.mixin"]
     _avatar_name_field = "name"
-    _cookie_name = 'dgid'
-    _cookie_separator = '|'
+    _cookie_name = "dgid"
+    _cookie_separator = "|"
 
     @api.model
     def _lang_get(self):
-        return self.env['res.lang'].get_installed()
+        return self.env["res.lang"].get_installed()
 
     name = fields.Char(string="Name", required=True)
-    access_token = fields.Char(string="Access Token", default=lambda self: str(uuid.uuid4()), groups='base.group_system', required=True, readonly=True, copy=False)
-    country_id = fields.Many2one(string="Country", comodel_name='res.country')
+    access_token = fields.Char(
+        string="Access Token",
+        default=lambda self: str(uuid.uuid4()),
+        groups="base.group_system",
+        required=True,
+        readonly=True,
+        copy=False,
+    )
+    country_id = fields.Many2one(string="Country", comodel_name="res.country")
     lang = fields.Selection(string="Language", selection=_lang_get)
     timezone = fields.Selection(string="Timezone", selection=_tz_get)
-    channel_ids = fields.Many2many(string="Channels", comodel_name='mail.channel', relation='mail_channel_partner', column1='guest_id', column2='channel_id', copy=False)
+    channel_ids = fields.Many2many(
+        string="Channels",
+        comodel_name="mail.channel",
+        relation="mail_channel_partner",
+        column1="guest_id",
+        column2="channel_id",
+        copy=False,
+    )
 
     def _get_guest_from_request(self, request):
-        parts = request.httprequest.cookies.get(self._cookie_name, '').split(self._cookie_separator)
+        parts = request.httprequest.cookies.get(self._cookie_name, "").split(
+            self._cookie_separator
+        )
         if len(parts) != 2:
-            return self.env['mail.guest']
+            return self.env["mail.guest"]
         guest_id, guest_access_token = parts
         if not guest_id or not guest_access_token:
-            return self.env['mail.guest']
-        guest = self.env['mail.guest'].browse(int(guest_id)).sudo().exists()
-        if not guest or not guest.access_token or not consteq(guest.access_token, guest_access_token):
-            return self.env['mail.guest']
+            return self.env["mail.guest"]
+        guest = self.env["mail.guest"].browse(int(guest_id)).sudo().exists()
+        if (
+            not guest
+            or not guest.access_token
+            or not consteq(guest.access_token, guest_access_token)
+        ):
+            return self.env["mail.guest"]
         if not guest.timezone:
             timezone = self._get_timezone_from_request(request)
             if timezone:
@@ -46,7 +65,7 @@ class MailGuest(models.Model):
         return guest.sudo(False).with_context(guest=guest)
 
     def _get_timezone_from_request(self, request):
-        timezone = request.httprequest.cookies.get('tz')
+        timezone = request.httprequest.cookies.get("tz")
         return timezone if timezone in pytz.all_timezones else False
 
     def _update_name(self, name):
@@ -57,13 +76,12 @@ class MailGuest(models.Model):
         if len(name) > 512:
             raise UserError(_("Guest's name is too long."))
         self.name = name
-        guest_data = {
-            'id': self.id,
-            'name': self.name
-        }
-        bus_notifs = [(channel, 'mail.guest/insert', guest_data) for channel in self.channel_ids]
-        bus_notifs.append((self, 'mail.guest/insert', guest_data))
-        self.env['bus.bus']._sendmany(bus_notifs)
+        guest_data = {"id": self.id, "name": self.name}
+        bus_notifs = [
+            (channel, "mail.guest/insert", guest_data) for channel in self.channel_ids
+        ]
+        bus_notifs.append((self, "mail.guest/insert", guest_data))
+        self.env["bus.bus"]._sendmany(bus_notifs)
 
     def _update_timezone(self, timezone):
         query = """
@@ -78,25 +96,25 @@ class MailGuest(models.Model):
 
     def _init_messaging(self):
         self.ensure_one()
-        partner_root = self.env.ref('base.partner_root')
+        partner_root = self.env.ref("base.partner_root")
         return {
-            'channels': self.channel_ids.channel_info(),
-            'companyName': self.env.company.name,
-            'currentGuest': {
-                'id': self.id,
-                'name': self.name,
+            "channels": self.channel_ids.channel_info(),
+            "companyName": self.env.company.name,
+            "currentGuest": {
+                "id": self.id,
+                "name": self.name,
             },
-            'current_partner': False,
-            'current_user_id': False,
-            'current_user_settings': False,
-            'mail_failures': [],
-            'menu_id': False,
-            'needaction_inbox_counter': False,
-            'partner_root': {
-                'id': partner_root.id,
-                'name': partner_root.name,
+            "current_partner": False,
+            "current_user_id": False,
+            "current_user_settings": False,
+            "mail_failures": [],
+            "menu_id": False,
+            "needaction_inbox_counter": False,
+            "partner_root": {
+                "id": partner_root.id,
+                "name": partner_root.name,
             },
-            'public_partners': [],
-            'shortcodes': [],
-            'starred_counter': False,
+            "public_partners": [],
+            "shortcodes": [],
+            "starred_counter": False,
         }

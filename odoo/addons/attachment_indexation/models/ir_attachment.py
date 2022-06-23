@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import io
 import logging
@@ -15,14 +14,16 @@ try:
     from pdfminer.pdfpage import PDFPage
 except ImportError:
     PDFResourceManager = PDFPageInterpreter = TextConverter = PDFPage = None
-    _logger.warning("Attachment indexation of PDF documents is unavailable because the 'pdfminer' Python library cannot be found on the system. "
-                    "You may install it from https://pypi.org/project/pdfminer.six/ (e.g. `pip3 install pdfminer.six`)")
+    _logger.warning(
+        "Attachment indexation of PDF documents is unavailable because the 'pdfminer' Python library cannot be found on the system. "
+        "You may install it from https://pypi.org/project/pdfminer.six/ (e.g. `pip3 install pdfminer.six`)"
+    )
 
-FTYPES = ['docx', 'pptx', 'xlsx', 'opendoc', 'pdf']
+FTYPES = ["docx", "pptx", "xlsx", "opendoc", "pdf"]
 
 
 def textToString(element):
-    buff = u""
+    buff = ""
     for node in element.childNodes:
         if node.nodeType == xml.dom.Node.TEXT_NODE:
             buff += node.nodeValue
@@ -32,11 +33,11 @@ def textToString(element):
 
 
 class IrAttachment(models.Model):
-    _inherit = 'ir.attachment'
+    _inherit = "ir.attachment"
 
     def _index_docx(self, bin_data):
-        '''Index Microsoft .docx documents'''
-        buf = u""
+        """Index Microsoft .docx documents"""
+        buf = ""
         f = io.BytesIO(bin_data)
         if zipfile.is_zipfile(f):
             try:
@@ -50,16 +51,20 @@ class IrAttachment(models.Model):
         return buf
 
     def _index_pptx(self, bin_data):
-        '''Index Microsoft .pptx documents'''
+        """Index Microsoft .pptx documents"""
 
-        buf = u""
+        buf = ""
         f = io.BytesIO(bin_data)
         if zipfile.is_zipfile(f):
             try:
                 zf = zipfile.ZipFile(f)
-                zf_filelist = [x for x in zf.namelist() if x.startswith('ppt/slides/slide')]
+                zf_filelist = [
+                    x for x in zf.namelist() if x.startswith("ppt/slides/slide")
+                ]
                 for i in range(1, len(zf_filelist) + 1):
-                    content = xml.dom.minidom.parseString(zf.read('ppt/slides/slide%s.xml' % i))
+                    content = xml.dom.minidom.parseString(
+                        zf.read("ppt/slides/slide%s.xml" % i)
+                    )
                     for val in ["a:t"]:
                         for element in content.getElementsByTagName(val):
                             buf += textToString(element) + "\n"
@@ -68,9 +73,9 @@ class IrAttachment(models.Model):
         return buf
 
     def _index_xlsx(self, bin_data):
-        '''Index Microsoft .xlsx documents'''
+        """Index Microsoft .xlsx documents"""
 
-        buf = u""
+        buf = ""
         f = io.BytesIO(bin_data)
         if zipfile.is_zipfile(f):
             try:
@@ -84,9 +89,9 @@ class IrAttachment(models.Model):
         return buf
 
     def _index_opendoc(self, bin_data):
-        '''Index OpenDocument documents (.odt, .ods...)'''
+        """Index OpenDocument documents (.odt, .ods...)"""
 
-        buf = u""
+        buf = ""
         f = io.BytesIO(bin_data)
         if zipfile.is_zipfile(f):
             try:
@@ -100,15 +105,17 @@ class IrAttachment(models.Model):
         return buf
 
     def _index_pdf(self, bin_data):
-        '''Index PDF documents'''
+        """Index PDF documents"""
         if PDFResourceManager is None:
             return
-        buf = u""
-        if bin_data.startswith(b'%PDF-'):
+        buf = ""
+        if bin_data.startswith(b"%PDF-"):
             f = io.BytesIO(bin_data)
             try:
                 resource_manager = PDFResourceManager()
-                with io.StringIO() as content, TextConverter(resource_manager, content) as device:
+                with io.StringIO() as content, TextConverter(
+                    resource_manager, content
+                ) as device:
                     logging.getLogger("pdfminer").setLevel(logging.CRITICAL)
                     interpreter = PDFPageInterpreter(resource_manager, device)
 
@@ -123,8 +130,8 @@ class IrAttachment(models.Model):
     @api.model
     def _index(self, bin_data, mimetype):
         for ftype in FTYPES:
-            buf = getattr(self, '_index_%s' % ftype)(bin_data)
+            buf = getattr(self, "_index_%s" % ftype)(bin_data)
             if buf:
-                return buf.replace('\x00', '')
+                return buf.replace("\x00", "")
 
-        return super(IrAttachment, self)._index(bin_data, mimetype)
+        return super()._index(bin_data, mimetype)

@@ -13,4 +13,3 @@ registerFieldPatchModel('mail.user', 'hr/static/src/models/user/user.js', {
         inverse: 'user',
     }),
 });
-

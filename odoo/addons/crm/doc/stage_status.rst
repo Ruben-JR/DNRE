@@ -20,8 +20,8 @@ following models are impacted:
    - ``lost``: ``stage_id and stage_id.probability = 0 and stage_id.on_change = True
      and stage_id.sequence != 1``
 
- - ``crm.case.stage`` do not have any ``state`` field anymore. 
- - ``crm.lead.report`` do not have any ``state`` field anymore. 
+ - ``crm.case.stage`` do not have any ``state`` field anymore.
+ - ``crm.lead.report`` do not have any ``state`` field anymore.
 
 By default a newly created lead is in a new stage. It means that it will
 fetch the stage having ``sequence = 1``. Stage mangement is done using the

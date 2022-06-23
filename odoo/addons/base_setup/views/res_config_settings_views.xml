@@ -91,7 +91,7 @@
                                                 <button name="%(web.action_report_externalpreview)d" string="Preview Document" type="action" class="oe_link" groups="base.group_no_one"/>
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
                                 </div>
                                 <div class="col-12 col-lg-6 o_setting_box" id="companies_setting">
                                     <div class="o_setting_right_pane">

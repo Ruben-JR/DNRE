@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* website_event_track_quiz
-# 
+#
 # Translators:
 # a0002ef8927c0b0b9c58a7cc5f73028e_ba3d803 <aeb43a6499fcef2a5a423b3f4a45b153_32479>, 2021
 # Eino Mäkitalo <eino.makitalo@netitbe.fi>, 2021
@@ -12,7 +12,7 @@
 # Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>, 2021
 # Tuomo Aura <tuomo.aura@web-veistamo.fi>, 2021
 # Miika Nissi <miika.nissi@tawasta.fi>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.5\n"

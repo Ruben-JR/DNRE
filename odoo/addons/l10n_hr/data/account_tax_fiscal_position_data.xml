@@ -22,11 +22,11 @@
 
 
        <!-- R2 Partneri -->
-		
+
 		<record id="account_fiscal_position_tax_template_rrif_3" model="account.fiscal.position.tax.template">
 			<field name="position_id" ref="account_fiscal_position_template_rrif_2"/>
 			<field name="tax_src_id" ref="rrif_pp_25"/>
-			<field name="tax_dest_id" ref="rrif_ppr2_25"/> 
+			<field name="tax_dest_id" ref="rrif_ppr2_25"/>
 		</record>
 
 		<record id="account_fiscal_position_tax_template_rrif_3" model="account.fiscal.position.tax.template">
@@ -65,7 +65,7 @@
 			<field name="tax_src_id" ref="rrif_pdv_25usl"/>
 			<field name="tax_dest_id" ref="rrif_pdv_osl_izvoz_0"/>
 		</record>
-		
+
 		<record id="account_fiscal_position_tax_template_rrif_6" model="account.fiscal.position.tax.template">
 			<field name="position_id" ref="account_fiscal_position_template_rrif_3"/>
 			<field name="tax_src_id" ref="rrif_pp_25"/>

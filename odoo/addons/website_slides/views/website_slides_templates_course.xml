@@ -253,7 +253,7 @@
                         <t t-else="">Join Course</t>
                     </span>
                 </a>
-                
+
                 <div t-if="not channel.is_member and channel.enroll == 'invite'" class="text-center">
                     <div t-attf-class="alert my-0 bg-100 p-2 #{'o_wslides_js_channel_enroll' if not is_public_user else ''}"
                          t-att-data-channel-id="channel.id">

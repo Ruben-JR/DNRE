@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* sale_mrp
-# 
+#
 # Translators:
 # Ivan Yelizariev // IEL (ellui) <yelizariev@itpp.dev>, 2021
 # Константин Коровин <korovin74@gmail.com>, 2021
 # Сергей Шебанин <sergey@shebanin.ru>, 2021
 # Martin Trigaux, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

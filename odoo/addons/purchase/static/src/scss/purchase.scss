@@ -14,7 +14,7 @@
     .o_dashboard_action {
         cursor: pointer;
     }
-    
+
     .table {
         margin-bottom: 0;
         table-layout: fixed;
@@ -30,7 +30,7 @@
                 vertical-align: middle;
                 border-top: 1px solid $o-view-background-color;
                 background-color: $o-brand-lightsecondary;
-                
+
                 &.o_text{
                     background-color: $o-view-background-color;
                 }

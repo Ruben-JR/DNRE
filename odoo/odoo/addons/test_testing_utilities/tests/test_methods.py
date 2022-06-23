@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import itertools
 from unittest import mock, TestCase
@@ -14,12 +13,13 @@ from odoo.tools import mute_logger
 class CustomError(Exception):
     ...
 
+
 class TestBasic(common.TransactionCase):
     def test_assertRecordValues(self):
-        X1 = {'f1': "X", 'f2': 1}
-        Y2 = {'f1': "Y", 'f2': 2}
-        Y3 = {'f1': "Y", 'f2': 3}
-        records = self.env['test_testing_utilities.a'].create([X1, Y2])
+        X1 = {"f1": "X", "f2": 1}
+        Y2 = {"f1": "Y", "f2": 2}
+        Y3 = {"f1": "Y", "f2": 3}
+        records = self.env["test_testing_utilities.a"].create([X1, Y2])
 
         self.assertRecordValues(records, [X1, Y2])
 
@@ -49,7 +49,7 @@ class TestBasic(common.TransactionCase):
             raise CustomError
 
         self.env.cr.execute("SHOW test_testing_utilities.a_flag")
-        self.assertEqual(self.env.cr.fetchone(), ('',))
+        self.assertEqual(self.env.cr.fetchone(), ("",))
 
     def test_assertRaises_error(self):
         """Checks that an exception raised during the *setup* of assertRaises
@@ -58,12 +58,13 @@ class TestBasic(common.TransactionCase):
         Raises an exception when `savepoint()` calls `flush()` during setup.
         """
         # ensure we catch the error with the "base" method to avoid any interference
-        with mock.patch.object(BaseCursor, 'flush', side_effect=CustomError), \
-             TestCase.assertRaises(self, CustomError):
+        with mock.patch.object(
+            BaseCursor, "flush", side_effect=CustomError
+        ), TestCase.assertRaises(self, CustomError):
             with self.assertRaises(CustomError):
                 raise NotImplementedError
 
-    @mute_logger('odoo.sql_db')
+    @mute_logger("odoo.sql_db")
     def test_assertRaises_clear_recovery(self):
         """Checks that the savepoint is correctly rolled back if an error occurs
         during the assertRaises setup
@@ -77,13 +78,14 @@ class TestBasic(common.TransactionCase):
         # own recovery)
         def clear(call_count=itertools.count()):
             if next(call_count) == 0:
-                self.env.cr.execute('select nonsense')
+                self.env.cr.execute("select nonsense")
 
-        with mock.patch.object(BaseCursor, 'clear', side_effect=clear),\
-             TestCase.assertRaises(self, psycopg2.Error):
+        with mock.patch.object(
+            BaseCursor, "clear", side_effect=clear
+        ), TestCase.assertRaises(self, psycopg2.Error):
             with self.assertRaises(AccessError):
                 raise NotImplementedError
 
         # check that the transaction has been rolled back and we can perform
         # queries again
-        self.env.cr.execute('select 1')
+        self.env.cr.execute("select 1")

@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* partner_autocomplete
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # Yihya Hugirat <hugirat@gmail.com>, 2021
 # ZVI BLONDER <ZVIBLONDER@gmail.com>, 2021
 # Amit Spilman <amit@laylinetech.com>, 2021
 # Lilach Gilliam <lilach.gilliam@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

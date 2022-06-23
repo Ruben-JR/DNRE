@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* event_crm
-# 
+#
 # Translators:
 # Baskhuu Lodoikhuu <baskhuujacara@gmail.com>, 2021
 # Martin Trigaux, 2021
@@ -9,7 +9,7 @@
 # nasaaskii <nasaaskii@gmail.com>, 2021
 # Батмөнх Ганбат <batmunkh2522@gmail.com>, 2021
 # Uuganbayar Batbaatar <uuganaaub33@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.5\n"

@@ -16,4 +16,3 @@ Eric Smets eric.smets@fks.be https://github.com/ikzent
 Frank Gevaerts frank.gevaerts@fks.be https://github.com/gevaerts
 Tilda Jacobs tilda.jacobs@fks.be
 Gert Claesen gert.claesen@fks.be
-

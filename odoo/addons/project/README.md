@@ -66,4 +66,3 @@ Track Issues
 Single out the issues that arise in a project in order to have a better focus
 on resolving them. Integrate customer interaction on every issue and get
 accurate reports on your team's performance.
-

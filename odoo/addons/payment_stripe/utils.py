@@ -1,7 +1,8 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
+
 def get_publishable_key(acquirer_sudo):
-    """ Return the publishable key for Stripe.
+    """Return the publishable key for Stripe.
 
     Note: This method serves as a hook for modules that would fully implement Stripe Connect.
 
@@ -14,7 +15,7 @@ def get_publishable_key(acquirer_sudo):
 
 
 def get_secret_key(acquirer_sudo):
-    """ Return the secret key for Stripe.
+    """Return the secret key for Stripe.
 
     Note: This method serves as a hook for modules that would fully implement Stripe Connect.
 
@@ -27,7 +28,7 @@ def get_secret_key(acquirer_sudo):
 
 
 def get_webhook_secret(acquirer_sudo):
-    """ Return the webhook secret for Stripe.
+    """Return the webhook secret for Stripe.
 
     Note: This method serves as a hook for modules that would fully implement Stripe Connect.
 

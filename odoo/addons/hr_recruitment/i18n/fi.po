@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* hr_recruitment
-# 
+#
 # Translators:
 # Eino Mäkitalo <eino.makitalo@netitbe.fi>, 2021
 # Svante Suominen <svante.suominen@web-veistamo.fi>, 2021
@@ -31,7 +31,7 @@
 # Tuomo Aura <tuomo.aura@web-veistamo.fi>, 2021
 # Antti Oksman <antti.oksman@web-veistamo.fi>, 2021
 # Joakim Weckman, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

@@ -38,7 +38,7 @@
                         attrs="{'invisible': [('sale_order_id', '=', False)]}"
                         string="Sales Order"
                         groups="sales_team.group_sale_salesman_all_leads">
-                    <field name="sale_order_id" attrs="{'invisible': True}"/> 
+                    <field name="sale_order_id" attrs="{'invisible': True}"/>
                 </button>
             </xpath>
             <xpath expr="//field[@name='partner_id']" position="attributes">

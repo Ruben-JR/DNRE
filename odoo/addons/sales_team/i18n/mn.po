@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* sales_team
-# 
+#
 # Translators:
 # Baskhuu Lodoikhuu <baskhuujacara@gmail.com>, 2021
 # Bayarkhuu Bataa, 2021
@@ -14,7 +14,7 @@
 # tserendavaa tsogtoo <tseegii011929@gmail.com>, 2021
 # Батболд <batbold.ts@gmail.com>, 2021
 # Nurbahyt Kh <nurbahyt.kh@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.5\n"

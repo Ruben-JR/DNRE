@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* mail
-# 
+#
 # Translators:
 # Joe Hansen <joedalton2@yahoo.dk>, 2021
 # Hans Henrik Gabelgaard <hhg@gabelgaard.org>, 2021
@@ -11,7 +11,7 @@
 # Mads Søndergaard, 2022
 # Mads Søndergaard, 2022
 # lhmflexerp <lhm@flexerp.dk>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

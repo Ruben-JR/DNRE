@@ -603,8 +603,8 @@ return AbstractRenderer.extend({
     },
     /**
      * Add attribute to the element
-     * @param {jQueryElement} element 
-     * @param {Object} event 
+     * @param {jQueryElement} element
+     * @param {Object} event
      */
     _addEventAttributes: function (element, event) {
         element.attr('data-event-id', event.id);

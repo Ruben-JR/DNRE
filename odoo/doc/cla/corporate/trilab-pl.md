@@ -14,4 +14,3 @@ List of contributors:
 
 Krystian Harkot kharkot@trilab.pl https://github.com/kharkot
 Janusz Harkot jh@trilab.pl https://github.com/jerzyk
-

@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* website_event_exhibitor
-# 
+#
 # Translators:
 # Saba Khmaladze <skhmaladze@uglt.org>, 2021
 # Martin Trigaux, 2021
@@ -10,7 +10,7 @@
 # Gvantsa Gvinianidze <gvantsa@live.com>, 2021
 # Vasil Grigalashvili <info@clouddesk.info>, 2021
 # Mari Khomeriki <mari.khomeriki@maxinai.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.5\n"

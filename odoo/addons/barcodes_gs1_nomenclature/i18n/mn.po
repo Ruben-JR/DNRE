@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* barcodes_gs1_nomenclature
-# 
+#
 # Translators:
 # Baskhuu Lodoikhuu <baskhuujacara@gmail.com>, 2021
 # Martin Trigaux, 2021
 # Minj P <pminj322@gmail.com>, 2021
 # Uuganbayar Batbaatar <uuganaaub33@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

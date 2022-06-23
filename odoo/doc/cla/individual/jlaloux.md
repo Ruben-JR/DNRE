@@ -9,4 +9,3 @@ declaration.
 Signed,
 
 Julien Laloux julien.laloux@jlaloux.be https://github.com/jlaloux
-

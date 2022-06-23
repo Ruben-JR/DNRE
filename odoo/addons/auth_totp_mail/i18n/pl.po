@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* auth_totp_mail
-# 
+#
 # Translators:
 # Judyta Kaźmierczak <judyta.kazmierczak@openglobe.pl>, 2021
 # Marcin Młynarczyk <mlynarczyk@gmail.com>, 2021
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

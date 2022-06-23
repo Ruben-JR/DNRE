@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* maintenance
-# 
+#
 # Translators:
 # Fishfur A Banter <fishfurbanter@gmail.com>, 2021
 # hed shefetr <hed@laylinetech.com>, 2021
@@ -16,7 +16,7 @@
 # דודי מלכה <Dudimalka6@gmail.com>, 2021
 # ZVI BLONDER <ZVIBLONDER@gmail.com>, 2021
 # Lilach Gilliam <lilach.gilliam@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.5\n"

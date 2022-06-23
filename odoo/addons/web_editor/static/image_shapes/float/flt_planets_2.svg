@@ -47,7 +47,7 @@
           <animateTransform xlink:href="#element_2_1" attributeName="transform" attributeType="XML" type="scale" dur="5s" values=".75;1;.75" repeatCount="indefinite" calcMode="spline" keySplines=".56 .37 .43 .58;.56 .37 .43 .58"/>
           <animateTransform xlink:href="#element_2_1" attributeName="transform" attributeType="XML" type="rotate" dur="5s" values="0;15;0" repeatCount="indefinite" calcMode="spline" keySplines=".56 .37 .43 .58;.56 .37 .43 .58" additive="sum"/>
           <animateTransform xlink:href="#element_2_2" attributeName="transform" attributeType="XML" type="scale" dur="5s" values="1;1.25;1" repeatCount="indefinite" calcMode="spline" keySplines=".56 .37 .43 .58;.56 .37 .43 .58"/>
-          <animateTransform xlink:href="#element_2_2" attributeName="transform" attributeType="XML" type="rotate" dur="5s" values="0;-15;0" repeatCount="indefinite" calcMode="spline" keySplines=".56 .37 .43 .58;.56 .37 .43 .58" additive="sum"/>            
+          <animateTransform xlink:href="#element_2_2" attributeName="transform" attributeType="XML" type="rotate" dur="5s" values="0;-15;0" repeatCount="indefinite" calcMode="spline" keySplines=".56 .37 .43 .58;.56 .37 .43 .58" additive="sum"/>
           <animateMotion xlink:href="#element_2_3" dur="6s" repeatCount="indefinite" path="M0,23.31,31.76,0z" calcMode="spline" keyTimes="0;1" keySplines=".56 .37 .43 .58"/>
           <animateMotion xlink:href="#element_2_4" dur="10s" repeatCount="indefinite" path="M41.36,0,0,30.35z" calcMode="spline" keyTimes="0;1" keySplines=".56 .37 .43 .58"/>
       </g>
@@ -71,14 +71,14 @@
       </g>
       <g>
           <path d="M147.8,4.92,194.39,47a1.5,1.5,0,1,0,2-2.22L149.81,2.69a1.5,1.5,0,0,0-2,2.23Z" fill="#383E45"/>
-          <circle id="element_1_6" cx="162.83" cy="16.48" r="7" fill="#7C6576" class="circle_scale"/> 
+          <circle id="element_1_6" cx="162.83" cy="16.48" r="7" fill="#7C6576" class="circle_scale"/>
           <circle id="element_1_7" cx="185.37" cy="36.73" r="5.4" fill="#3AADAA" class="circle_scale"/>
       </g>
       <g id="group_1_2">
           <path d="M294.67,2.61,321,26.42a1.5,1.5,0,0,0,2-2.23L296.68.39a1.5,1.5,0,1,0-2,2.22Z" fill="#383E45"/>
           <circle id="element_1_8" cx="329.88" cy="31.21" r="5.4" fill="#3AADAA" class="circle_scale"/>
           <path d="M339.85,42.25l20.92,18.91a1.5,1.5,0,0,0,2-2.23h0L341.87,40a1.5,1.5,0,0,0-2,2.23Z" fill="#383E45"/>
-          <circle id="element_1_9" cx="380.2" cy="74.41" r="7.6" fill="#7C6576" class="circle_scale"/> 
+          <circle id="element_1_9" cx="380.2" cy="74.41" r="7.6" fill="#7C6576" class="circle_scale"/>
       </g>
   </svg>
   <svg viewBox="0 0 327.27 193.34" width="40%" height="100%" x="60%" preserveAspectRatio="xMidYMax meet">

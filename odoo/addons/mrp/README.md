@@ -59,4 +59,3 @@ Get your manufacturing resource planning accurate with it's full integration
 with sales and purchases apps. The accounting integration allows real time
 accounting valuation and deeper reporting on costs and revenues on your
 manufacturing operations.
-

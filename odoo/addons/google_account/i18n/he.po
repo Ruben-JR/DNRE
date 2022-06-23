@@ -1,11 +1,11 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* google_account
-# 
+#
 # Translators:
 # ExcaliberX <excaliberx@gmail.com>, 2021
 # Lilach Gilliam <lilach.gilliam@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

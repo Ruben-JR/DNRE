@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* product_margin
-# 
+#
 # Translators:
 # sakodoo <sak@odoo.com>, 2022
 # Martin Trigaux, 2022
 # Rastislav Brencic <rastislav.brencic@azet.sk>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~12.5\n"

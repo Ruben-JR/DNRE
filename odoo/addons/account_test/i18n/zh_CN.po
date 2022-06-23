@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * account_test
-# 
+#
 # Translators:
 # Jeffery CHEN Fan <jeffery9@gmail.com>, 2016
 # liAnGjiA <liangjia@qq.com>, 2018
 # inspur qiuguodong <qiuguodong@inspur.com>, 2019
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~11.5\n"

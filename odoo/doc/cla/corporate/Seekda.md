@@ -14,4 +14,3 @@ List of contributors:
 
 Holger Lausen holger.lausen@seekda.com https://github.com/holgerlausen
 Florian Kisser florian.kisser@seekda.com https://github.com/floriankisser
-

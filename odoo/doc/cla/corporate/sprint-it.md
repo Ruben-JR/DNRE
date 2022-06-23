@@ -16,5 +16,5 @@ Elmeri Niemelä niemela.elmeri@gmail.com https://github.com/elmeriniemela
 Ivan Avdouevski ivan.avdouevski@sprintit.fi https://github.com/sprintit
 Johan Tötterman johan.totterman@sprintit.fi https://github.com/juppe
 Joonas Hartonen joonas.hartonen@sprintit.fi https://github.com/jhartonen
-Roy Nurmi roy.nurmi@sprintit.fi 
+Roy Nurmi roy.nurmi@sprintit.fi
 Joakim Weckman joakim.weckman@sprintit.fi https://github.com/sprint-jweckman

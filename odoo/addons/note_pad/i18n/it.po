@@ -1,11 +1,11 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * note_pad
-# 
+#
 # Translators:
 # Sergio Zanchetta <primes2h@gmail.com>, 2018
 # Paolo Valier, 2018
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~11.5\n"

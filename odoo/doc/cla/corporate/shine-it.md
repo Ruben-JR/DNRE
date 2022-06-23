@@ -14,4 +14,3 @@ List of contributors:
 Tony Gu tony@openerp.cn https://github.com/digitalsatori
 Joshua Jan joshua@openerp.cn https://github.com/joshuajan
 Xiao Guo  xerxes@openerp.cn https://github.com/xerxesnoPT
-

@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* pad_project
-# 
+#
 # Translators:
 # Ayhan KIZILTAN <akiziltan76@hotmail.com>, 2021
 # Martin Trigaux, 2021
@@ -10,7 +10,7 @@
 # Murat Kaplan <muratk@projetgrup.com>, 2021
 # Nadir Gazioglu <nadirgazioglu@gmail.com>, 2021
 # Tugay Hatıl <tugayh@projetgrup.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

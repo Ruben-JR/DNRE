@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * website_crm
-# 
+#
 # Translators:
 # Martin Trigaux <mat@odoo.com>, 2017
 # Nemanja Dragovic <nemanjadragovic94@gmail.com>, 2017

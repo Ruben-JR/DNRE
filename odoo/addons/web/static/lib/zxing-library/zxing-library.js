@@ -66,7 +66,7 @@
             fixStack(_this);
             return _this;
         }
-        
+
         return CustomError;
     })(Error);
 
@@ -7555,7 +7555,7 @@
         }
         // See ITFWriter.PATTERNS
         /*
-      
+
         /!**
          * Patterns of Wide / Narrow lines to indicate each digit
          *!/
@@ -15909,13 +15909,13 @@
          * width of each, measuring along the axis between their centers.</p>
          */
         calculateModuleSizeOneWay(pattern, otherPattern) {
-            const moduleSizeEst1 = this.sizeOfBlackWhiteBlackRunBothWays(/*(int) */ Math.floor(pattern.getX()), 
-            /*(int) */ Math.floor(pattern.getY()), 
-            /*(int) */ Math.floor(otherPattern.getX()), 
+            const moduleSizeEst1 = this.sizeOfBlackWhiteBlackRunBothWays(/*(int) */ Math.floor(pattern.getX()),
+            /*(int) */ Math.floor(pattern.getY()),
+            /*(int) */ Math.floor(otherPattern.getX()),
             /*(int) */ Math.floor(otherPattern.getY()));
-            const moduleSizeEst2 = this.sizeOfBlackWhiteBlackRunBothWays(/*(int) */ Math.floor(otherPattern.getX()), 
-            /*(int) */ Math.floor(otherPattern.getY()), 
-            /*(int) */ Math.floor(pattern.getX()), 
+            const moduleSizeEst2 = this.sizeOfBlackWhiteBlackRunBothWays(/*(int) */ Math.floor(otherPattern.getX()),
+            /*(int) */ Math.floor(otherPattern.getY()),
+            /*(int) */ Math.floor(pattern.getX()),
             /*(int) */ Math.floor(pattern.getY()));
             if (isNaN(moduleSizeEst1)) {
                 return moduleSizeEst2 / 7.0;
@@ -17214,13 +17214,13 @@
           if (other.isZero()) {
             throw new IllegalArgumentException("Divide by 0");
           }
-      
+
           let quotient: ModulusPoly = field.getZero();
           let remainder: ModulusPoly = this;
-      
+
           let denominatorLeadingTerm: /*int/ number = other.getCoefficient(other.getDegree());
           let inverseDenominatorLeadingTerm: /*int/ number = field.inverse(denominatorLeadingTerm);
-      
+
           while (remainder.getDegree() >= other.getDegree() && !remainder.isZero()) {
             let degreeDifference: /*int/ number = remainder.getDegree() - other.getDegree();
             let scale: /*int/ number = field.multiply(remainder.getCoefficient(remainder.getDegree()), inverseDenominatorLeadingTerm);
@@ -17229,7 +17229,7 @@
             quotient = quotient.add(iterationQuotient);
             remainder = remainder.subtract(term);
           }
-      
+
           return new ModulusPoly[] { quotient, remainder };
         }
         */

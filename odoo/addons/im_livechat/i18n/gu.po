@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * im_livechat
-# 
+#
 # Translators:
 # Martin Trigaux, 2018
 # Ranjit Pillai <rpi@odoo.com>, 2018
 # Turkesh Patel <turkesh4friends@gmail.com>, 2018
 # Dharmraj Jhala <dja@openerp.com>, 2018
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~11.5\n"

@@ -1,11 +1,11 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* website_crm_partner_assign
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # Lucia Pacheco <lpo@odoo.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

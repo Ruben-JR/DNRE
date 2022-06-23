@@ -15,7 +15,7 @@ try {
 
     /*
      * We create an intermediate object in order to triggered the storage on
-     * this object. the sessionStorage. This simplifies testing and usage as 
+     * this object. the sessionStorage. This simplifies testing and usage as
      * starages are commutable in services without change. Also, objects
      * that use storage do not have to know that events go through window,
      * it's not up to them to handle these cases.

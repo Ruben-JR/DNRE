@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* website_sale_wishlist
-# 
+#
 # Translators:
 # Abdul Munif Hanafi <amunifhanafi@gmail.com>, 2022
 # Ryanto The <ry.the77@gmail.com>, 2022
 # Wahyu Setiawan <wahyusetiaaa@gmail.com>, 2022
 # Edy Kend <edy@azmall.co.id>, 2022
 # Martin Trigaux, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

@@ -1,13 +1,12 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Denmark - Accounting',
-    'version': '1.0',
-    'author': 'Odoo House ApS, VK DATA ApS',
-    'website': 'http://odoodanmark.dk',
-    'category': 'Accounting/Localizations/Account Charts',
-    'description': """
+    "name": "Denmark - Accounting",
+    "version": "1.0",
+    "author": "Odoo House ApS, VK DATA ApS",
+    "website": "http://odoodanmark.dk",
+    "category": "Accounting/Localizations/Account Charts",
+    "description": """
 
 Localization Module for Denmark
 ===============================
@@ -88,22 +87,22 @@ Produkt setup:
 .
 
     """,
-    'depends': ['account', 'base_iban', 'base_vat'],
-    'data': [
-        'data/account_account_tags.xml',
-        'data/l10n_dk_chart_template_data.xml',
-        'data/account.account.template.csv',
-        'data/l10n_dk_chart_template_post_data.xml',
-        'data/account_tax_report_data.xml',
-        'data/account_tax_template_data.xml',
-        'data/account_fiscal_position_template.xml',
-        'data/account_fiscal_position_tax_template.xml',
-        'data/account_fiscal_position_account_template.xml',
-        'data/account_chart_template_configuration_data.xml',
-        'data/menuitem_data.xml'
+    "depends": ["account", "base_iban", "base_vat"],
+    "data": [
+        "data/account_account_tags.xml",
+        "data/l10n_dk_chart_template_data.xml",
+        "data/account.account.template.csv",
+        "data/l10n_dk_chart_template_post_data.xml",
+        "data/account_tax_report_data.xml",
+        "data/account_tax_template_data.xml",
+        "data/account_fiscal_position_template.xml",
+        "data/account_fiscal_position_tax_template.xml",
+        "data/account_fiscal_position_account_template.xml",
+        "data/account_chart_template_configuration_data.xml",
+        "data/menuitem_data.xml",
     ],
-    'demo': [
-        'demo/demo_company.xml',
+    "demo": [
+        "demo/demo_company.xml",
     ],
-    'license': 'LGPL-3',
+    "license": "LGPL-3",
 }

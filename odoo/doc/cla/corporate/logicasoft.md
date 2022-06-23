@@ -19,4 +19,3 @@ François Falmagne francois.falmagne@logicasoft.eu https://github.com/GreyShim
 Andrea Ulliana andrea.ulliana@logicasoft.eu https://github.com/kea14
 Nadège Grandjean nadege.grandjean@logicasoft.eu https://github.com/ngrandjean
 Yvan DOTET yvan.dotet@logicasoft.eu https://github.com/YvanDotet
-

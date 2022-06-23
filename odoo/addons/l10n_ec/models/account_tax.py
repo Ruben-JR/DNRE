@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import fields, models
@@ -27,9 +26,7 @@ class AccountTaxTemplate(models.Model):
     _inherit = "account.tax.template"
 
     def _get_tax_vals(self, company, tax_template_to_tax):
-        vals = super(AccountTaxTemplate, self)._get_tax_vals(
-            company, tax_template_to_tax
-        )
+        vals = super()._get_tax_vals(company, tax_template_to_tax)
         vals.update(
             {
                 "l10n_ec_code_base": self.l10n_ec_code_base,

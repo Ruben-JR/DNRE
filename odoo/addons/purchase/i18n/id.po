@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* purchase
-# 
+#
 # Translators:
 # Abdul Munif Hanafi <amunifhanafi@gmail.com>, 2022
 # Gradien Foundation <gradien.co@gmail.com>, 2022
@@ -21,7 +21,7 @@
 # graha hutamawuri, 2022
 # Ryanto The <ry.the77@gmail.com>, 2022
 # Bonny Useful <bonny.useful@gmail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

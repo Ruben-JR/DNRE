@@ -2,7 +2,7 @@
 <odoo>
 <!--    Detraction can be understood here:-->
 <!--    http://orientacion.sunat.gob.pe/index.php/empresas-menu/regimen-de-detracciones-del-igv-empresas/como-funcionan-las-detracciones/3141-02-en-la-venta-de-bienes-empresas-->
-    
+
     <!-- TODO AFFECT SUBSEQUENT -->
     <!-- VAT for sales -->
     <record id="sale_tax_igv_18" model="account.tax.template">

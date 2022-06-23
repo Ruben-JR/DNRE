@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* stock_picking_batch
-# 
+#
 # Translators:
 # storm_mpildek <matija.pildek@storm.hr>, 2022
 # Karolina Tonković <karolina.tonkovic@storm.hr>, 2022
@@ -16,7 +16,7 @@
 # Bole <bole@dajmi5.com>, 2022
 # Martin Trigaux, 2022
 # Vladimir Vrgoč, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

@@ -9,4 +9,3 @@ declaration.
 Signed,
 
 Mariusz Mizgier mariusz.mizgier@currenda.pl https://github.com/mariuszmizgier
-

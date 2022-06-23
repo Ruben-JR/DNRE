@@ -307,7 +307,7 @@
             <field name="sequence">4</field>
             <field name="value">Winter</field>
         </record>
-    
+
     <!-- Page 4: Trees -->
     <record id="survey_demo_quiz_p4" model="survey.question">
         <field name="title">Trees</field>

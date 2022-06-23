@@ -9,4 +9,3 @@ declaration.
 Signed,
 
 Cyril MORISSE <cmorisse@boxes3.net> https://github.com/cmorisse
-
