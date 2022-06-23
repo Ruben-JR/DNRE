@@ -1,10 +1,8 @@
-# -*- coding: utf-8 -*-
-
 from odoo import models, fields
 
 
 class dgci_doc(models.Model):
-    _name = 'dnre.dgci_doc'
+    _name = "dnre.dgci_doc"
     _auto = False
     _description = "DNRE - Recursos Humanos"
 
@@ -15,10 +13,11 @@ class dgci_doc(models.Model):
     mr = fields.Date(string="MR")
     tc = fields.Integer(string="TC")
     r = fields.Char(string="Regime")
-    dgci = fields.One2many('dnre.dgci', string="DGCI lines", readonly="True")
+    dgci = fields.One2many("dnre.dgci", string="DGCI lines", readonly="True")
+
 
 class dgci(models.Model):
-    _name = 'dnre.dgci'
+    _name = "dnre.dgci"
     _description = "DGCI Funcionarios"
 
     dgci_id = fields.Many2one(string="dgci", readonly="True")
