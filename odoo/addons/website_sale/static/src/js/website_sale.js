@@ -902,7 +902,7 @@ publicWidget.registry.websiteSaleCarouselProduct = publicWidget.Widget.extend({
     /**
      * Center the selected indicator to scroll the indicators list when it
      * overflows.
-     * 
+     *
      * @private
      * @param {Event} ev
      */

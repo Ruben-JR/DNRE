@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* stock
-# 
+#
 # Translators:
 # Jan Dziurz <jan.dziurzynski@openglobe.pl>, 2021
 # Tadeusz Karpiński <tadeuszkarpinski@gmail.com>, 2021
@@ -32,7 +32,7 @@
 # Grzegorz Grzelak <grzegorz.grzelak@openglobe.pl>, 2022
 # IT WEDOO, 2022
 # Martin Trigaux, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

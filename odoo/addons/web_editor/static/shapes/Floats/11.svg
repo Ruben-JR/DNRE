@@ -2,15 +2,15 @@
     <style>
     @keyframes ld-speed-dash {
         0%   {transform: translate(0,0);}
-        50%  {transform: translate(420px,0);} 
+        50%  {transform: translate(420px,0);}
         100% {transform: translate(0,0);}
     }
     .ld.ld-speed-dash { animation: ld-speed-dash 0.5s linear infinite;}
 	.color-1 {fill: #3AADAA;}
 	.color-2 {fill: #F6F6F6;}
     @media only screen and (max-width: 300px) {
-		path {stroke-width: 7px;} 
-		path.color-1 {stroke: #3AADAA;} 
+		path {stroke-width: 7px;}
+		path.color-1 {stroke: #3AADAA;}
 		path.color-2 {stroke: #F6F6F6;}
     }
     </style>

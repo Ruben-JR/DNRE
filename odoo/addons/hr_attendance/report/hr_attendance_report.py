@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import fields, models
@@ -9,14 +8,15 @@ class HRAttendanceReport(models.Model):
     _description = "Attendance Statistics"
     _auto = False
 
-    department_id = fields.Many2one('hr.department', string="Department", readonly=True)
-    employee_id = fields.Many2one('hr.employee', string="Employee", readonly=True)
+    department_id = fields.Many2one("hr.department", string="Department", readonly=True)
+    employee_id = fields.Many2one("hr.employee", string="Employee", readonly=True)
     check_in = fields.Date("Check In", readonly=True)
     worked_hours = fields.Float("Hours Worked", readonly=True)
     overtime_hours = fields.Float("Extra Hours", readonly=True)
 
     def init(self):
-        self.env.cr.execute("""
+        self.env.cr.execute(
+            """
             CREATE OR REPLACE VIEW %s AS (
                 (
                     SELECT
@@ -47,4 +47,6 @@ class HRAttendanceReport(models.Model):
                             AND ot.adjustment = FALSE
                 )
             )
-        """ % (self._table))
+        """
+            % (self._table)
+        )

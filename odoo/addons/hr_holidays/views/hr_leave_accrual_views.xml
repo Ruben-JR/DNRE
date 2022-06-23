@@ -92,7 +92,7 @@
                         </group>
                     </group>
                     <span class="oe_grey" invisible="1">
-                        
+
                     </span>
                     <div class="o_hr_holidays_hierarchy">
                         <div class="o_hr_holidays_title">Rules</div>
@@ -103,7 +103,7 @@
                             </p>
                         </div>
                         <field name="level_ids" mode="kanban" nolabel="1"
-                            
+
                             class="o_hr_holidays_plan_level_container o_hr_holidays_plan_level_hierarchy"
                             add-label="Add a new level"
                             >

@@ -15,13 +15,16 @@ from odoo.tools.misc import frozendict
 
 # ustr decodes as utf-8 or latin1 so we can search for the ASCII bytes
 # 	Char	   ::=   	#x9 | #xA | #xD | [#x20-#xD7FF]
-XML_INVALID = re.compile(b'[\x00-\x08\x0B\x0C\x0F-\x1F]')
+XML_INVALID = re.compile(b"[\x00-\x08\x0B\x0C\x0F-\x1F]")
+
+
 class OdooMarshaller(xmlrpc.client.Marshaller):
     dispatch = dict(xmlrpc.client.Marshaller.dispatch)
 
     def dump_frozen_dict(self, value, write):
         value = dict(value)
         self.dump_struct(value, write)
+
     dispatch[frozendict] = dump_frozen_dict
 
     # By default, in xmlrpc, bytes are converted to xmlrpclib.Binary object.
@@ -34,29 +37,35 @@ class OdooMarshaller(xmlrpc.client.Marshaller):
         # blank it out, otherwise they get embedded in the output and break
         # client-side parsers
         if XML_INVALID.search(value):
-            self.dump_unicode('', write)
+            self.dump_unicode("", write)
         else:
             self.dump_unicode(ustr(value), write)
+
     dispatch[bytes] = dump_bytes
 
     def dump_datetime(self, value, write):
         # override to marshall as a string for backwards compatibility
         value = Datetime.to_string(value)
         self.dump_unicode(value, write)
+
     dispatch[datetime] = dump_datetime
 
     def dump_date(self, value, write):
         value = Date.to_string(value)
         self.dump_unicode(value, write)
+
     dispatch[date] = dump_date
 
     def dump_lazy(self, value, write):
         v = value._value
         return self.dispatch[type(v)](self, v, write)
+
     dispatch[lazy] = dump_lazy
 
     dispatch[Command] = dispatch[int]
-    dispatch[Markup] = lambda self, value, write: self.dispatch[str](self, str(value), write)
+    dispatch[Markup] = lambda self, value, write: self.dispatch[str](
+        self, str(value), write
+    )
 
 
 # monkey-patch xmlrpc.client's marshaller
@@ -73,7 +82,13 @@ class RPC(Controller):
         result = dispatch_rpc(service, method, params)
         return dumps((result,), methodresponse=1, allow_none=False)
 
-    @route("/xmlrpc/<service>", auth="none", methods=["POST"], csrf=False, save_session=False)
+    @route(
+        "/xmlrpc/<service>",
+        auth="none",
+        methods=["POST"],
+        csrf=False,
+        save_session=False,
+    )
     def xmlrpc_1(self, service):
         """XML-RPC service that returns faultCode as strings.
 
@@ -84,18 +99,24 @@ class RPC(Controller):
             response = self._xmlrpc(service)
         except Exception as error:
             response = wsgi_server.xmlrpc_handle_exception_string(error)
-        return Response(response=response, mimetype='text/xml')
+        return Response(response=response, mimetype="text/xml")
 
-    @route("/xmlrpc/2/<service>", auth="none", methods=["POST"], csrf=False, save_session=False)
+    @route(
+        "/xmlrpc/2/<service>",
+        auth="none",
+        methods=["POST"],
+        csrf=False,
+        save_session=False,
+    )
     def xmlrpc_2(self, service):
         """XML-RPC service that returns faultCode as int."""
         try:
             response = self._xmlrpc(service)
         except Exception as error:
             response = wsgi_server.xmlrpc_handle_exception_int(error)
-        return Response(response=response, mimetype='text/xml')
+        return Response(response=response, mimetype="text/xml")
 
-    @route('/jsonrpc', type='json', auth="none", save_session=False)
+    @route("/jsonrpc", type="json", auth="none", save_session=False)
     def jsonrpc(self, service, method, args):
-        """ Method used by client APIs to contact OpenERP. """
+        """Method used by client APIs to contact OpenERP."""
         return dispatch_rpc(service, method, args)

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1048" height="998" preserveAspectRatio="xMidYMid" viewBox="0 0 1048 998">
     <style type="text/css">
-        @keyframes ld-speed-dash { 
+        @keyframes ld-speed-dash {
             0%   {transform: translate(0,-1535.2044154363916px);}
             100% {transform: translate(0,1535.2044154363916px);}
         }

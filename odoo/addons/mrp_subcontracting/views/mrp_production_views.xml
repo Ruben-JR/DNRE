@@ -32,7 +32,7 @@
             </xpath>
             <xpath expr="//button[@name='action_generate_serial']" position="attributes">
                 <attribute name="invisible">1</attribute>
-            </xpath> 
+            </xpath>
             <xpath expr="//field[@name='move_raw_ids']" position="attributes">
                 <attribute name="invisible">1</attribute>
                 <attribute name="readonly">1</attribute>
@@ -52,4 +52,3 @@
         </field>
     </record>
 </odoo>
-

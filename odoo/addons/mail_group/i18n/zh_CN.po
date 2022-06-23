@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* mail_group
-# 
+#
 # Translators:
 # bf2549c5415a9287249cba2b8a5823c7, 2021
 # Emily Jia <eji@odoo.com>, 2021
@@ -14,7 +14,7 @@
 # 黎伟杰 <674416404@qq.com>, 2021
 # Benson <Benson.Dr@Gmail.com>, 2022
 # 山西清水欧度(QQ:54773801) <54773801@qq.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

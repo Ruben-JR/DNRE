@@ -9,4 +9,3 @@ declaration.
 Signed,
 
 Timothy Stonis tim@opoet.com https://github.com/tstonis
-

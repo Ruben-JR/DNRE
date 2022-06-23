@@ -60,4 +60,3 @@ Control vendor bills with no effort. Choose the right method according to
 your need: pre-generate draft invoices based on purchase orders, on products
 receptions, create invoices manually and import lines from purchase orders,
 etc.
-

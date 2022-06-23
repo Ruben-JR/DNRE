@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * hr_gamification
-# 
+#
 # Translators:
 # Martin Trigaux, 2018
 # Divya Pandya <dia@odoo.com>, 2018

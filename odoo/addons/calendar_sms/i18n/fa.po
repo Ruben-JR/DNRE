@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* calendar_sms
-# 
+#
 # Translators:
 # Hamed Mohammadi <hamed@dehongi.com>, 2022
 # Arash Sardari <arashss77@gmail.com>, 2022
 # Martin Trigaux, 2022
 # سید محمد آذربرا <mohammadazarbara98@gmail.com>, 2022
 # Mohsen Mohammadi <iammohsen.123@gmail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

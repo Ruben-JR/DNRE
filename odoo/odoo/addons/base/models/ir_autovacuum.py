@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import inspect
@@ -13,14 +12,15 @@ _logger = logging.getLogger(__name__)
 
 
 def is_autovacuum(func):
-    """ Return whether ``func`` is an autovacuum method. """
-    return callable(func) and getattr(func, '_autovacuum', False)
+    """Return whether ``func`` is an autovacuum method."""
+    return callable(func) and getattr(func, "_autovacuum", False)
 
 
 class AutoVacuum(models.AbstractModel):
-    """ Helper model to the ``@api.autovacuum`` method decorator. """
-    _name = 'ir.autovacuum'
-    _description = 'Automatic Vacuum'
+    """Helper model to the ``@api.autovacuum`` method decorator."""
+
+    _name = "ir.autovacuum"
+    _description = "Automatic Vacuum"
 
     def _run_vacuum_cleaner(self):
         """
@@ -33,7 +33,7 @@ class AutoVacuum(models.AbstractModel):
         for model in self.env.values():
             cls = type(model)
             for attr, func in inspect.getmembers(cls, is_autovacuum):
-                _logger.debug('Calling %s.%s()', model, attr)
+                _logger.debug("Calling %s.%s()", model, attr)
                 try:
                     func(model)
                     self.env.cr.commit()
@@ -53,9 +53,12 @@ class AutoVacuum(models.AbstractModel):
     @api.model
     def power_on(self, *args, **kwargs):
         tb = traceback.extract_stack(limit=2)
-        if tb[-2].name == 'power_on':
+        if tb[-2].name == "power_on":
             warnings.warn(
                 "You are extending the 'power_on' ir.autovacuum method"
                 f"in {tb[-2].filename} around line {tb[-2].lineno}. "
                 "You should instead use the @api.autovacuum decorator "
-                "on your garbage collecting method.", DeprecationWarning, stacklevel=2)
+                "on your garbage collecting method.",
+                DeprecationWarning,
+                stacklevel=2,
+            )

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import base64
@@ -10,41 +9,55 @@ from odoo.tests import tagged
 from odoo import fields
 
 
-@freeze_time('2021-05-02')
-@tagged('post_install_l10n', 'post_install', '-at_install')
+@freeze_time("2021-05-02")
+@tagged("post_install_l10n", "post_install", "-at_install")
 class TestAccountFrFec(AccountTestInvoicingCommon):
-
     @classmethod
-    def setUpClass(cls, chart_template_ref='l10n_fr.l10n_fr_pcg_chart_template'):
+    def setUpClass(cls, chart_template_ref="l10n_fr.l10n_fr_pcg_chart_template"):
         super().setUpClass(chart_template_ref=chart_template_ref)
 
-        company = cls.company_data['company']
-        company.vat = 'FR13542107651'
+        company = cls.company_data["company"]
+        company.vat = "FR13542107651"
 
-        lines_data = [(1437.12, 'Hello\tDarkness'), (1676.64, 'my\rold\nfriend'), (3353.28, '\t\t\r')]
-        today = fields.Date.today().strftime('%Y-%m-%d')
-        cls.invoice_a = cls.env['account.move'].create({
-            'move_type': 'out_invoice',
-            'partner_id': cls.partner_a.id,
-            'date': today,
-            'invoice_date': today,
-            'currency_id': company.currency_id.id,
-            'invoice_line_ids': [(0, None, {
-                'name': name,
-                'product_id': cls.product_a.id,
-                'quantity': 1,
-                'tax_ids': [(6, 0, [cls.tax_sale_a.id])],
-                'price_unit': price_unit,
-            }) for price_unit, name in lines_data]
-        })
+        lines_data = [
+            (1437.12, "Hello\tDarkness"),
+            (1676.64, "my\rold\nfriend"),
+            (3353.28, "\t\t\r"),
+        ]
+        today = fields.Date.today().strftime("%Y-%m-%d")
+        cls.invoice_a = cls.env["account.move"].create(
+            {
+                "move_type": "out_invoice",
+                "partner_id": cls.partner_a.id,
+                "date": today,
+                "invoice_date": today,
+                "currency_id": company.currency_id.id,
+                "invoice_line_ids": [
+                    (
+                        0,
+                        None,
+                        {
+                            "name": name,
+                            "product_id": cls.product_a.id,
+                            "quantity": 1,
+                            "tax_ids": [(6, 0, [cls.tax_sale_a.id])],
+                            "price_unit": price_unit,
+                        },
+                    )
+                    for price_unit, name in lines_data
+                ],
+            }
+        )
         cls.invoice_a.action_post()
 
-        cls.wizard = cls.env['account.fr.fec'].create({
-            'date_from': fields.Date.today() - timedelta(days=1),
-            'date_to': fields.Date.today(),
-            'export_type': 'official',
-            'test_file': True,
-        })
+        cls.wizard = cls.env["account.fr.fec"].create(
+            {
+                "date_from": fields.Date.today() - timedelta(days=1),
+                "date_to": fields.Date.today(),
+                "export_type": "official",
+                "test_file": True,
+            }
+        )
 
     def test_generate_fec_sanitize_pieceref(self):
         self.wizard.generate_fec()

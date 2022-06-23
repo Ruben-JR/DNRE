@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 # NOTE Use black to automatically format this code.
@@ -48,7 +47,8 @@ class PosOrder(models.Model):
                     for i in (
                         self.env["coupon.program"]
                         .browse(program_ids_to_generate_coupons)
-                        .sudo()._generate_coupons(self.partner_id.id)
+                        .sudo()
+                        ._generate_coupons(self.partner_id.id)
                     ).ids
                 ],
             }
@@ -63,13 +63,16 @@ class PosOrder(models.Model):
         ]
 
     def _get_fields_for_order_line(self):
-        fields = super(PosOrder, self)._get_fields_for_order_line()
-        fields.extend({
-            'is_program_reward',
-            'coupon_id',
-            'program_id',
-        })
+        fields = super()._get_fields_for_order_line()
+        fields.extend(
+            {
+                "is_program_reward",
+                "coupon_id",
+                "program_id",
+            }
+        )
         return fields
+
 
 class PosOrderLine(models.Model):
     _inherit = "pos.order.line"
@@ -84,5 +87,7 @@ class PosOrderLine(models.Model):
         help="Promotion/Coupon Program where this reward line is based.",
     )
     coupon_id = fields.Many2one(
-        "coupon.coupon", string="Coupon", help="Coupon that generated this reward.",
+        "coupon.coupon",
+        string="Coupon",
+        help="Coupon that generated this reward.",
     )

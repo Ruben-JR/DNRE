@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import logging
@@ -16,11 +15,15 @@ class MollieController(http.Controller):
     _notify_url = "/payment/mollie/notify"
 
     @http.route(
-        _return_url, type='http', auth='public', methods=['GET', 'POST'], csrf=False,
-        save_session=False
+        _return_url,
+        type="http",
+        auth="public",
+        methods=["GET", "POST"],
+        csrf=False,
+        save_session=False,
     )
     def mollie_return(self, **data):
-        """ Process the data returned by Mollie after redirection.
+        """Process the data returned by Mollie after redirection.
 
         The route is flagged with `save_session=False` to prevent Odoo from assigning a new session
         to the user if they are redirected to this route with a POST request. Indeed, as the session
@@ -34,12 +37,12 @@ class MollieController(http.Controller):
                           embedded in the return URL
         """
         _logger.info("Received Mollie return data:\n%s", pprint.pformat(data))
-        request.env['payment.transaction'].sudo()._handle_feedback_data('mollie', data)
-        return request.redirect('/payment/status')
+        request.env["payment.transaction"].sudo()._handle_feedback_data("mollie", data)
+        return request.redirect("/payment/status")
 
-    @http.route(_notify_url, type='http', auth='public', methods=['POST'], csrf=False)
+    @http.route(_notify_url, type="http", auth="public", methods=["POST"], csrf=False)
     def mollie_notify(self, **data):
-        """ Process the data sent by Mollie to the webhook.
+        """Process the data sent by Mollie to the webhook.
 
         :param dict data: The feedback data (only `id`) and the transaction reference (`ref`)
                           embedded in the return URL
@@ -48,7 +51,11 @@ class MollieController(http.Controller):
         """
         _logger.info("Received Mollie notify data:\n%s", pprint.pformat(data))
         try:
-            request.env['payment.transaction'].sudo()._handle_feedback_data('mollie', data)
+            request.env["payment.transaction"].sudo()._handle_feedback_data(
+                "mollie", data
+            )
         except ValidationError:  # Acknowledge the notification to avoid getting spammed
-            _logger.exception("unable to handle the notification data; skipping to acknowledge")
-        return ''  # Acknowledge the notification with an HTTP 200 response
+            _logger.exception(
+                "unable to handle the notification data; skipping to acknowledge"
+            )
+        return ""  # Acknowledge the notification with an HTTP 200 response

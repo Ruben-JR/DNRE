@@ -12,7 +12,7 @@
             M.9765.8495c-.1199.2462-.7298.1759-.9132-.1055c-.1833-.285.06-.7774.3632-.7422c.3068.0352.6699.6015.55.8477z"
             calcMode="spline"
             keySplines=".56 .37 .43 .58;.56 .37 .43 .58;.56 .37 .43 .58"/>
-        </path>    
+        </path>
     </defs>
     <svg viewBox="0 0 1 1" id="preview" preserveAspectRatio="none">
         <use xlink:href="#filterPath" fill="darkgrey"/>

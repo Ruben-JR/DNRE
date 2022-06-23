@@ -1,11 +1,11 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* microsoft_account
-# 
+#
 # Translators:
 # Pedro Castro Silva <pedrocs@exo.pt>, 2021
 # Pedro Filipe <pedro2.10@hotmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

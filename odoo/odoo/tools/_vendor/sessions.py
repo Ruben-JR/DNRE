@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 r"""
     Vendored copy of https://github.com/pallets/werkzeug/blob/2b2c4c3dd3cf7389e9f4aa06371b7332257c6289/src/werkzeug/contrib/sessions.py
 
@@ -33,7 +32,9 @@ _sha1_re = re.compile(r"^[a-f0-9]{40}$")
 def generate_key(salt=None):
     if salt is None:
         salt = repr(salt).encode("ascii")
-    return sha1(b"".join([salt, str(time()).encode("ascii"), os.urandom(30)])).hexdigest()
+    return sha1(
+        b"".join([salt, str(time()).encode("ascii"), os.urandom(30)])
+    ).hexdigest()
 
 
 class ModificationTrackingDict(CallbackDict):
@@ -75,7 +76,7 @@ class Session(ModificationTrackingDict):
         self.new = new
 
     def __repr__(self):
-        return "<%s %s%s>" % (
+        return "<{} {}{}>".format(
             self.__class__.__name__,
             dict.__repr__(self),
             "*" if self.should_save else "",
@@ -92,7 +93,7 @@ class Session(ModificationTrackingDict):
         return self.modified
 
 
-class SessionStore(object):
+class SessionStore:
     """Baseclass for all session stores.  The Werkzeug contrib module does not
     implement any useful stores besides the filesystem store, application
     developers are encouraged to create their own stores.
@@ -199,7 +200,7 @@ class FilesystemSessionStore(SessionStore):
         try:
             rename(tmp, fn)
             os.chmod(fn, self.mode)
-        except (IOError, OSError):
+        except OSError:
             pass
 
     def delete(self, session):
@@ -214,7 +215,7 @@ class FilesystemSessionStore(SessionStore):
             return self.new()
         try:
             f = open(self.get_session_filename(sid), "rb")
-        except IOError:
+        except OSError:
             if self.renew_missing:
                 return self.new()
             data = {}
@@ -235,7 +236,7 @@ class FilesystemSessionStore(SessionStore):
         """
         before, after = self.filename_template.split("%s", 1)
         filename_re = re.compile(
-            r"%s(.{5,})%s$" % (re.escape(before), re.escape(after))
+            r"{}(.{{5,}}){}$".format(re.escape(before), re.escape(after))
         )
         result = []
         for filename in os.listdir(self.path):

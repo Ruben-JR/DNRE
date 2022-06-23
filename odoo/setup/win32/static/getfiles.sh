@@ -22,4 +22,3 @@ pushd less
 wget -q https://github.com/duncansmart/less.js-windows/releases/download/v2.5.1/less.js-windows-v2.5.1a.zip
 unzip less.js-windows-v2.5.1a.zip
 rm less.js-windows-v2.5.1a.zip
-

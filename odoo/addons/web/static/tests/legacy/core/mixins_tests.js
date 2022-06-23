@@ -74,4 +74,3 @@ QUnit.module('core', {}, function () {
 });
 
 });
-

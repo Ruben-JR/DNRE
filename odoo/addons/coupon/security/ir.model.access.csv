@@ -4,4 +4,3 @@ access_coupon_reward,access_coupon_reward,model_coupon_reward,base.group_user,0,
 access_coupon_rule,access_coupon_rule,model_coupon_rule,base.group_user,0,0,0,0
 access_coupon_program,access_coupon_program,model_coupon_program,base.group_user,0,0,0,0
 access_coupon_generate_wizard,access_coupon_generate_wizard,model_coupon_generate_wizard,base.group_user,0,0,0,0
-

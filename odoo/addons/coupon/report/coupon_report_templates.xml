@@ -28,7 +28,7 @@
                                             <t t-set="display_specific_products" t-value="True"/>
                                         </t>
                                         <t t-else="">
-                                            <t t-set="trans_text">off on %s</t>                                            
+                                            <t t-set="trans_text">off on %s</t>
                                             <t t-set="text" t-value="trans_text % o.program_id.discount_specific_product_ids.name"/>
                                         </t>
                                     </t>

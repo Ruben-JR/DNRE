@@ -138,7 +138,7 @@
                                 <span class="text-right" t-esc="cdrc16" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
                             </td>
                         </tr>
-                        <tr>                            
+                        <tr>
                             <td><strong>CHARGES FINANCI&#xC8;RES</strong></td>
                             <td></td>
                         </tr>

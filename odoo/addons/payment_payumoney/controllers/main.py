@@ -10,14 +10,18 @@ _logger = logging.getLogger(__name__)
 
 
 class PayUMoneyController(http.Controller):
-    _return_url = '/payment/payumoney/return'
+    _return_url = "/payment/payumoney/return"
 
     @http.route(
-        _return_url, type='http', auth='public', methods=['GET', 'POST'], csrf=False,
-        save_session=False
+        _return_url,
+        type="http",
+        auth="public",
+        methods=["GET", "POST"],
+        csrf=False,
+        save_session=False,
     )
     def payumoney_return(self, **data):
-        """ Process the data returned by PayUmoney after redirection.
+        """Process the data returned by PayUmoney after redirection.
 
         The route is flagged with `save_session=False` to prevent Odoo from assigning a new session
         to the user if they are redirected to this route with a POST request. Indeed, as the session
@@ -29,6 +33,10 @@ class PayUMoneyController(http.Controller):
 
         :param dict data: The feedback data to process
         """
-        _logger.info("entering handle_feedback_data with data:\n%s", pprint.pformat(data))
-        request.env['payment.transaction'].sudo()._handle_feedback_data('payumoney', data)
-        return request.redirect('/payment/status')
+        _logger.info(
+            "entering handle_feedback_data with data:\n%s", pprint.pformat(data)
+        )
+        request.env["payment.transaction"].sudo()._handle_feedback_data(
+            "payumoney", data
+        )
+        return request.redirect("/payment/status")

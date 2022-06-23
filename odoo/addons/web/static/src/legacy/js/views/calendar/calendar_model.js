@@ -552,7 +552,7 @@ return AbstractModel.extend({
      *
      * - actual_color_list contains the list of color already used in the filter
      * - color_index is the color we try to apply for the event
-     * 
+     *
      * @private
      * @param {Array} actual_color_list
      * @param {Integer} color_index

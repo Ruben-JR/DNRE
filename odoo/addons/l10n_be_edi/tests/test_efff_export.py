@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import base64
 import io
 from PyPDF2 import PdfFileWriter, PdfFileReader
@@ -7,51 +6,70 @@ from odoo.addons.account_edi.tests.common import AccountEdiTestCommon
 from odoo.tests import tagged
 
 
-@tagged('post_install_l10n', 'post_install', '-at_install')
+@tagged("post_install_l10n", "post_install", "-at_install")
 class TestUBLBE(AccountEdiTestCommon):
-
     @classmethod
-    def setUpClass(cls, chart_template_ref='l10n_be.l10nbe_chart_template', edi_format_ref='l10n_be_edi.edi_efff_1'):
-        super().setUpClass(chart_template_ref=chart_template_ref, edi_format_ref=edi_format_ref)
+    def setUpClass(
+        cls,
+        chart_template_ref="l10n_be.l10nbe_chart_template",
+        edi_format_ref="l10n_be_edi.edi_efff_1",
+    ):
+        super().setUpClass(
+            chart_template_ref=chart_template_ref, edi_format_ref=edi_format_ref
+        )
 
-        cls.partner_a.write({
-            'street': "Chaussée de Namur 40",
-            'zip': "1367",
-            'city': "Ramillies",
-            'vat': 'BE0202239951',
-            'country_id': cls.env.ref('base.be').id,
-        })
+        cls.partner_a.write(
+            {
+                "street": "Chaussée de Namur 40",
+                "zip": "1367",
+                "city": "Ramillies",
+                "vat": "BE0202239951",
+                "country_id": cls.env.ref("base.be").id,
+            }
+        )
 
-        cls.env.company.write({
-            'street': "Rue des Bourlottes 9",
-            'zip': "1367",
-            'city': "Ramillies",
-            'vat': 'BE0477472701',
-            'country_id': cls.env.ref('base.be').id,
-        })
+        cls.env.company.write(
+            {
+                "street": "Rue des Bourlottes 9",
+                "zip": "1367",
+                "city": "Ramillies",
+                "vat": "BE0477472701",
+                "country_id": cls.env.ref("base.be").id,
+            }
+        )
 
-        cls.tax_21 = cls.env['account.tax'].create({
-            'name': 'tax_21',
-            'amount_type': 'percent',
-            'amount': 21,
-            'type_tax_use': 'sale',
-        })
+        cls.tax_21 = cls.env["account.tax"].create(
+            {
+                "name": "tax_21",
+                "amount_type": "percent",
+                "amount": 21,
+                "type_tax_use": "sale",
+            }
+        )
 
     def test_out_invoice_efff(self):
-        invoice = self.env['account.move'].create({
-            'move_type': 'out_invoice',
-            'partner_id': self.partner_a.id,
-            'invoice_payment_term_id': self.pay_terms_b.id,
-            'invoice_date': '2017-01-01',
-            'date': '2017-01-01',
-            'ref': 'test invoice ref',
-            'narration': 'test narration',
-            'invoice_line_ids': [(0, 0, {
-                'price_unit': 1000.0,
-                'product_id': self.product_a.id,
-                'tax_ids': [(6, 0, self.tax_21.ids)],
-            })],
-        })
+        invoice = self.env["account.move"].create(
+            {
+                "move_type": "out_invoice",
+                "partner_id": self.partner_a.id,
+                "invoice_payment_term_id": self.pay_terms_b.id,
+                "invoice_date": "2017-01-01",
+                "date": "2017-01-01",
+                "ref": "test invoice ref",
+                "narration": "test narration",
+                "invoice_line_ids": [
+                    (
+                        0,
+                        0,
+                        {
+                            "price_unit": 1000.0,
+                            "product_id": self.product_a.id,
+                            "tax_ids": [(6, 0, self.tax_21.ids)],
+                        },
+                    )
+                ],
+            }
+        )
         invoice.action_post()
 
         # Print the invoice to append AdditionalDocumentReference.
@@ -59,7 +77,9 @@ class TestUBLBE(AccountEdiTestCommon):
         pdf_writer = PdfFileWriter()
         pdf_writer.addBlankPage(42, 42)
         pdf_writer.write(pdf_buffer)
-        self.env.ref('account.account_invoices_without_payment')._postprocess_pdf_report(invoice, pdf_buffer)
+        self.env.ref(
+            "account.account_invoices_without_payment"
+        )._postprocess_pdf_report(invoice, pdf_buffer)
         pdf_buffer.close()
 
         attachment = invoice._get_edi_attachment(self.edi_format)
@@ -67,7 +87,8 @@ class TestUBLBE(AccountEdiTestCommon):
         xml_content = base64.b64decode(attachment.datas)
 
         current_etree = self.get_xml_tree_from_string(xml_content)
-        expected_etree = self.get_xml_tree_from_string(f'''
+        expected_etree = self.get_xml_tree_from_string(
+            f"""
             <Invoice>
                 <UBLVersionID>2.0</UBLVersionID>
                 <ID>{invoice.name}</ID>
@@ -178,5 +199,6 @@ class TestUBLBE(AccountEdiTestCommon):
                     </Price>
                 </InvoiceLine>
             </Invoice>
-        ''')
+        """
+        )
         self.assertXmlTreeEqual(current_etree, expected_etree)

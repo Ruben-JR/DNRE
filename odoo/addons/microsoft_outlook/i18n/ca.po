@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* microsoft_outlook
-# 
+#
 # Translators:
 # Bàrbara Partegàs <barbararof@gmail.com>, 2022
 # Carles Antoli <carlesantoli@hotmail.com>, 2022
@@ -9,7 +9,7 @@
 # jabelchi, 2022
 # Eugeni Chafer <eugeni@chafer.cat>, 2022
 # marcescu, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"

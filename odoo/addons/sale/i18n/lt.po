@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* sale
-# 
+#
 # Translators:
 # Andrius Laukavičius <andrius@focusate.eu>, 2022
 # Eimantas <eimantas@focusate.eu>, 2022
@@ -28,7 +28,7 @@
 # Linas Versada <linaskrisiukenas@gmail.com>, 2022
 # Martin Trigaux, 2022
 # Audrius Palenskis <audrius.palenskis@gmail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

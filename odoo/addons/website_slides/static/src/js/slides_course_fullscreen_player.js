@@ -609,7 +609,7 @@
          * When the current slide is changed, widget will be automatically updated
          * and allowed to: fetch the content if needed, render it, update the url,
          * and set slide as "completed" according to its type requirements. In
-         * mobile case (i.e. limited screensize), sidebar will be toggled since 
+         * mobile case (i.e. limited screensize), sidebar will be toggled since
          * sidebar will block most or all of new slide visibility.
          *
          * @private

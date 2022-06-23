@@ -17,7 +17,7 @@
                         <h2>Export Complete</h2>
                         <p>Here is the exported translation file: <field name="data" readonly="1" filename="name"/></p>
                         <p>This file was generated using the universal <strong>Unicode/UTF-8</strong> file encoding, please be sure to view and edit
-                           using the same encoding.</p> 
+                           using the same encoding.</p>
                         <p>The next step depends on the file format:
                             <ul>
                             <li>CSV format: you may edit it directly with your favorite spreadsheet software,

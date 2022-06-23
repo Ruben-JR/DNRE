@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 # Copyright (c) 2015 WT-IO-IT GmbH (https://www.wt-io-it.at)
@@ -13,8 +12,8 @@
     "version": "3.0",
     "author": "WT-IO-IT GmbH, Wolfgang Taferner",
     "website": "https://www.wt-io-it.at",
-    'category': 'Accounting/Localizations/Account Charts',
-    'summary': "Austrian Standardized Charts & Tax",
+    "category": "Accounting/Localizations/Account Charts",
+    "summary": "Austrian Standardized Charts & Tax",
     "description": """
 
 Austrian charts of accounts (Einheitskontenrahmen 2010).
@@ -34,18 +33,18 @@ Austrian charts of accounts (Einheitskontenrahmen 2010).
         "base_vat",
     ],
     "data": [
-        'data/res.country.state.csv',
-        'data/account_account_tag.xml',
-        'data/account_account_template.xml',
-        'data/account_chart_template.xml',
-        'data/account_tax_report_data.xml',
-        'data/account_tax_group_data.xml',
-        'data/account_tax_template.xml',
-        'data/account_fiscal_position_template.xml',
-        'data/account_chart_template_configure_data.xml',
+        "data/res.country.state.csv",
+        "data/account_account_tag.xml",
+        "data/account_account_template.xml",
+        "data/account_chart_template.xml",
+        "data/account_tax_report_data.xml",
+        "data/account_tax_group_data.xml",
+        "data/account_tax_template.xml",
+        "data/account_fiscal_position_template.xml",
+        "data/account_chart_template_configure_data.xml",
     ],
-    'demo': [
-        'demo/demo_company.xml',
+    "demo": [
+        "demo/demo_company.xml",
     ],
-    'license': 'LGPL-3',
+    "license": "LGPL-3",
 }

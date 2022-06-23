@@ -9,7 +9,7 @@ except ImportError:
 from odoo.tests.common import BaseCase
 from odoo.tools.mimetypes import guess_mimetype, get_extension
 
-PNG = b'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVQI12P4//8/AAX+Av7czFnnAAAAAElFTkSuQmCC'
+PNG = b"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVQI12P4//8/AAX+Av7czFnnAAAAAElFTkSuQmCC"
 GIF = b"R0lGODdhAQABAIAAAP///////ywAAAAAAQABAAACAkQBADs="
 BMP = b"""Qk1+AAAAAAAAAHoAAABsAAAAAQAAAAEAAAABABgAAAAAAAQAAAATCwAAEwsAAAAAAAAAAAAAQkdScwAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAD///8A"""
@@ -29,73 +29,69 @@ BoXpbgaF6W4GhedXgLAAEE6AMAAAToAwAAUEsFBgAAAAABAAEAUwAAAFUAAAAAAA=="""
 
 
 class test_guess_mimetype(BaseCase):
-
     def test_default_mimetype_empty(self):
-        mimetype = guess_mimetype(b'')
+        mimetype = guess_mimetype(b"")
         # odoo implementation returns application/octet-stream by default
         # if available, python-magic returns application/x-empty
-        self.assertIn(mimetype, ('application/octet-stream', 'application/x-empty'))
+        self.assertIn(mimetype, ("application/octet-stream", "application/x-empty"))
 
     def test_default_mimetype(self):
-        mimetype = guess_mimetype(b'', default='test')
+        mimetype = guess_mimetype(b"", default="test")
         # if available, python-magic returns application/x-empty
-        self.assertIn(mimetype, ('test', 'application/x-empty'))
+        self.assertIn(mimetype, ("test", "application/x-empty"))
 
     def test_mimetype_octet_stream(self):
-        mimetype = guess_mimetype(b'\0')
-        self.assertEqual(mimetype, 'application/octet-stream')
+        mimetype = guess_mimetype(b"\0")
+        self.assertEqual(mimetype, "application/octet-stream")
 
     def test_mimetype_png(self):
         content = base64.b64decode(PNG)
-        mimetype = guess_mimetype(content, default='test')
-        self.assertEqual(mimetype, 'image/png')
+        mimetype = guess_mimetype(content, default="test")
+        self.assertEqual(mimetype, "image/png")
 
     def test_mimetype_bmp(self):
         content = base64.b64decode(BMP)
-        mimetype = guess_mimetype(content, default='test')
+        mimetype = guess_mimetype(content, default="test")
         # mimetype should match image/bmp, image/x-ms-bmp, ...
-        self.assertRegex(mimetype, r'image/.*\bbmp')
+        self.assertRegex(mimetype, r"image/.*\bbmp")
 
     def test_mimetype_jpg(self):
         content = base64.b64decode(JPG)
-        mimetype = guess_mimetype(content, default='test')
-        self.assertEqual(mimetype, 'image/jpeg')
+        mimetype = guess_mimetype(content, default="test")
+        self.assertEqual(mimetype, "image/jpeg")
 
     def test_mimetype_gif(self):
         content = base64.b64decode(GIF)
-        mimetype = guess_mimetype(content, default='test')
-        self.assertEqual(mimetype, 'image/gif')
+        mimetype = guess_mimetype(content, default="test")
+        self.assertEqual(mimetype, "image/gif")
 
     def test_mimetype_svg(self):
         content = base64.b64decode(SVG)
-        mimetype = guess_mimetype(content, default='test')
-        self.assertTrue(mimetype.startswith('image/svg'))
+        mimetype = guess_mimetype(content, default="test")
+        self.assertTrue(mimetype.startswith("image/svg"))
         # Tests that whitespace padded SVG are not detected as SVG in odoo implementation
         if not magic:
-            mimetype = guess_mimetype(b"   " + content, default='test')
+            mimetype = guess_mimetype(b"   " + content, default="test")
             self.assertNotIn("svg", mimetype)
-
 
     def test_mimetype_zip(self):
         content = base64.b64decode(ZIP)
-        mimetype = guess_mimetype(content, default='test')
-        self.assertEqual(mimetype, 'application/zip')
-
+        mimetype = guess_mimetype(content, default="test")
+        self.assertEqual(mimetype, "application/zip")
 
     def test_mimetype_get_extension(self):
-        self.assertEqual(get_extension('filename.Abc'), '.abc')
-        self.assertEqual(get_extension('filename.scss'), '.scss')
-        self.assertEqual(get_extension('filename.torrent'), '.torrent')
-        self.assertEqual(get_extension('.htaccess'), '.htaccess')
+        self.assertEqual(get_extension("filename.Abc"), ".abc")
+        self.assertEqual(get_extension("filename.scss"), ".scss")
+        self.assertEqual(get_extension("filename.torrent"), ".torrent")
+        self.assertEqual(get_extension(".htaccess"), ".htaccess")
         # enough to suppose that extension is present and don't suffix the filename
-        self.assertEqual(get_extension('filename.tar.gz'), '.gz')
-        self.assertEqual(get_extension('filename'), '')
-        self.assertEqual(get_extension('filename.'), '')
-        self.assertEqual(get_extension('filename.not_alnum'), '')
-        self.assertEqual(get_extension('filename.with space'), '')
-        self.assertEqual(get_extension('filename.notAnExtension'), '')
+        self.assertEqual(get_extension("filename.tar.gz"), ".gz")
+        self.assertEqual(get_extension("filename"), "")
+        self.assertEqual(get_extension("filename."), "")
+        self.assertEqual(get_extension("filename.not_alnum"), "")
+        self.assertEqual(get_extension("filename.with space"), "")
+        self.assertEqual(get_extension("filename.notAnExtension"), "")
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -4283,4 +4283,3 @@ msgstr ""
 #: model:account.account.template,name:l10n_fr.pcg_617
 msgid "Études et recherches"
 msgstr ""
-

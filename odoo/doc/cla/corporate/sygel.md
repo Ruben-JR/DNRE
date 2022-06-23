@@ -15,4 +15,3 @@ List of contributors:
 Harald Panten harald.panten@sygel.es https://github.com/HaraldPanten
 Valentín Vinagre valentin.vinagre@sygel.es https://github.com/ValentinVinagre
 Manuel Regidor manuel.regidor@sygel.es https://github.com/manuelregidor
-

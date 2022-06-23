@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
     <data>
-        <!-- 
+        <!--
 		PURCHASE WITHHOLDS OVER ANTICIPADED PROFIT *IMPUESTO A LA RENTA
 		-->
         <record id="tax_withhold_profit_303" model="account.tax.template">
@@ -1611,7 +1611,7 @@
                     'minus_report_line_ids': [ref('tax_report_line_103_460')],
                 })]"/>
         </record>
-        <!-- 
+        <!--
 		SALES WITHHOLDS OVER ANTICIPADED PROFIT *IMPUESTO A LA RENTA VENTA
 		-->
         <record id="tax_withhold_profit_sale_1x100" model="account.tax.template">

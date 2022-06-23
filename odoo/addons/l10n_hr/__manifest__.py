@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 # Author: Goran Kliska
@@ -40,24 +39,23 @@ Izvori podataka:
 """,
     "version": "13.0",
     "author": "OpenERP Croatian Community",
-    'category': 'Accounting/Localizations/Account Charts',
-
-    'depends': [
-        'account',
+    "category": "Accounting/Localizations/Account Charts",
+    "depends": [
+        "account",
     ],
-    'data': [
-        'data/l10n_hr_chart_data.xml',
-        'data/account.account.type.csv',
-        'data/account.account.template.csv',
-        'data/account_chart_tag_data.xml',
-        'data/account.tax.group.csv',
-        'data/account_tax_report_data.xml',
-        'data/account_tax_template_data.xml',
-        'data/account_tax_fiscal_position_data.xml',
-        'data/account_chart_template_data.xml',
+    "data": [
+        "data/l10n_hr_chart_data.xml",
+        "data/account.account.type.csv",
+        "data/account.account.template.csv",
+        "data/account_chart_tag_data.xml",
+        "data/account.tax.group.csv",
+        "data/account_tax_report_data.xml",
+        "data/account_tax_template_data.xml",
+        "data/account_tax_fiscal_position_data.xml",
+        "data/account_chart_template_data.xml",
     ],
-    'demo': [
-        'demo/demo_company.xml',
+    "demo": [
+        "demo/demo_company.xml",
     ],
-    'license': 'LGPL-3',
+    "license": "LGPL-3",
 }

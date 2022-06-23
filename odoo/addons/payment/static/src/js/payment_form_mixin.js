@@ -435,7 +435,7 @@ odoo.define('payment.payment_form_mixin', require => {
         _setPaymentFlow: function (flow = 'redirect') {
             if (flow !== 'redirect' && flow !== 'direct' && flow !== 'token') {
                 console.warn(
-                    `payment_form_mixin: method '_setPaymentFlow' was called with invalid flow: 
+                    `payment_form_mixin: method '_setPaymentFlow' was called with invalid flow:
                     ${flow}. Falling back to 'redirect'.`
                 );
                 this.txContext.flow = 'redirect';

@@ -27,4 +27,3 @@ List of contributors:
 * Bruno Figares bruno@blancomartin.cl https://github.com/brf-bmya
 * Susana Vazquez susana@blancomartin.cl https://github.com/suv-bmya
 * Hector Aular Osorio hector@blancomartin.cl https://github.com/hea-bmya
-

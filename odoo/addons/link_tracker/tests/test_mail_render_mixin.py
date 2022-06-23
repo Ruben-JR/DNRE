@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import re
 
@@ -6,9 +5,8 @@ from odoo.tests import common, tagged
 from odoo.tools import TEXT_URL_REGEX
 
 
-@tagged('-at_install', 'post_install')
+@tagged("-at_install", "post_install")
 class TestMailRenderMixin(common.TransactionCase):
-
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -62,20 +60,23 @@ class TestMailRenderMixin(common.TransactionCase):
 
     def test_shorten_links_html_skip_shorts(self):
         old_content = self.env["mail.render.mixin"]._shorten_links(
-            'This is a link: <a href="https://test_542152qsdqsd.com">old</a>', {})
+            'This is a link: <a href="https://test_542152qsdqsd.com">old</a>', {}
+        )
         created_short_url_match = re.search(TEXT_URL_REGEX, old_content)
         self.assertIsNotNone(created_short_url_match)
         created_short_url = created_short_url_match[0]
-        self.assertRegex(created_short_url, "{base_url}/r/[\\w]+".format(base_url=self.base_url))
+        self.assertRegex(created_short_url, f"{self.base_url}/r/[\\w]+")
 
         new_content = self.env["mail.render.mixin"]._shorten_links(
-            'Reusing this old <a href="{old_short_url}">link</a> with a new <a href="https://odoo.com">one</a>'
-            .format(old_short_url=created_short_url),
-            {}
+            'Reusing this old <a href="{old_short_url}">link</a> with a new <a href="https://odoo.com">one</a>'.format(
+                old_short_url=created_short_url
+            ),
+            {},
         )
         expected = re.compile(
-            'Reusing this old <a href="{old_short_url}">link</a> with a new <a href="{base_url}/r/[\\w]+">one</a>'
-            .format(old_short_url=created_short_url, base_url=self.base_url)
+            'Reusing this old <a href="{old_short_url}">link</a> with a new <a href="{base_url}/r/[\\w]+">one</a>'.format(
+                old_short_url=created_short_url, base_url=self.base_url
+            )
         )
         self.assertRegex(new_content, expected)
 
@@ -86,8 +87,9 @@ class TestMailRenderMixin(common.TransactionCase):
             'And a third: <a href="{base_url}">Here</a>\n'
             'And a forth: <a href="{base_url}">Here</a>\n'
             'And a fifth: <a href="{base_url}">Here too</a>\n'
-            'And a last, more complex: <a href="https://boinc.berkeley.edu/forum_thread.php?id=14544&postid=106833">There!</a>'
-            .format(base_url=self.base_url)
+            'And a last, more complex: <a href="https://boinc.berkeley.edu/forum_thread.php?id=14544&postid=106833">There!</a>'.format(
+                base_url=self.base_url
+            )
         )
         expected_pattern = re.compile(
             'This is a link: <a href="{base_url}/r/[\\w]+">https://www.worldcommunitygrid.org</a><br/>\n'
@@ -95,8 +97,9 @@ class TestMailRenderMixin(common.TransactionCase):
             'And a third: <a href="{base_url}/r/([\\w]+)">Here</a>\n'
             'And a forth: <a href="{base_url}/r/([\\w]+)">Here</a>\n'
             'And a fifth: <a href="{base_url}/r/([\\w]+)">Here too</a>\n'
-            'And a last, more complex: <a href="{base_url}/r/([\\w]+)">There!</a>'
-            .format(base_url=self.base_url)
+            'And a last, more complex: <a href="{base_url}/r/([\\w]+)">There!</a>'.format(
+                base_url=self.base_url
+            )
         )
         new_content = self.env["mail.render.mixin"]._shorten_links(content, {})
 
@@ -109,20 +112,22 @@ class TestMailRenderMixin(common.TransactionCase):
 
     def test_shorten_links_text_including_base_url(self):
         content = (
-            'This is a link: https://www.worldcommunitygrid.org\n'
-            'This is another: {base_url}/web#debug=1&more=2\n'
-            'A third: {base_url}\n'
-            'A forth: {base_url}\n'
-            'And a last, with question mark: https://boinc.berkeley.edu/forum_thread.php?id=14544&postid=106833'
-            .format(base_url=self.base_url)
+            "This is a link: https://www.worldcommunitygrid.org\n"
+            "This is another: {base_url}/web#debug=1&more=2\n"
+            "A third: {base_url}\n"
+            "A forth: {base_url}\n"
+            "And a last, with question mark: https://boinc.berkeley.edu/forum_thread.php?id=14544&postid=106833".format(
+                base_url=self.base_url
+            )
         )
         expected_pattern = re.compile(
-            'This is a link: {base_url}/r/[\\w]+\n'
-            'This is another: {base_url}/r/[\\w]+\n'
-            'A third: {base_url}/r/([\\w]+)\n'
-            'A forth: {base_url}/r/([\\w]+)\n'
-            'And a last, with question mark: {base_url}/r/([\\w]+)'
-            .format(base_url=self.base_url)
+            "This is a link: {base_url}/r/[\\w]+\n"
+            "This is another: {base_url}/r/[\\w]+\n"
+            "A third: {base_url}/r/([\\w]+)\n"
+            "A forth: {base_url}/r/([\\w]+)\n"
+            "And a last, with question mark: {base_url}/r/([\\w]+)".format(
+                base_url=self.base_url
+            )
         )
         new_content = self.env["mail.render.mixin"]._shorten_links_text(content, {})
 
@@ -133,19 +138,22 @@ class TestMailRenderMixin(common.TransactionCase):
 
     def test_shorten_links_text_skip_shorts(self):
         old_content = self.env["mail.render.mixin"]._shorten_links_text(
-            'This is a link: https://test_542152qsdqsd.com', {})
+            "This is a link: https://test_542152qsdqsd.com", {}
+        )
         created_short_url_match = re.search(TEXT_URL_REGEX, old_content)
         self.assertIsNotNone(created_short_url_match)
         created_short_url = created_short_url_match[0]
-        self.assertRegex(created_short_url, "{base_url}/r/[\\w]+".format(base_url=self.base_url))
+        self.assertRegex(created_short_url, f"{self.base_url}/r/[\\w]+")
 
         new_content = self.env["mail.render.mixin"]._shorten_links_text(
-            'Reusing this old link {old_short_url} with a new one, https://odoo.com</a>'
-            .format(old_short_url=created_short_url),
-            {}
+            "Reusing this old link {old_short_url} with a new one, https://odoo.com</a>".format(
+                old_short_url=created_short_url
+            ),
+            {},
         )
         expected = re.compile(
-            'Reusing this old link {old_short_url} with a new one, {base_url}/r/[\\w]+'
-            .format(old_short_url=created_short_url, base_url=self.base_url)
+            "Reusing this old link {old_short_url} with a new one, {base_url}/r/[\\w]+".format(
+                old_short_url=created_short_url, base_url=self.base_url
+            )
         )
         self.assertRegex(new_content, expected)

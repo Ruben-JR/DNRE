@@ -2286,7 +2286,7 @@ QUnit.module('basic_fields', {
 
         assert.strictEqual(form.$('.o_field_widget[name=foo2]').val(), 'foo2',
             "input should contain field value in edit mode");
-        
+
         await testUtils.fields.editInput(form.$('.o_field_widget[name=foo2]'), 'bonjour');
         assert.strictEqual(form.$('.o_field_widget[name=foo]').text(), 'bonjour',
         "Url widget should show the new value and not " + form.$('.o_field_widget[name=foo]').text());
@@ -3784,7 +3784,7 @@ QUnit.module('basic_fields', {
             "first date range picker should be closed initially");
         assert.strictEqual($('.daterangepicker:last').css('display'), 'none',
             "second date range picker should be closed initially");
-        
+
         // open the first one
         await testUtils.dom.click(form.$('.o_field_date_range:first'));
 
@@ -3942,10 +3942,10 @@ QUnit.module('basic_fields', {
             res_id: 1,
             session: {
                 // #tzoffset_daterange
-                // Date field should not have an offset as they are ignored. 
+                // Date field should not have an offset as they are ignored.
                 // However, in the test environement, a UTC timezone is set to run all tests. And if any code does not use the safe timezone method
                 // provided by the framework (which happens in this case inside the date range picker lib), unexpected behavior kicks in as the timezone
-                // of the dev machine collides with the timezone set by the test env. 
+                // of the dev machine collides with the timezone set by the test env.
                 // To avoid failing test on dev's local machines, a hack is to apply an timezone offset greater than the difference between UTC and the dev's
                 // machine timezone. For belgium, > 60 is enough. For India, > 5h30 is required, hence 330.
                 // Note that prod and runbot will never have a problem with this, it only happens as you mock the getTZOffset method (like in tests).
@@ -3963,7 +3963,7 @@ QUnit.module('basic_fields', {
 
         // open the first one with quick edit
         await testUtils.dom.click(form.$('.o_field_date_range:first'));
-        
+
         // Check date range picker initialization
         assert.containsN(document.body, '.daterangepicker', 2,
             "should initialize 2 date range picker");

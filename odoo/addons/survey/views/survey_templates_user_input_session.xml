@@ -121,7 +121,7 @@
                                 <span>Waiting for attendees...</span>
                                 <span>
                                     <span class="o_survey_session_answer_count">0</span>
-                                     / 
+                                     /
                                     <span t-esc="survey.session_answer_count" />
                                 </span>
                             </h2>

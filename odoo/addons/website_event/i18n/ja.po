@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* website_event
-# 
+#
 # Translators:
 # Ryoko Tsuda <ryoko@quartile.co>, 2022
 # 江口和志 <k_eguchi@enzantrades.co.jp>, 2022
@@ -11,7 +11,7 @@
 # 前園義博 <yoshihiro.maezono@pro-spire.co.jp>, 2022
 # Noma Yuki, 2022
 # Martin Trigaux, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import api, fields, models, tools
@@ -9,21 +8,25 @@ class PosSaleReport(models.Model):
     _description = "Sales by Channel (All in One)"
     _auto = False
 
-    name = fields.Char('Order Reference', readonly=True)
-    partner_id = fields.Many2one('res.partner', 'Partner', readonly=True)
-    product_id = fields.Many2one('product.product', string='Product', readonly=True)
-    product_tmpl_id = fields.Many2one('product.template', 'Product Template', readonly=True)
-    date_order = fields.Datetime(string='Date Order', readonly=True)
-    user_id = fields.Many2one('res.users', 'Salesperson', readonly=True)
-    categ_id = fields.Many2one('product.category', 'Product Category', readonly=True)
-    company_id = fields.Many2one('res.company', 'Company', readonly=True)
-    price_total = fields.Float('Total', readonly=True)
-    pricelist_id = fields.Many2one('product.pricelist', 'Pricelist', readonly=True)
-    country_id = fields.Many2one('res.country', 'Partner Country', readonly=True)
-    price_subtotal = fields.Float(string='Price Subtotal', readonly=True)
-    product_qty = fields.Float('Product Quantity', readonly=True)
-    analytic_account_id = fields.Many2one('account.analytic.account', 'Analytic Account', readonly=True)
-    team_id = fields.Many2one('crm.team', 'Sales Team', readonly=True)
+    name = fields.Char("Order Reference", readonly=True)
+    partner_id = fields.Many2one("res.partner", "Partner", readonly=True)
+    product_id = fields.Many2one("product.product", string="Product", readonly=True)
+    product_tmpl_id = fields.Many2one(
+        "product.template", "Product Template", readonly=True
+    )
+    date_order = fields.Datetime(string="Date Order", readonly=True)
+    user_id = fields.Many2one("res.users", "Salesperson", readonly=True)
+    categ_id = fields.Many2one("product.category", "Product Category", readonly=True)
+    company_id = fields.Many2one("res.company", "Company", readonly=True)
+    price_total = fields.Float("Total", readonly=True)
+    pricelist_id = fields.Many2one("product.pricelist", "Pricelist", readonly=True)
+    country_id = fields.Many2one("res.country", "Partner Country", readonly=True)
+    price_subtotal = fields.Float(string="Price Subtotal", readonly=True)
+    product_qty = fields.Float("Product Quantity", readonly=True)
+    analytic_account_id = fields.Many2one(
+        "account.analytic.account", "Analytic Account", readonly=True
+    )
+    team_id = fields.Many2one("crm.team", "Sales Team", readonly=True)
 
     def _so(self):
         so_str = """
@@ -61,7 +64,7 @@ class PosSaleReport(models.Model):
 
     def _get_main_request(self):
         request = """
-            CREATE or REPLACE VIEW %s AS
+            CREATE or REPLACE VIEW {} AS
                 SELECT id AS id,
                     name,
                     partner_id,
@@ -78,8 +81,11 @@ class PosSaleReport(models.Model):
                     team_id,
                     price_subtotal,
                     product_qty
-                FROM %s
-                AS foo""" % (self._table, self._from())
+                FROM {}
+                AS foo""".format(
+            self._table,
+            self._from(),
+        )
         return request
 
     def init(self):

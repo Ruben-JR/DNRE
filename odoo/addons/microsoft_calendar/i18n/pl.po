@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* microsoft_calendar
-# 
+#
 # Translators:
 # Piotr Strębski <strebski@gmail.com>, 2021
 # Martin Trigaux, 2021
@@ -15,7 +15,7 @@
 # Piotr Cierkosz <piotr.w.cierkosz@gmail.com>, 2021
 # Natalia Gros <nag@odoo.com>, 2021
 # Maksym <ms@myodoo.pl>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.5\n"

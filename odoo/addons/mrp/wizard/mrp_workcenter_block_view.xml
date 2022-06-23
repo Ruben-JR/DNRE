@@ -19,7 +19,7 @@
             </form>
         </field>
     </record>
-    
+
     <record id="act_mrp_block_workcenter" model="ir.actions.act_window">
         <field name="name">Block Workcenter</field>
         <field name="type">ir.actions.act_window</field>
@@ -29,7 +29,7 @@
         <field name="view_id" eval="mrp_workcenter_block_wizard_form"/>
         <field name="target">new</field>
     </record>
-    
+
     <record id="act_mrp_block_workcenter_wo" model="ir.actions.act_window">
         <field name="name">Block Workcenter</field>
         <field name="type">ir.actions.act_window</field>

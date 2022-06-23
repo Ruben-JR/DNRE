@@ -320,8 +320,3 @@ Contact
 If you have any ideas, feedback, requests or bug reports, you can reach me at
 [jake@codeincomplete.com](mailto:jake@codeincomplete.com), or via
 my website: [Code inComplete](http://codeincomplete.com/posts/2011/8/19/javascript_state_machine_v2/)
-
-
-
-
-

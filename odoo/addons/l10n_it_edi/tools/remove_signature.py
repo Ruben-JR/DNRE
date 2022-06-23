@@ -1,4 +1,3 @@
-# -*- coding:utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import logging
@@ -15,12 +14,14 @@ except ImportError:
 
 
 def remove_signature(content):
-    """ Remove the PKCS#7 envelope from given content, making a '.xml.p7m' file content readable as it was '.xml'.
-        As OpenSSL may not be installed, in that case a warning is issued and None is returned. """
+    """Remove the PKCS#7 envelope from given content, making a '.xml.p7m' file content readable as it was '.xml'.
+    As OpenSSL may not be installed, in that case a warning is issued and None is returned."""
 
     # Prevent using the library if it had import errors
     if not ssl_crypto:
-        _logger.warning("Error reading the content, check if the OpenSSL library is installed for for PKCS#7 envelope extraction.")
+        _logger.warning(
+            "Error reading the content, check if the OpenSSL library is installed for for PKCS#7 envelope extraction."
+        )
         return None
 
     # Load some tools from the library

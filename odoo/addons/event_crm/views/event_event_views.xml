@@ -17,7 +17,7 @@
             </xpath>
         </field>
     </record>
-    
+
     <record id="event_view_tree" model="ir.ui.view">
         <field name="name">event.event.tree.inherit.event.crm</field>
         <field name="model">event.event</field>

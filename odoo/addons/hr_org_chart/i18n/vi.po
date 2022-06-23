@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* hr_org_chart
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # Duy BQ <duybq86@gmail.com>, 2021
@@ -9,7 +9,7 @@
 # Uyen Vo <uyen@trobz.com>, 2021
 # Trần Hà <tranthuha13590@gmail.com>, 2021
 # Vo Thanh Thuy, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

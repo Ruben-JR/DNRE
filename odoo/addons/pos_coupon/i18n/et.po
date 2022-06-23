@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* pos_coupon
-# 
+#
 # Translators:
 # Helen Sulaoja <helen@avalah.ee>, 2022
 # Piia Paurson <piia@avalah.ee>, 2022
@@ -13,7 +13,7 @@
 # Maidu Targama <m.targama@gmail.com>, 2022
 # Eneli Õigus <enelioigus@gmail.com>, 2022
 # Toomas Ant <toomas.ant@gmail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

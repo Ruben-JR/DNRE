@@ -29,7 +29,7 @@
           <animateTransform xlink:href="#shape" attributeName="transform" attributeType="XML" type="translate" dur="6s" values="0 0;0 8;0 0" repeatCount="indefinite" calcMode="spline" keySplines=".45 .05 .55 .95;.45 .05 .55 .95"/>
           <animateTransform xlink:href="#points" attributeName="transform" attributeType="XML" type="rotate" dur="15s" values="0;100;0" repeatCount="indefinite" additive="sum"/>
           <animateTransform xlink:href="#points" attributeName="transform" attributeType="XML" type="translate" dur="15s" values="0 0;-10 -10;0 0;" repeatCount="indefinite" additive="sum"/>
-          <animateTransform xlink:href="#triangle" attributeName="transform" attributeType="XML" type="rotate" dur="20s" values="0;-20;0" repeatCount="indefinite" additive="sum"/>    
+          <animateTransform xlink:href="#triangle" attributeName="transform" attributeType="XML" type="rotate" dur="20s" values="0;-20;0" repeatCount="indefinite" additive="sum"/>
           <animateTransform xlink:href="#triangle" attributeName="transform" attributeType="XML" type="translate" dur="20s" values="0 0;-1.5 1;0 0;" repeatCount="indefinite" additive="sum"/>
       </g>
   </defs>

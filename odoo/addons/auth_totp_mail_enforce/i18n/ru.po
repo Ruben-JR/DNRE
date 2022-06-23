@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* auth_totp_mail_enforce
-# 
+#
 # Translators:
 # ILMIR <karamov@it-projects.info>, 2022
 # Irina Fedulova <istartlin@gmail.com>, 2022
 # Сергей Шебанин <sergey@shebanin.ru>, 2022
 # Martin Trigaux, 2022
 # Ivan Yelizariev // IEL (ellui) <yelizariev@itpp.dev>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

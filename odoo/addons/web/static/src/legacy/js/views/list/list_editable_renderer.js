@@ -230,7 +230,7 @@ ListRenderer.include({
                 }
             });
 
-             // Keep ref of the current row's widgets 
+             // Keep ref of the current row's widgets
              const currentRowFieldWidgets = self.allFieldWidgets[id];
              // Remove it from the list just for a clean start for generating the new content (avoid later memory leak)
              delete self.allFieldWidgets[id];
@@ -243,7 +243,7 @@ ListRenderer.include({
 
             return Promise.all(defs).then(function () {
                 // All the field widgets have now be recreated, but we don't want the current row's ones.
-                // We destroy it and get it back from our reference. 
+                // We destroy it and get it back from our reference.
                 // This manipulation avoids a memory leak, where field widgets in the current row wouldn't be destroyed and were kept in memory.
                 self._destroyFieldWidgets(id);
                 self.allFieldWidgets[id] = currentRowFieldWidgets;
@@ -1886,4 +1886,3 @@ ListRenderer.include({
         });
     },
 });
-

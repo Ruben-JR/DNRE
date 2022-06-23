@@ -42,7 +42,7 @@ var SlideEnrollDialog = Dialog.extend({
             self.close();
         });
     }
-    
+
 });
 
 publicWidget.registry.websiteSlidesEnroll = publicWidget.Widget.extend({
@@ -55,18 +55,18 @@ publicWidget.registry.websiteSlidesEnroll = publicWidget.Widget.extend({
     //--------------------------------------------------------------------------
     // Private
     //--------------------------------------------------------------------------
-    
+
     _openDialog: function (channelId) {
         new SlideEnrollDialog(this, {
             channelId: channelId,
             $element: this.$el
         }).open();
     },
-    
+
     //--------------------------------------------------------------------------
     // Handlers
     //--------------------------------------------------------------------------
-    
+
     _onSendRequestClick: function (ev) {
         ev.preventDefault();
         this._openDialog($(ev.currentTarget).data('channelId'));

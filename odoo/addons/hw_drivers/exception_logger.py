@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import logging
@@ -14,10 +13,11 @@ class ExceptionLogger:
         self.logger = logging.getLogger()
 
     def write(self, message):
-        if message != '\n':
+        if message != "\n":
             self.logger.error(message)
 
     def flush(self):
         pass
+
 
 sys.stderr = ExceptionLogger()

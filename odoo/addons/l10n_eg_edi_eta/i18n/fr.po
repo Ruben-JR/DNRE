@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* l10n_eg_edi_eta
-# 
+#
 # Translators:
 # Eloïse Stilmant <est@odoo.com>, 2022
 # Martin Trigaux, 2022
 # Chaplet34 <charleskolie2@gmail.com>, 2022
 # jb78180 <jblum66@gmail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"

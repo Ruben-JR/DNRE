@@ -9,4 +9,3 @@ declaration.
 Signed,
 
 Colin Newell colin.newell@gmail.com https://github.com/colinnewell
-

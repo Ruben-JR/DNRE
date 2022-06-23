@@ -231,7 +231,7 @@ const ReplenishReport = clientAction.extend({
 
     /**
      * Bind additional action handlers (<button>, <a>)
-     * 
+     *
      * @returns {Promise}
      */
     _bindAdditionalActionHandlers: function () {

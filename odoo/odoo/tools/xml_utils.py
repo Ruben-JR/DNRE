@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Utilities for generating, parsing and checking XML/XSD files on top of the lxml.etree module."""
 
 import base64
@@ -20,7 +19,7 @@ class odoo_resolver(etree.Resolver):
 
     def resolve(self, url, id, context):
         """Search url in ``ir.attachment`` and return the resolved content."""
-        attachment = self.env['ir.attachment'].search([('name', '=', url)])
+        attachment = self.env["ir.attachment"].search([("name", "=", url)])
         if attachment:
             return self.resolve_string(base64.b64decode(attachment.datas), context)
 
@@ -41,8 +40,8 @@ def _check_with_xsd(tree_or_str, stream, env=None):
     parser = etree.XMLParser()
     if env:
         parser.resolvers.add(odoo_resolver(env))
-        if isinstance(stream, str) and stream.endswith('.xsd'):
-            attachment = env['ir.attachment'].search([('name', '=', stream)])
+        if isinstance(stream, str) and stream.endswith(".xsd"):
+            attachment = env["ir.attachment"].search([("name", "=", stream)])
             if not attachment:
                 raise FileNotFoundError()
             stream = BytesIO(base64.b64decode(attachment.datas))
@@ -50,7 +49,7 @@ def _check_with_xsd(tree_or_str, stream, env=None):
     try:
         xsd_schema.assertValid(tree_or_str)
     except etree.DocumentInvalid as xml_errors:
-        raise UserError('\n'.join(str(e) for e in xml_errors.error_log))
+        raise UserError("\n".join(str(e) for e in xml_errors.error_log))
 
 
 def create_xml_node_chain(first_parent_node, nodes_list, last_node_value=None):
@@ -85,7 +84,13 @@ def create_xml_node(parent_node, node_name, node_value=None):
     return create_xml_node_chain(parent_node, [node_name], node_value)[0]
 
 
-def cleanup_xml_node(xml_node_or_string, remove_blank_text=True, remove_blank_nodes=True, indent_level=0, indent_space="  "):
+def cleanup_xml_node(
+    xml_node_or_string,
+    remove_blank_text=True,
+    remove_blank_nodes=True,
+    indent_level=0,
+    indent_space="  ",
+):
     """Clean up the sub-tree of the provided XML node.
 
     If the provided XML node is of type:
@@ -114,9 +119,9 @@ def cleanup_xml_node(xml_node_or_string, remove_blank_text=True, remove_blank_no
 
         # Indentation
         if level >= 0:
-            indent = '\n' + indent_space * level
+            indent = "\n" + indent_space * level
             if not node.tail or not node.tail.strip():
-                node.tail = '\n' if parent_node is None else indent
+                node.tail = "\n" if parent_node is None else indent
             if len(node) > 0:
                 if not node.text or not node.text.strip():
                     # First child's indentation is parent's text
@@ -130,8 +135,8 @@ def cleanup_xml_node(xml_node_or_string, remove_blank_text=True, remove_blank_no
         if parent_node is not None and len(node) == 0:
             if remove_blank_text and node.text is not None and not node.text.strip():
                 # node.text is None iff node.tag is self-closing (text='' creates closing tag)
-                node.text = ''
-            if remove_blank_nodes and not (node.text or ''):
+                node.text = ""
+            if remove_blank_nodes and not (node.text or ""):
                 parent_node.remove(node)
 
     leaf_iter(None, xml_node, indent_level)

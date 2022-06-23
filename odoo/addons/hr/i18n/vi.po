@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* hr
-# 
+#
 # Translators:
 # Trinh Tran Thi Phuong <trinhttp@trobz.com>, 2021
 # Phuc Tran Thanh <phuctran.odoo@gmail.com>, 2021
@@ -14,7 +14,7 @@
 # khoibv Mr <kendev2009@gmail.com>, 2021
 # Dung Nguyen Thi <dungnt@trobz.com>, 2021
 # Vo Thanh Thuy, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.5\n"

@@ -30219,7 +30219,7 @@
 	   * A (sync) function to assert a user-supplied plugin implementation is valid.
 	   *
 	   * Defined in a {@link PluginDefinition}.
-	  
+
 	   * @callback PluginValidator
 	   * @param {*} value - Value to check
 	   * @this {PluginDefinition}

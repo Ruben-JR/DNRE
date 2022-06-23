@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from werkzeug.exceptions import Forbidden
@@ -11,21 +10,31 @@ from .portal import ProjectCustomerPortal
 
 class ProjectSharingChatter(PortalChatter):
     def _check_project_access_and_get_token(self, project_id, res_model, res_id, token):
-        """ Check if the chatter in project sharing can be accessed
+        """Check if the chatter in project sharing can be accessed
 
-            If the portal user is in the project sharing, then we do not have the access token of the task
-            but we can have the one of the project (if the user accessed to the project sharing views via the shared link).
-            So, we need to check if the chatter is for a task and if the res_id is a task
-            in the project shared. Then, if we had the project token and this one is the one in the project
-            then we return the token of the task to continue the portal chatter process.
-            If we do not have any token, then we need to check if the portal user is a follower of the project shared.
-            If it is the case, then we give the access token of the task.
+        If the portal user is in the project sharing, then we do not have the access token of the task
+        but we can have the one of the project (if the user accessed to the project sharing views via the shared link).
+        So, we need to check if the chatter is for a task and if the res_id is a task
+        in the project shared. Then, if we had the project token and this one is the one in the project
+        then we return the token of the task to continue the portal chatter process.
+        If we do not have any token, then we need to check if the portal user is a follower of the project shared.
+        If it is the case, then we give the access token of the task.
         """
-        project_sudo = ProjectCustomerPortal._document_check_access(self, 'project.project', project_id, token)
-        can_access = project_sudo and res_model == 'project.task' and project_sudo.with_user(request.env.user)._check_project_sharing_access()
+        project_sudo = ProjectCustomerPortal._document_check_access(
+            self, "project.project", project_id, token
+        )
+        can_access = (
+            project_sudo
+            and res_model == "project.task"
+            and project_sudo.with_user(request.env.user)._check_project_sharing_access()
+        )
         task = None
         if can_access:
-            task = request.env['project.task'].sudo().search([('id', '=', res_id), ('project_id', '=', project_sudo.id)])
+            task = (
+                request.env["project.task"]
+                .sudo()
+                .search([("id", "=", res_id), ("project_id", "=", project_sudo.id)])
+            )
         if not can_access or not task:
             raise Forbidden()
         return task[task._mail_post_token_field]
@@ -71,31 +80,60 @@ class ProjectSharingChatter(PortalChatter):
     #   work with other installed applications or customizations
 
     @route()
-    def portal_chatter_init(self, res_model, res_id, domain=False, limit=False, **kwargs):
-        project_sharing_id = kwargs.get('project_sharing_id')
+    def portal_chatter_init(
+        self, res_model, res_id, domain=False, limit=False, **kwargs
+    ):
+        project_sharing_id = kwargs.get("project_sharing_id")
         if project_sharing_id:
             # if there is a token in `kwargs` then it should be the access_token of the project shared
-            token = self._check_project_access_and_get_token(project_sharing_id, res_model, res_id, kwargs.get('token'))
+            token = self._check_project_access_and_get_token(
+                project_sharing_id, res_model, res_id, kwargs.get("token")
+            )
             if token:
-                del kwargs['project_sharing_id']
-                kwargs['token'] = token
-        return super().portal_chatter_init(res_model, res_id, domain=domain, limit=limit, **kwargs)
+                del kwargs["project_sharing_id"]
+                kwargs["token"] = token
+        return super().portal_chatter_init(
+            res_model, res_id, domain=domain, limit=limit, **kwargs
+        )
 
     @route()
-    def portal_chatter_post(self, res_model, res_id, message, attachment_ids=None, attachment_tokens=None, **kw):
-        project_sharing_id = kw.get('project_sharing_id')
+    def portal_chatter_post(
+        self,
+        res_model,
+        res_id,
+        message,
+        attachment_ids=None,
+        attachment_tokens=None,
+        **kw
+    ):
+        project_sharing_id = kw.get("project_sharing_id")
         if project_sharing_id:
-            token = self._check_project_access_and_get_token(project_sharing_id, res_model, res_id, kw.get('token'))
+            token = self._check_project_access_and_get_token(
+                project_sharing_id, res_model, res_id, kw.get("token")
+            )
             if token:
-                del kw['project_sharing_id']
-                kw['token'] = token
-        return super().portal_chatter_post(res_model, res_id, message, attachment_ids=attachment_ids, attachment_tokens=attachment_tokens, **kw)
+                del kw["project_sharing_id"]
+                kw["token"] = token
+        return super().portal_chatter_post(
+            res_model,
+            res_id,
+            message,
+            attachment_ids=attachment_ids,
+            attachment_tokens=attachment_tokens,
+            **kw
+        )
 
     @route()
-    def portal_message_fetch(self, res_model, res_id, domain=False, limit=10, offset=0, **kw):
-        project_sharing_id = kw.get('project_sharing_id')
+    def portal_message_fetch(
+        self, res_model, res_id, domain=False, limit=10, offset=0, **kw
+    ):
+        project_sharing_id = kw.get("project_sharing_id")
         if project_sharing_id:
-            token = self._check_project_access_and_get_token(project_sharing_id, res_model, res_id, kw.get('token'))
+            token = self._check_project_access_and_get_token(
+                project_sharing_id, res_model, res_id, kw.get("token")
+            )
             if token:
-                kw['token'] = token
-        return super().portal_message_fetch(res_model, res_id, domain=domain, limit=limit, offset=offset, **kw)
+                kw["token"] = token
+        return super().portal_message_fetch(
+            res_model, res_id, domain=domain, limit=limit, offset=offset, **kw
+        )

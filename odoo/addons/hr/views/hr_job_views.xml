@@ -18,7 +18,7 @@
                             <label for="name"/>
                             <h1><field name="name" placeholder="e.g. Sales Manager"/></h1>
                         </div>
-                        <notebook> 
+                        <notebook>
                             <page string="Job Description">
                                 <field name="description" options="{'collaborative': true}" attrs="{'invisible': [('state', '!=', 'recruit')]}"/>
                             </page>

@@ -8,5 +8,5 @@ declaration.
 
 Signed,
 
-AlfaFza sssalfi07@gmail.com 
+AlfaFza sssalfi07@gmail.com
 https://github.com/AlfaFza

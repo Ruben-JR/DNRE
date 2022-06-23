@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * account_test
-# 
+#
 # Translators:
 # Bonny Useful <bonny.useful@gmail.com>, 2017
 # Martin Trigaux <mat@odoo.com>, 2017

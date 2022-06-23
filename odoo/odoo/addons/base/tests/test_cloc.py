@@ -37,8 +37,8 @@ XML_TEST = """<!-- Comment -->
 </odoo>
 """
 
-PY_TEST_NO_RETURN = '''line = 1
-line = 2'''
+PY_TEST_NO_RETURN = """line = 1
+line = 2"""
 
 PY_TEST = '''
 # comment 1
@@ -59,7 +59,7 @@ def query():
 print(i.lineno, i, getattr(i,'s',None), getattr(i,'value',None))
 '''
 
-JS_TEST = '''
+JS_TEST = r"""
 /*
 comment
 */
@@ -77,9 +77,9 @@ function() {
     legit_code_counted = 1;
     regex2 = /.*/;
 }
-'''
+"""
 
-CSS_TEST = '''
+CSS_TEST = """
 /*
   Comment
 */
@@ -97,9 +97,9 @@ p {
    width: 200px;
    text-overflow: ' */ ';
 }
-'''
+"""
 
-SCSS_TEST = '''
+SCSS_TEST = """
 /*
   Comment
 */
@@ -126,56 +126,76 @@ SCSS_TEST = '''
    width: 200px;
    text-overflow: '*/';
 }
-'''
+"""
+
 
 class TestClocCustomization(TransactionCase):
-    def create_xml_id(self, name, model, res_id, module='studio_customization'):
-        self.env['ir.model.data'].create({
-            'name': name,
-            'model': model,
-            'res_id': res_id,
-            'module': module,
-        })
+    def create_xml_id(self, name, model, res_id, module="studio_customization"):
+        self.env["ir.model.data"].create(
+            {
+                "name": name,
+                "model": model,
+                "res_id": res_id,
+                "module": module,
+            }
+        )
 
     def create_field(self, name):
-        return self.env['ir.model.fields'].with_context(studio=True).create({
-            'name': name,
-            'field_description': name,
-            'model': 'res.partner',
-            'model_id': self.env.ref('base.model_res_partner').id,
-            'ttype': 'integer',
-            'store': False,
-            'compute': "for rec in self: rec['x_invoice_count'] = 10",
-        })
+        return (
+            self.env["ir.model.fields"]
+            .with_context(studio=True)
+            .create(
+                {
+                    "name": name,
+                    "field_description": name,
+                    "model": "res.partner",
+                    "model_id": self.env.ref("base.model_res_partner").id,
+                    "ttype": "integer",
+                    "store": False,
+                    "compute": "for rec in self: rec['x_invoice_count'] = 10",
+                }
+            )
+        )
 
     def test_ignore_auto_generated_computed_field(self):
         """
-            Check that we count custom fields with no module or studio not auto generated
-            Having an xml_id but no existing module is consider as not belonging to a module
+        Check that we count custom fields with no module or studio not auto generated
+        Having an xml_id but no existing module is consider as not belonging to a module
         """
-        f1 = self.create_field('x_invoice_count')
-        self.create_xml_id('invoice_count', 'ir.model.fields', f1.id)
+        f1 = self.create_field("x_invoice_count")
+        self.create_xml_id("invoice_count", "ir.model.fields", f1.id)
         cl = cloc.Cloc()
         cl.count_customization(self.env)
-        self.assertEqual(cl.code.get('odoo/studio', 0), 0, 'Studio auto generated count field should not be counted in cloc')
-        f2 = self.create_field('x_studio_custom_field')
-        self.create_xml_id('studio_custom', 'ir.model.fields', f2.id)
+        self.assertEqual(
+            cl.code.get("odoo/studio", 0),
+            0,
+            "Studio auto generated count field should not be counted in cloc",
+        )
+        f2 = self.create_field("x_studio_custom_field")
+        self.create_xml_id("studio_custom", "ir.model.fields", f2.id)
         cl = cloc.Cloc()
         cl.count_customization(self.env)
-        self.assertEqual(cl.code.get('odoo/studio', 0), 1, 'Count other studio computed field')
-        self.create_field('x_custom_field')
+        self.assertEqual(
+            cl.code.get("odoo/studio", 0), 1, "Count other studio computed field"
+        )
+        self.create_field("x_custom_field")
         cl = cloc.Cloc()
         cl.count_customization(self.env)
-        self.assertEqual(cl.code.get('odoo/studio', 0), 2, 'Count fields without xml_id')
-        f4 = self.create_field('x_custom_field_export')
-        self.create_xml_id('studio_custom', 'ir.model.fields', f4.id, '__export__')
+        self.assertEqual(
+            cl.code.get("odoo/studio", 0), 2, "Count fields without xml_id"
+        )
+        f4 = self.create_field("x_custom_field_export")
+        self.create_xml_id("studio_custom", "ir.model.fields", f4.id, "__export__")
         cl = cloc.Cloc()
         cl.count_customization(self.env)
-        self.assertEqual(cl.code.get('odoo/studio', 0), 3, 'Count fields with xml_id but without module')
+        self.assertEqual(
+            cl.code.get("odoo/studio", 0),
+            3,
+            "Count fields with xml_id but without module",
+        )
 
 
 class TestClocParser(TransactionCase):
-
     def test_parser(self):
         cl = cloc.Cloc()
         xml_count = cl.parse_xml(XML_TEST)
@@ -198,14 +218,17 @@ class TestClocParser(TransactionCase):
         self.assertEqual(scss_count, (17, 26))
 
 
-@tagged('post_install', '-at_install')
+@tagged("post_install", "-at_install")
 class TestClocStdNoCusto(TransactionCase):
-
     def test_no_custo_install(self):
         """
-            Make sure after the installation of module
-            no database customization is counted
+        Make sure after the installation of module
+        no database customization is counted
         """
         cl = cloc.Cloc()
         cl.count_customization(self.env)
-        self.assertEqual(cl.code.get('odoo/studio', 0), 0, 'Module should not generate customization in database')
+        self.assertEqual(
+            cl.code.get("odoo/studio", 0),
+            0,
+            "Module should not generate customization in database",
+        )

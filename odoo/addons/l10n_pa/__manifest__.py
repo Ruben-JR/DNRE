@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 # Copyright (c) 2011 Cubic ERP - Teradata SAC. (http://cubicerp.com).
@@ -15,7 +14,7 @@ Con la Colaboración de
 
     """,
     "author": "Cubic ERP",
-    'category': 'Accounting/Localizations/Account Charts',
+    "category": "Accounting/Localizations/Account Charts",
     "depends": ["account"],
     "data": [
         "data/l10n_pa_chart_data.xml",
@@ -23,5 +22,5 @@ Con la Colaboración de
         "data/account_tax_data.xml",
         "data/account_chart_template_data.xml",
     ],
-    'license': 'LGPL-3',
+    "license": "LGPL-3",
 }

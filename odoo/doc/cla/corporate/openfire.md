@@ -15,4 +15,3 @@ List of contributors:
 Christian Moreau christian.moreau@openfire.fr https://github.com/cm-openfire
 Cédric Le Brouster cedric.lebrouster@openfire.fr https://github.com/clb-openfire
 Gwenaël D'Aubenton gwenael.daubenton@openfire.fr https://github.com/gd-openfire
-

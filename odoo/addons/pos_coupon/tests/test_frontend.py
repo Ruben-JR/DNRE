@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.addons.point_of_sale.tests.test_frontend import TestPointOfSaleHttpCommon
@@ -93,7 +92,9 @@ class TestUi(TestPointOfSaleHttpCommon):
             pos_config.tax_regime_selection = False
             pos_config.use_pricelist = False
             pos_config.pricelist_id = self.env["product.pricelist"].create(
-                {"name": "PoS Default Pricelist",}
+                {
+                    "name": "PoS Default Pricelist",
+                }
             )
             pos_config.use_coupon_programs = True
             pos_config.coupon_program_ids.add(self.coupon_program)

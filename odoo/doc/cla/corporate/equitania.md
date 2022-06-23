@@ -18,4 +18,3 @@ Oliver Hercht o.hercht@equitania.de https://github.com/eqoh
 Johann Müller j.mueller@equitania.de https://github.com/eqjm
 Robin Prijatel r.prijatel@equitania.de https://github.com/eqrp
 Michal Sodomka m.sodomka@equitania.de https://github.com/eqmiso
-

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import api, fields, models
@@ -17,7 +16,7 @@ class PosOrder(models.Model):
 
     @api.model
     def create_from_ui(self, orders, draft=False):
-        order_ids = super(PosOrder, self).create_from_ui(orders, draft)
+        order_ids = super().create_from_ui(orders, draft)
         for order in self.sudo().browse([o["id"] for o in order_ids]):
             gift_card_config = order.config_id.gift_card_settings
             for line in order.lines:
@@ -48,17 +47,21 @@ class PosOrder(models.Model):
     def _add_mail_attachment(self, name, ticket):
         attachment = super()._add_mail_attachment(name, ticket)
         if self.config_id.use_gift_card and len(self.get_new_card_ids()) > 0:
-            report = self.env.ref('pos_gift_card.gift_card_report_pdf')._render_qweb_pdf(self.get_new_card_ids())
-            filename = name + '.pdf'
-            gift_card = self.env['ir.attachment'].create({
-                'name': filename,
-                'type': 'binary',
-                'datas': base64.b64encode(report[0]),
-                'store_fname': filename,
-                'res_model': 'pos.order',
-                'res_id': self.ids[0],
-                'mimetype': 'application/x-pdf'
-            })
+            report = self.env.ref(
+                "pos_gift_card.gift_card_report_pdf"
+            )._render_qweb_pdf(self.get_new_card_ids())
+            filename = name + ".pdf"
+            gift_card = self.env["ir.attachment"].create(
+                {
+                    "name": filename,
+                    "type": "binary",
+                    "datas": base64.b64encode(report[0]),
+                    "store_fname": filename,
+                    "res_model": "pos.order",
+                    "res_id": self.ids[0],
+                    "mimetype": "application/x-pdf",
+                }
+            )
             attachment += [(4, gift_card.id)]
 
         return attachment

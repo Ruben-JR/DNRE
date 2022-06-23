@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 #    Coded by: Alejandro Negrin anegrin@vauxoo.com,
@@ -10,7 +9,7 @@
     "name": "Mexico - Accounting",
     "version": "2.0",
     "author": "Vauxoo",
-    'category': 'Accounting/Localizations/Account Charts',
+    "category": "Accounting/Localizations/Account Charts",
     "description": """
 Minimal accounting configuration for Mexico.
 ============================================
@@ -48,8 +47,8 @@ With this module you will have:
         "views/res_config_settings_views.xml",
         "views/account_views.xml",
     ],
-    'demo': [
-        'demo/demo_company.xml',
+    "demo": [
+        "demo/demo_company.xml",
     ],
-    'license': 'LGPL-3',
+    "license": "LGPL-3",
 }

@@ -201,8 +201,8 @@
                 <field name="success_ratio"/>
                 <field name='active'/>
                 <templates>
-                    <div t-name="kanban-box" 
-                        t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click o_kanban_card_survey 
+                    <div t-name="kanban-box"
+                        t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click o_kanban_card_survey
                             #{record.certification.raw_value ? 'o_kanban_card_survey_successed' : ''}">
                         <div class="o_dropdown_kanban dropdown" t-if="widget.editable">
 
@@ -242,7 +242,7 @@
                                             <a name="action_survey_user_input_completed" type="object" class="d-flex flex-column align-items-center">
                                                 <span class="font-weight-bold"> <t t-esc="Math.round(record.success_ratio.raw_value)"></t> %</span>
                                                 <span class="text-muted" >Success</span>
-                                            </a> 
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

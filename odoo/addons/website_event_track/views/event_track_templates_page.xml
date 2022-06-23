@@ -95,7 +95,7 @@
                         t-options='{"widget": "duration", "unit": "hour", "round": "minute"}'/>)
                 </t>
             </div>
-            
+
             <hr class="mt-2 mb-0"/>
 
             <!-- ABOUT AUTHOR -->

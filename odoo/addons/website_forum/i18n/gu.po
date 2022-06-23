@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * website_forum
-# 
+#
 # Translators:
 # Dharmraj Jhala <dja@openerp.com>, 2018
 # Turkesh Patel <turkesh4friends@gmail.com>, 2018
 # Martin Trigaux, 2018
 # Ranjit Pillai <rpi@odoo.com>, 2018
 # Spellbound Soft Solutions <jeel.spellbound@gmail.com>, 2018
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~11.5\n"

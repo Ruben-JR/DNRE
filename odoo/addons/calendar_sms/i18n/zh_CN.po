@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* calendar_sms
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # 深圳市耀影科技有限公司_QQ1006399173, 2021
 # 山西清水欧度(QQ:54773801) <54773801@qq.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

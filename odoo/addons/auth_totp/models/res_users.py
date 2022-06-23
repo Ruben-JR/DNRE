@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 import base64
@@ -16,33 +15,42 @@ from odoo.addons.auth_totp.models.totp import TOTP, TOTP_SECRET_SIZE
 
 _logger = logging.getLogger(__name__)
 
-compress = functools.partial(re.sub, r'\s', '')
+compress = functools.partial(re.sub, r"\s", "")
+
+
 class Users(models.Model):
-    _inherit = 'res.users'
+    _inherit = "res.users"
 
     totp_secret = fields.Char(copy=False, groups=fields.NO_ACCESS)
-    totp_enabled = fields.Boolean(string="Two-factor authentication", compute='_compute_totp_enabled')
-    totp_trusted_device_ids = fields.One2many('auth_totp.device', 'user_id', string="Trusted Devices")
+    totp_enabled = fields.Boolean(
+        string="Two-factor authentication", compute="_compute_totp_enabled"
+    )
+    totp_trusted_device_ids = fields.One2many(
+        "auth_totp.device", "user_id", string="Trusted Devices"
+    )
 
     @property
     def SELF_READABLE_FIELDS(self):
-        return super().SELF_READABLE_FIELDS + ['totp_enabled', 'totp_trusted_device_ids']
+        return super().SELF_READABLE_FIELDS + [
+            "totp_enabled",
+            "totp_trusted_device_ids",
+        ]
 
     def _mfa_type(self):
         r = super()._mfa_type()
         if r is not None:
             return r
         if self.totp_enabled:
-            return 'totp'
+            return "totp"
 
     def _mfa_url(self):
         r = super()._mfa_url()
         if r is not None:
             return r
-        if self._mfa_type() == 'totp':
-            return '/web/login/totp'
+        if self._mfa_type() == "totp":
+            return "/web/login/totp"
 
-    @api.depends('totp_secret')
+    @api.depends("totp_secret")
     def _compute_totp_enabled(self):
         for r, v in zip(self, self.sudo()):
             r.totp_enabled = bool(v.totp_secret)
@@ -53,7 +61,7 @@ class Users(models.Model):
         return self.totp_enabled or super()._rpc_api_keys_only()
 
     def _get_session_token_fields(self):
-        return super()._get_session_token_fields() | {'totp_secret'}
+        return super()._get_session_token_fields() | {"totp_secret"}
 
     def _totp_check(self, code):
         sudo = self.sudo()
@@ -61,7 +69,9 @@ class Users(models.Model):
         match = TOTP(key).match(code)
         if match is None:
             _logger.info("2FA check: FAIL for %s %r", self, self.login)
-            raise AccessDenied(_("Verification failed, please double-check the 6-digit code"))
+            raise AccessDenied(
+                _("Verification failed, please double-check the 6-digit code")
+            )
         _logger.info("2FA check: SUCCESS for %s %r", self, self.login)
 
     def _totp_try_setting(self, secret, code):
@@ -87,13 +97,18 @@ class Users(models.Model):
 
     @check_identity
     def action_totp_disable(self):
-        logins = ', '.join(map(repr, self.mapped('login')))
+        logins = ", ".join(map(repr, self.mapped("login")))
         if not (self == self.env.user or self.env.user._is_admin() or self.env.su):
-            _logger.info("2FA disable: REJECT for %s (%s) by uid #%s", self, logins, self.env.user.id)
+            _logger.info(
+                "2FA disable: REJECT for %s (%s) by uid #%s",
+                self,
+                logins,
+                self.env.user.id,
+            )
             return False
 
         self.revoke_all_devices()
-        self.sudo().write({'totp_secret': False})
+        self.sudo().write({"totp_secret": False})
 
         if request and self == self.env.user:
             self.flush()
@@ -101,21 +116,31 @@ class Users(models.Model):
             new_token = self.env.user._compute_session_token(request.session.sid)
             request.session.session_token = new_token
 
-        _logger.info("2FA disable: SUCCESS for %s (%s) by uid #%s", self, logins, self.env.user.id)
+        _logger.info(
+            "2FA disable: SUCCESS for %s (%s) by uid #%s",
+            self,
+            logins,
+            self.env.user.id,
+        )
         return {
-            'type': 'ir.actions.client',
-            'tag': 'display_notification',
-            'params': {
-                'type': 'warning',
-                'message': _("Two-factor authentication disabled for the following user(s): %s", ', '.join(self.mapped('name'))),
-                'next': {'type': 'ir.actions.act_window_close'},
-            }
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "type": "warning",
+                "message": _(
+                    "Two-factor authentication disabled for the following user(s): %s",
+                    ", ".join(self.mapped("name")),
+                ),
+                "next": {"type": "ir.actions.act_window_close"},
+            },
         }
 
     @check_identity
     def action_totp_enable_wizard(self):
         if self.env.user != self:
-            raise UserError(_("Two-factor authentication can only be enabled for yourself"))
+            raise UserError(
+                _("Two-factor authentication can only be enabled for yourself")
+            )
 
         if self.totp_enabled:
             raise UserError(_("Two-factor authentication already enabled"))
@@ -123,19 +148,21 @@ class Users(models.Model):
         secret_bytes_count = TOTP_SECRET_SIZE // 8
         secret = base64.b32encode(os.urandom(secret_bytes_count)).decode()
         # format secret in groups of 4 characters for readability
-        secret = ' '.join(map(''.join, zip(*[iter(secret)]*4)))
-        w = self.env['auth_totp.wizard'].create({
-            'user_id': self.id,
-            'secret': secret,
-        })
+        secret = " ".join(map("".join, zip(*[iter(secret)] * 4)))
+        w = self.env["auth_totp.wizard"].create(
+            {
+                "user_id": self.id,
+                "secret": secret,
+            }
+        )
         return {
-            'type': 'ir.actions.act_window',
-            'target': 'new',
-            'res_model': 'auth_totp.wizard',
-            'name': _("Two-Factor Authentication Activation"),
-            'res_id': w.id,
-            'views': [(False, 'form')],
-            'context': self.env.context,
+            "type": "ir.actions.act_window",
+            "target": "new",
+            "res_model": "auth_totp.wizard",
+            "name": _("Two-Factor Authentication Activation"),
+            "res_id": w.id,
+            "views": [(False, "form")],
+            "context": self.env.context,
         }
 
     @check_identity

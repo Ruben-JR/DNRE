@@ -4166,7 +4166,7 @@ QUnit.module('Views', {
         calendar.destroy();
         delete fieldRegistry.map.deferred_widget;
     });
- 
+
     QUnit.test('select events and discard create', async function (assert) {
         assert.expect(4);
 
@@ -4204,7 +4204,7 @@ QUnit.module('Views', {
 
         calendar.destroy();
     });
- 
+
     QUnit.test("popover ignores readonly field modifier", async function (assert) {
         assert.expect(1);
 

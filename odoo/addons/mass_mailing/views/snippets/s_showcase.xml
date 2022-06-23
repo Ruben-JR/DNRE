@@ -3,7 +3,7 @@
 
 <template id="s_showcase" name="Showcase">
     <div class="s_showcase pt48 pb48 o_mail_snippet_general" data-snippet="s_showcase">
-        <!-- TODO: (below) issue with height: `fit-content` is not supported, can we calculate it in px in translation ? 
+        <!-- TODO: (below) issue with height: `fit-content` is not supported, can we calculate it in px in translation ?
         empty div height is 0 unless table has defined height (div.col-1 > div.w-50.h100.border-right)-->
         <div class="container" style="height: fit-content;">
             <div class="row no-gutters s_col_no_resize s_col_no_bgcolor s_nb_column_fixed">

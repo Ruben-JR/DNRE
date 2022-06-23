@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 # Copyright: (C) 2012 - Mentis d.o.o., Dravograd
@@ -8,7 +7,7 @@
     "version": "1.1",
     "author": "Mentis d.o.o.",
     "website": "http://www.mentis.si",
-    'category': 'Accounting/Localizations/Account Charts',
+    "category": "Accounting/Localizations/Account Charts",
     "description": "Kontni načrt za gospodarske družbe",
     "depends": [
         "account",
@@ -26,8 +25,8 @@
         "data/account.fiscal.position.tax.template.csv",
         "data/account_chart_template_data.xml",
     ],
-    'demo': [
-        'demo/demo_company.xml',
+    "demo": [
+        "demo/demo_company.xml",
     ],
-    'license': 'LGPL-3',
+    "license": "LGPL-3",
 }

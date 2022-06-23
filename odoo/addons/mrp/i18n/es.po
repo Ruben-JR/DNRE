@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* mrp
-# 
+#
 # Translators:
 # Alejandro Concepción <alconor23@hotmail.com>, 2021
 # Martin Trigaux, 2021
 # juankfj, 2022
 # Nelson Ramírez <info@konos.cl>, 2022
 # marcescu, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * sale_coupon
-# 
+#
 # Translators:
 # Bishisht Bhatta <bishisht.np.mnr@gmail.com>, 2017
 # Amit Kumar <amtkumar2053@gmail.com>, 2018

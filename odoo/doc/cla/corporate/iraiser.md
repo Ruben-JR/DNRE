@@ -14,4 +14,3 @@ List of contributors:
 
 Bruno PLANCHER bplancher@iraiser.eu https://github.com/bplancher
 Damien NICOLAS dnicolas@iraiser.eu https://github.com/gordonzola
-

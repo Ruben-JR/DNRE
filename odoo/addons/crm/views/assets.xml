@@ -19,5 +19,5 @@
             <script type="text/javascript" src="/crm/static/tests/mock_server.js"></script>
             <script type="text/javascript" src="/crm/static/tests/crm_rainbowman_tests.js"></script>
         </xpath>
-    </template>         
+    </template>
 </odoo>

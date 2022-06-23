@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* fetchmail
-# 
+#
 # Translators:
 # Kristoffer Grundström <lovaren@gmail.com>, 2021
 # Martin Trigaux, 2021
@@ -9,7 +9,7 @@
 # Martin Wilderoth <martin.wilderoth@linserv.se>, 2021
 # Frida E, 2021
 # Kim Asplund <kim.asplund@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

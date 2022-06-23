@@ -1364,7 +1364,7 @@ var FieldX2Many = AbstractField.extend(WidgetAdapterMixin, {
             if (extraInfo.subFieldName) {
                 parts.push(`[name="${extraInfo.subFieldName}"]`);
             }
-    
+
             if (parts.length) {
                 const el = this.el.querySelector(parts.join(' '));
                 if (el) {
@@ -2019,7 +2019,7 @@ var FieldOne2Many = FieldX2Many.extend({
 
     /**
      * @private
-     * @param {*} data 
+     * @param {*} data
      */
     _addCreateRecordRow(data) {
         const self = this;

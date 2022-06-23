@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* account_edi_proxy_client
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # Dan Stoica <danila@terrabit.ro>, 2021
 # Foldi Robert <foldirobert@nexterp.ro>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

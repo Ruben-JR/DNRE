@@ -27,5 +27,3 @@ Fullscreen.include({
     },
 });
 });
-
-

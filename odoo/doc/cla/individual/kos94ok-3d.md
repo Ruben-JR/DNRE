@@ -7,4 +7,3 @@ I declare that I am authorized and able to make this agreement and sign this dec
 Signed,
 
 Andrii Skrypka andrijskrypa@ukr.net https://github.com/kos94ok-3D
-

@@ -1,11 +1,11 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* pos_discount
-# 
+#
 # Translators:
 # Maidu Targama <m.targama@gmail.com>, 2022
 # Wanradt Koell <wanradt@gmail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

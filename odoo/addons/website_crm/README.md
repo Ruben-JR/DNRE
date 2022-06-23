@@ -12,4 +12,3 @@ Easy Contact Page
 Get your leads filled up automatically with your contact form integration. This
 application allows a better qualification of the lead which is perfect to link
 them to marketing campaigns.
-

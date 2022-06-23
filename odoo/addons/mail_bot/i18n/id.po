@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* mail_bot
-# 
+#
 # Translators:
 # Abdul Munif Hanafi <amunifhanafi@gmail.com>, 2022
 # Altela Eleviansyah Pramardhika <altela_pramardhika@yahoo.com>, 2022
 # whenwesober, 2022
 # Ryanto The <ry.the77@gmail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.5\n"

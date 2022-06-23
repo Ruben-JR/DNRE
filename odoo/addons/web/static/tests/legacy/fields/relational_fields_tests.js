@@ -4119,7 +4119,7 @@ QUnit.module('relational_fields', {
             View: FormView,
             model: 'turtle',
             data: this.data,
-            arch: 
+            arch:
                 '<form string="Turtles">' +
                     '<field string="Product" name="turtle_trululu"/>' +
                     '<field readonly="1" string="Related field" name="product_ids">' +

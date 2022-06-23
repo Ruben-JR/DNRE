@@ -17,7 +17,7 @@
                             Please confirm it has been done on purpose.
                         </b>
                         <b attrs="{'invisible': [('consumption', '!=', 'strict')]}">
-                            Please review your component consumption or ask a manager to validate 
+                            Please review your component consumption or ask a manager to validate
                             <span attrs="{'invisible':[('mrp_production_count', '!=', 1)]}">this manufacturing order</span>
                             <span attrs="{'invisible':[('mrp_production_count', '=', 1)]}">these manufacturing orders</span>.
                         </b>
@@ -54,4 +54,4 @@
         </record>
 
     </data>
-</odoo>    
+</odoo>

@@ -75,7 +75,7 @@ var EpsonPrinter = core.Class.extend(PrinterMixin, {
                 idx = (y * width + x) * 4;
                 oldColor = pixels[idx] * 0.299 + pixels[idx+1] * 0.587 + pixels[idx+2] * 0.114;
 
-                // Propagate the error from neighbor pixels 
+                // Propagate the error from neighbor pixels
                 oldColor += errors[x][y];
                 oldColor = Math.min(255, Math.max(0, oldColor));
 
@@ -130,7 +130,7 @@ var EpsonPrinter = core.Class.extend(PrinterMixin, {
 
     /**
      * Create the raster data from a canvas
-     * 
+     *
      * @override
      */
     process_canvas(canvas) {

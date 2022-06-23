@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import logging
 
@@ -10,6 +9,7 @@ _flanker_lib_warning = False
 
 try:
     from flanker.addresslib import address
+
     # Avoid warning each time a mx server is not reachable by flanker
     logging.getLogger("flanker.addresslib.validate").setLevel(logging.ERROR)
 
@@ -22,6 +22,8 @@ except ImportError:
         global _flanker_lib_warning
         if not _flanker_lib_warning:
             _flanker_lib_warning = True
-            _logger.info("The `flanker` Python module is not installed,"
-                           "so email validation fallback to email_normalize. Use 'pip install flanker' to install it")
+            _logger.info(
+                "The `flanker` Python module is not installed,"
+                "so email validation fallback to email_normalize. Use 'pip install flanker' to install it"
+            )
         return tools.email_normalize(email)
