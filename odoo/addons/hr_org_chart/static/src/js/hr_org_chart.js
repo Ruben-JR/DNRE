@@ -153,7 +153,7 @@ var FieldOrgChart = AbstractField.extend({
             method: 'get_formview_action',
             args: [employee_id],
         }).then(function(action) {
-            return self.do_action(action); 
+            return self.do_action(action);
         });
     },
     /**
@@ -187,7 +187,7 @@ var FieldOrgChart = AbstractField.extend({
                         }
                     });
                     delete action['res_id'];
-                    return self.do_action(action); 
+                    return self.do_action(action);
                 });
             });
         }

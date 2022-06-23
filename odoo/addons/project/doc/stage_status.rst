@@ -18,8 +18,8 @@ following models are impacted:
 
    - ``stage_id and stage_id.sequence = 1``
 
- - ``project.task.type`` do not have any ``state`` field anymore. 
- - ``project.task.report`` do not have any ``state`` field anymore. 
+ - ``project.task.type`` do not have any ``state`` field anymore.
+ - ``project.task.report`` do not have any ``state`` field anymore.
 
 By default a newly created task is in a new stage. It means that it will
 fetch the stage having ``sequence = 1``. Stage mangement is done using the

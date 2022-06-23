@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* google_gmail
-# 
+#
 # Translators:
 # Irina Fedulova <istartlin@gmail.com>, 2022
 # Ivan Yelizariev // IEL (ellui) <yelizariev@itpp.dev>, 2022
 # ILMIR <karamov@it-projects.info>, 2022
 # Martin Trigaux, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"

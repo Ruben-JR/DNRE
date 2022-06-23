@@ -23,7 +23,7 @@
          * Split the events to display an event for each attendee with the correct status.
          * If the all filter is activated, we don't display an event for each attendee and keep
          * the previous behavior to display a single event.
-         * 
+         *
          */
         async _calendarEventByAttendee(eventsData) {
             const self = this;

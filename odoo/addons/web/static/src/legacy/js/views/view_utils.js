@@ -9,7 +9,7 @@ var viewUtils = {
      * Since a date field can have a granularity in a groupby (date_field:granularity),
      * when we require only the field name, we have to split out the
      * eventual granularity
-     * 
+     *
      * @param {string} groupedBy the groupby with the eventual granularity
      * @returns {string}
      */

@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* transifex
-# 
+#
 # Translators:
 # Piotr Strębski <strebski@gmail.com>, 2021
 # Tadeusz Karpiński <tadeuszkarpinski@gmail.com>, 2021
 # Piotr Szlązak <szlazakpiotr@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.5\n"

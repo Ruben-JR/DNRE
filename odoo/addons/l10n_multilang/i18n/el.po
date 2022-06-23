@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * l10n_multilang
-# 
+#
 # Translators:
 # Alexandros Kapetanios <alexandros@gnugr.org>, 2022
 # 437c9d6e19936ed69f57bed9e0fe4716, 2022
@@ -10,7 +10,7 @@
 # Timos Zacharatos <kokkinopioupiou@hotmail.com>, 2022
 # Martin Trigaux, 2022
 # Kostas Goutoudis <goutoudis@gmail.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"

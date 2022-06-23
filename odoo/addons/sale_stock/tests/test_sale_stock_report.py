@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from datetime import datetime, timedelta
@@ -11,25 +10,25 @@ from odoo.addons.sale.tests.common import TestSaleCommon
 
 class TestSaleStockReports(TestReportsCommon):
     def test_report_forecast_1_sale_order_replenishment(self):
-        """ Create and confirm two sale orders: one for the next week and one
+        """Create and confirm two sale orders: one for the next week and one
         for tomorrow. Then check in the report it's the most urgent who is
         linked to the qty. on stock.
         """
         # make sure first picking doesn't auto-assign
-        self.picking_type_out.reservation_method = 'manual'
+        self.picking_type_out.reservation_method = "manual"
 
         today = datetime.today()
         # Put some quantity in stock.
         quant_vals = {
-            'product_id': self.product.id,
-            'product_uom_id': self.product.uom_id.id,
-            'location_id': self.stock_location.id,
-            'quantity': 5,
-            'reserved_quantity': 0,
+            "product_id": self.product.id,
+            "product_uom_id": self.product.uom_id.id,
+            "location_id": self.stock_location.id,
+            "quantity": 5,
+            "reserved_quantity": 0,
         }
-        self.env['stock.quant'].create(quant_vals)
+        self.env["stock.quant"].create(quant_vals)
         # Create a first SO for the next week.
-        so_form = Form(self.env['sale.order'])
+        so_form = Form(self.env["sale.order"])
         so_form.partner_id = self.partner
         # so_form.validity_date = today + timedelta(days=7)
         with so_form.order_line.new() as so_line:
@@ -40,7 +39,7 @@ class TestSaleStockReports(TestReportsCommon):
         so_1.picking_ids.scheduled_date = today + timedelta(days=7)
 
         # Create a second SO for tomorrow.
-        so_form = Form(self.env['sale.order'])
+        so_form = Form(self.env["sale.order"])
         so_form.partner_id = self.partner
         # so_form.validity_date = today + timedelta(days=1)
         with so_form.order_line.new() as so_line:
@@ -50,22 +49,23 @@ class TestSaleStockReports(TestReportsCommon):
         so_2.action_confirm()
         so_2.picking_ids.scheduled_date = today + timedelta(days=1)
 
-        report_values, docs, lines = self.get_report_forecast(product_template_ids=self.product_template.ids)
+        report_values, docs, lines = self.get_report_forecast(
+            product_template_ids=self.product_template.ids
+        )
         self.assertEqual(len(lines), 2)
         line_1 = lines[0]
         line_2 = lines[1]
-        self.assertEqual(line_1['quantity'], 5)
-        self.assertTrue(line_1['replenishment_filled'])
-        self.assertEqual(line_1['document_out'].id, so_2.id)
-        self.assertEqual(line_2['quantity'], 5)
-        self.assertEqual(line_2['replenishment_filled'], False)
-        self.assertEqual(line_2['document_out'].id, so_1.id)
+        self.assertEqual(line_1["quantity"], 5)
+        self.assertTrue(line_1["replenishment_filled"])
+        self.assertEqual(line_1["document_out"].id, so_2.id)
+        self.assertEqual(line_2["quantity"], 5)
+        self.assertEqual(line_2["replenishment_filled"], False)
+        self.assertEqual(line_2["document_out"].id, so_1.id)
 
     def test_report_forecast_2_report_line_corresponding_to_so_line_highlighted(self):
-        """ When accessing the report from a SO line, checks if the correct SO line is highlighted in the report
-        """
+        """When accessing the report from a SO line, checks if the correct SO line is highlighted in the report"""
         # We create 2 identical SO
-        so_form = Form(self.env['sale.order'])
+        so_form = Form(self.env["sale.order"])
         so_form.partner_id = self.partner
         with so_form.order_line.new() as line:
             line.product_id = self.product
@@ -78,50 +78,75 @@ class TestSaleStockReports(TestReportsCommon):
         # Check for both SO if the highlight (is_matched) corresponds to the correct SO
         for so in [so1, so2]:
             context = {"move_to_match_ids": so.order_line.move_ids.ids}
-            _, _, lines = self.get_report_forecast(product_template_ids=self.product_template.ids, context=context)
+            _, _, lines = self.get_report_forecast(
+                product_template_ids=self.product_template.ids, context=context
+            )
             for line in lines:
-                if line['document_out'] == so:
-                    self.assertTrue(line['is_matched'], "The corresponding SO line should be matched in the forecast report.")
+                if line["document_out"] == so:
+                    self.assertTrue(
+                        line["is_matched"],
+                        "The corresponding SO line should be matched in the forecast report.",
+                    )
                 else:
-                    self.assertFalse(line['is_matched'], "A line of the forecast report not linked to the SO shoud not be matched.")
+                    self.assertFalse(
+                        line["is_matched"],
+                        "A line of the forecast report not linked to the SO shoud not be matched.",
+                    )
 
 
-@tagged('post_install', '-at_install')
+@tagged("post_install", "-at_install")
 class TestSaleStockInvoices(TestSaleCommon):
-
     def setUp(self):
-        super(TestSaleStockInvoices, self).setUp()
+        super().setUp()
 
-        self.product_by_lot = self.env['product.product'].create({
-            'name': 'Product By Lot',
-            'type': 'product',
-            'tracking': 'lot',
-        })
-        self.product_by_usn = self.env['product.product'].create({
-            'name': 'Product By USN',
-            'type': 'product',
-            'tracking': 'serial',
-        })
-        self.warehouse = self.env['stock.warehouse'].search([('company_id', '=', self.env.company.id)], limit=1)
+        self.product_by_lot = self.env["product.product"].create(
+            {
+                "name": "Product By Lot",
+                "type": "product",
+                "tracking": "lot",
+            }
+        )
+        self.product_by_usn = self.env["product.product"].create(
+            {
+                "name": "Product By USN",
+                "type": "product",
+                "tracking": "serial",
+            }
+        )
+        self.warehouse = self.env["stock.warehouse"].search(
+            [("company_id", "=", self.env.company.id)], limit=1
+        )
         self.stock_location = self.warehouse.lot_stock_id
-        lot = self.env['stock.production.lot'].create({
-            'name': 'LOT0001',
-            'product_id': self.product_by_lot.id,
-            'company_id': self.env.company.id,
-        })
-        usn01 = self.env['stock.production.lot'].create({
-            'name': 'USN0001',
-            'product_id': self.product_by_usn.id,
-            'company_id': self.env.company.id,
-        })
-        usn02 = self.env['stock.production.lot'].create({
-            'name': 'USN0002',
-            'product_id': self.product_by_usn.id,
-            'company_id': self.env.company.id,
-        })
-        self.env['stock.quant']._update_available_quantity(self.product_by_lot, self.stock_location, 10, lot_id=lot)
-        self.env['stock.quant']._update_available_quantity(self.product_by_usn, self.stock_location, 1, lot_id=usn01)
-        self.env['stock.quant']._update_available_quantity(self.product_by_usn, self.stock_location, 1, lot_id=usn02)
+        lot = self.env["stock.production.lot"].create(
+            {
+                "name": "LOT0001",
+                "product_id": self.product_by_lot.id,
+                "company_id": self.env.company.id,
+            }
+        )
+        usn01 = self.env["stock.production.lot"].create(
+            {
+                "name": "USN0001",
+                "product_id": self.product_by_usn.id,
+                "company_id": self.env.company.id,
+            }
+        )
+        usn02 = self.env["stock.production.lot"].create(
+            {
+                "name": "USN0002",
+                "product_id": self.product_by_usn.id,
+                "company_id": self.env.company.id,
+            }
+        )
+        self.env["stock.quant"]._update_available_quantity(
+            self.product_by_lot, self.stock_location, 10, lot_id=lot
+        )
+        self.env["stock.quant"]._update_available_quantity(
+            self.product_by_usn, self.stock_location, 1, lot_id=usn01
+        )
+        self.env["stock.quant"]._update_available_quantity(
+            self.product_by_usn, self.stock_location, 1, lot_id=usn02
+        )
 
     def test_invoice_less_than_delivered(self):
         """
@@ -129,16 +154,26 @@ class TestSaleStockInvoices(TestSaleCommon):
         A user invoice a tracked product with a smaller quantity than delivered.
         On the invoice, the quantity of the used lot should be the invoiced one.
         """
-        display_lots = self.env.ref('stock_account.group_lot_on_invoice')
-        display_uom = self.env.ref('uom.group_uom')
-        self.env.user.write({'groups_id': [(4, display_lots.id), (4, display_uom.id)]})
+        display_lots = self.env.ref("stock_account.group_lot_on_invoice")
+        display_uom = self.env.ref("uom.group_uom")
+        self.env.user.write({"groups_id": [(4, display_lots.id), (4, display_uom.id)]})
 
-        so = self.env['sale.order'].create({
-            'partner_id': self.partner_a.id,
-            'order_line': [
-                (0, 0, {'name': self.product_by_lot.name, 'product_id': self.product_by_lot.id, 'product_uom_qty': 5}),
-            ],
-        })
+        so = self.env["sale.order"].create(
+            {
+                "partner_id": self.partner_a.id,
+                "order_line": [
+                    (
+                        0,
+                        0,
+                        {
+                            "name": self.product_by_lot.name,
+                            "product_id": self.product_by_lot.id,
+                            "product_uom_qty": 5,
+                        },
+                    ),
+                ],
+            }
+        )
         so.action_confirm()
 
         picking = so.picking_ids
@@ -151,10 +186,16 @@ class TestSaleStockInvoices(TestSaleCommon):
                 line.quantity = 2
         invoice.action_post()
 
-        report = self.env['ir.actions.report']._get_report_from_name('account.report_invoice_with_payments')
+        report = self.env["ir.actions.report"]._get_report_from_name(
+            "account.report_invoice_with_payments"
+        )
         html = report._render_qweb_html(invoice.ids)[0]
         text = html2plaintext(html)
-        self.assertRegex(text, r'Product By Lot\n2.00\nUnits\nLOT0001', "There should be a line that specifies 2 x LOT0001")
+        self.assertRegex(
+            text,
+            r"Product By Lot\n2.00\nUnits\nLOT0001",
+            "There should be a line that specifies 2 x LOT0001",
+        )
 
     def test_invoice_before_delivery(self):
         """
@@ -163,18 +204,28 @@ class TestSaleStockInvoices(TestSaleCommon):
         A user invoice a tracked product with a smaller quantity than delivered.
         On the invoice, the quantity of the used lot should be the invoiced one.
         """
-        display_lots = self.env.ref('stock_account.group_lot_on_invoice')
-        display_uom = self.env.ref('uom.group_uom')
-        self.env.user.write({'groups_id': [(4, display_lots.id), (4, display_uom.id)]})
+        display_lots = self.env.ref("stock_account.group_lot_on_invoice")
+        display_uom = self.env.ref("uom.group_uom")
+        self.env.user.write({"groups_id": [(4, display_lots.id), (4, display_uom.id)]})
 
         self.product_by_lot.invoice_policy = "order"
 
-        so = self.env['sale.order'].create({
-            'partner_id': self.partner_a.id,
-            'order_line': [
-                (0, 0, {'name': self.product_by_lot.name, 'product_id': self.product_by_lot.id, 'product_uom_qty': 4}),
-            ],
-        })
+        so = self.env["sale.order"].create(
+            {
+                "partner_id": self.partner_a.id,
+                "order_line": [
+                    (
+                        0,
+                        0,
+                        {
+                            "name": self.product_by_lot.name,
+                            "product_id": self.product_by_lot.id,
+                            "product_uom_qty": 4,
+                        },
+                    ),
+                ],
+            }
+        )
         so.action_confirm()
 
         invoice = so._create_invoices()
@@ -184,10 +235,16 @@ class TestSaleStockInvoices(TestSaleCommon):
         picking.move_lines.quantity_done = 4
         picking.button_validate()
 
-        report = self.env['ir.actions.report']._get_report_from_name('account.report_invoice_with_payments')
+        report = self.env["ir.actions.report"]._get_report_from_name(
+            "account.report_invoice_with_payments"
+        )
         html = report._render_qweb_html(invoice.ids)[0]
         text = html2plaintext(html)
-        self.assertRegex(text, r'Product By Lot\n4.00\nUnits\nLOT0001', "There should be a line that specifies 4 x LOT0001")
+        self.assertRegex(
+            text,
+            r"Product By Lot\n4.00\nUnits\nLOT0001",
+            "There should be a line that specifies 4 x LOT0001",
+        )
 
     def test_backorder_and_several_invoices(self):
         """
@@ -196,24 +253,38 @@ class TestSaleStockInvoices(TestSaleCommon):
         Then, he delivers the other one and invoices it too. Each invoice should have the
         correct USN
         """
-        report = self.env['ir.actions.report']._get_report_from_name('account.report_invoice_with_payments')
-        display_lots = self.env.ref('stock_account.group_lot_on_invoice')
-        display_uom = self.env.ref('uom.group_uom')
-        self.env.user.write({'groups_id': [(4, display_lots.id), (4, display_uom.id)]})
+        report = self.env["ir.actions.report"]._get_report_from_name(
+            "account.report_invoice_with_payments"
+        )
+        display_lots = self.env.ref("stock_account.group_lot_on_invoice")
+        display_uom = self.env.ref("uom.group_uom")
+        self.env.user.write({"groups_id": [(4, display_lots.id), (4, display_uom.id)]})
 
-        so = self.env['sale.order'].create({
-            'partner_id': self.partner_a.id,
-            'order_line': [
-                (0, 0, {'name': self.product_by_usn.name, 'product_id': self.product_by_usn.id, 'product_uom_qty': 2}),
-            ],
-        })
+        so = self.env["sale.order"].create(
+            {
+                "partner_id": self.partner_a.id,
+                "order_line": [
+                    (
+                        0,
+                        0,
+                        {
+                            "name": self.product_by_usn.name,
+                            "product_id": self.product_by_usn.id,
+                            "product_uom_qty": 2,
+                        },
+                    ),
+                ],
+            }
+        )
         so.action_confirm()
 
         picking = so.picking_ids
         picking.move_lines.move_line_ids[0].qty_done = 1
         picking.button_validate()
         action = picking.button_validate()
-        wizard = Form(self.env[action['res_model']].with_context(action['context'])).save()
+        wizard = Form(
+            self.env[action["res_model"]].with_context(action["context"])
+        ).save()
         wizard.process()
 
         invoice01 = so._create_invoices()
@@ -228,33 +299,53 @@ class TestSaleStockInvoices(TestSaleCommon):
 
         html = report._render_qweb_html(invoice01.ids)[0]
         text = html2plaintext(html)
-        self.assertRegex(text, r'Product By USN\n1.00\nUnits\nUSN0001', "There should be a line that specifies 1 x USN0001")
-        self.assertNotIn('USN0002', text)
+        self.assertRegex(
+            text,
+            r"Product By USN\n1.00\nUnits\nUSN0001",
+            "There should be a line that specifies 1 x USN0001",
+        )
+        self.assertNotIn("USN0002", text)
 
         invoice02 = so._create_invoices()
         invoice02.action_post()
         html = report._render_qweb_html(invoice02.ids)[0]
         text = html2plaintext(html)
-        self.assertRegex(text, r'Product By USN\n1.00\nUnits\nUSN0002', "There should be a line that specifies 1 x USN0002")
-        self.assertNotIn('USN0001', text)
+        self.assertRegex(
+            text,
+            r"Product By USN\n1.00\nUnits\nUSN0002",
+            "There should be a line that specifies 1 x USN0002",
+        )
+        self.assertNotIn("USN0001", text)
 
         # Posting the second invoice shouldn't change the result of the first one
         html = report._render_qweb_html(invoice01.ids)[0]
         text = html2plaintext(html)
-        self.assertRegex(text, r'Product By USN\n1.00\nUnits\nUSN0001', "There should still be a line that specifies 1 x USN0001")
-        self.assertNotIn('USN0002', text)
+        self.assertRegex(
+            text,
+            r"Product By USN\n1.00\nUnits\nUSN0001",
+            "There should still be a line that specifies 1 x USN0001",
+        )
+        self.assertNotIn("USN0002", text)
 
         # Resetting and posting again the first invoice shouldn't change the results
         invoice01.button_draft()
         invoice01.action_post()
         html = report._render_qweb_html(invoice01.ids)[0]
         text = html2plaintext(html)
-        self.assertRegex(text, r'Product By USN\n1.00\nUnits\nUSN0001', "There should still be a line that specifies 1 x USN0001")
-        self.assertNotIn('USN0002', text)
+        self.assertRegex(
+            text,
+            r"Product By USN\n1.00\nUnits\nUSN0001",
+            "There should still be a line that specifies 1 x USN0001",
+        )
+        self.assertNotIn("USN0002", text)
         html = report._render_qweb_html(invoice02.ids)[0]
         text = html2plaintext(html)
-        self.assertRegex(text, r'Product By USN\n1.00\nUnits\nUSN0002', "There should be a line that specifies 1 x USN0002")
-        self.assertNotIn('USN0001', text)
+        self.assertRegex(
+            text,
+            r"Product By USN\n1.00\nUnits\nUSN0002",
+            "There should be a line that specifies 1 x USN0002",
+        )
+        self.assertNotIn("USN0001", text)
 
     def test_invoice_with_several_returns(self):
         """
@@ -268,41 +359,70 @@ class TestSaleStockInvoices(TestSaleCommon):
         - Deliver 05 x Lot02 + 02 x Lot03
         - Invoice 08 x P
         """
-        report = self.env['ir.actions.report']._get_report_from_name('account.report_invoice_with_payments')
-        display_lots = self.env.ref('stock_account.group_lot_on_invoice')
-        display_uom = self.env.ref('uom.group_uom')
-        self.env.user.write({'groups_id': [(4, display_lots.id), (4, display_uom.id)]})
+        report = self.env["ir.actions.report"]._get_report_from_name(
+            "account.report_invoice_with_payments"
+        )
+        display_lots = self.env.ref("stock_account.group_lot_on_invoice")
+        display_uom = self.env.ref("uom.group_uom")
+        self.env.user.write({"groups_id": [(4, display_lots.id), (4, display_uom.id)]})
 
-        lot01 = self.env['stock.production.lot'].search([('name', '=', 'LOT0001')])
-        lot02, lot03 = self.env['stock.production.lot'].create([{
-            'name': name,
-            'product_id': self.product_by_lot.id,
-            'company_id': self.env.company.id,
-        } for name in ['LOT0002', 'LOT0003']])
-        self.env['stock.quant']._update_available_quantity(self.product_by_lot, self.stock_location, 8, lot_id=lot02)
-        self.env['stock.quant']._update_available_quantity(self.product_by_lot, self.stock_location, 2, lot_id=lot03)
+        lot01 = self.env["stock.production.lot"].search([("name", "=", "LOT0001")])
+        lot02, lot03 = self.env["stock.production.lot"].create(
+            [
+                {
+                    "name": name,
+                    "product_id": self.product_by_lot.id,
+                    "company_id": self.env.company.id,
+                }
+                for name in ["LOT0002", "LOT0003"]
+            ]
+        )
+        self.env["stock.quant"]._update_available_quantity(
+            self.product_by_lot, self.stock_location, 8, lot_id=lot02
+        )
+        self.env["stock.quant"]._update_available_quantity(
+            self.product_by_lot, self.stock_location, 2, lot_id=lot03
+        )
 
-        so = self.env['sale.order'].create({
-            'partner_id': self.partner_a.id,
-            'order_line': [
-                (0, 0, {'name': self.product_by_lot.name, 'product_id': self.product_by_lot.id, 'product_uom_qty': 10}),
-            ],
-        })
+        so = self.env["sale.order"].create(
+            {
+                "partner_id": self.partner_a.id,
+                "order_line": [
+                    (
+                        0,
+                        0,
+                        {
+                            "name": self.product_by_lot.name,
+                            "product_id": self.product_by_lot.id,
+                            "product_uom_qty": 10,
+                        },
+                    ),
+                ],
+            }
+        )
         so.action_confirm()
 
         # Deliver 10 x LOT0001
         delivery01 = so.picking_ids
         delivery01.move_lines.quantity_done = 10
         delivery01.button_validate()
-        self.assertEqual(delivery01.move_line_ids.lot_id.name, 'LOT0001')
+        self.assertEqual(delivery01.move_line_ids.lot_id.name, "LOT0001")
 
         # Return delivery01 (-> 10 x LOT0001)
-        return_form = Form(self.env['stock.return.picking'].with_context(active_ids=[delivery01.id], active_id=delivery01.id, active_model='stock.picking'))
+        return_form = Form(
+            self.env["stock.return.picking"].with_context(
+                active_ids=[delivery01.id],
+                active_id=delivery01.id,
+                active_model="stock.picking",
+            )
+        )
         return_wizard = return_form.save()
         action = return_wizard.create_returns()
-        pick_return = self.env['stock.picking'].browse(action['res_id'])
+        pick_return = self.env["stock.picking"].browse(action["res_id"])
 
-        move_form = Form(pick_return.move_lines, view='stock.view_stock_move_nosuggest_operations')
+        move_form = Form(
+            pick_return.move_lines, view="stock.view_stock_move_nosuggest_operations"
+        )
         with move_form.move_line_nosuggest_ids.new() as line:
             line.lot_id = lot01
             line.qty_done = 10
@@ -310,20 +430,30 @@ class TestSaleStockInvoices(TestSaleCommon):
         pick_return.button_validate()
 
         # Return pick_return
-        return_form = Form(self.env['stock.return.picking'].with_context(active_ids=[pick_return.id], active_id=pick_return.id, active_model='stock.picking'))
+        return_form = Form(
+            self.env["stock.return.picking"].with_context(
+                active_ids=[pick_return.id],
+                active_id=pick_return.id,
+                active_model="stock.picking",
+            )
+        )
         return_wizard = return_form.save()
         action = return_wizard.create_returns()
-        delivery02 = self.env['stock.picking'].browse(action['res_id'])
+        delivery02 = self.env["stock.picking"].browse(action["res_id"])
 
         # Deliver 3 x LOT0002
         delivery02.do_unreserve()
-        move_form = Form(delivery02.move_lines, view='stock.view_stock_move_nosuggest_operations')
+        move_form = Form(
+            delivery02.move_lines, view="stock.view_stock_move_nosuggest_operations"
+        )
         with move_form.move_line_nosuggest_ids.new() as line:
             line.lot_id = lot02
             line.qty_done = 3
         move_form.save()
         action = delivery02.button_validate()
-        wizard = Form(self.env[action['res_model']].with_context(action['context'])).save()
+        wizard = Form(
+            self.env[action["res_model"]].with_context(action["context"])
+        ).save()
         wizard.process()
 
         # Invoice 2 x P
@@ -335,13 +465,19 @@ class TestSaleStockInvoices(TestSaleCommon):
 
         html = report._render_qweb_html(invoice01.ids)[0]
         text = html2plaintext(html)
-        self.assertRegex(text, r'Product By Lot\n2.00\nUnits\nLOT0002', "There should be a line that specifies 2 x LOT0002")
-        self.assertNotIn('LOT0001', text)
+        self.assertRegex(
+            text,
+            r"Product By Lot\n2.00\nUnits\nLOT0002",
+            "There should be a line that specifies 2 x LOT0002",
+        )
+        self.assertNotIn("LOT0001", text)
 
         # Deliver 5 x LOT0002 + 2 x LOT0003
         delivery03 = delivery02.backorder_ids
         delivery03.do_unreserve()
-        move_form = Form(delivery03.move_lines, view='stock.view_stock_move_nosuggest_operations')
+        move_form = Form(
+            delivery03.move_lines, view="stock.view_stock_move_nosuggest_operations"
+        )
         with move_form.move_line_nosuggest_ids.new() as line:
             line.lot_id = lot02
             line.qty_done = 5
@@ -357,6 +493,14 @@ class TestSaleStockInvoices(TestSaleCommon):
 
         html = report._render_qweb_html(invoice02.ids)[0]
         text = html2plaintext(html)
-        self.assertRegex(text, r'Product By Lot\n6.00\nUnits\nLOT0002', "There should be a line that specifies 6 x LOT0002")
-        self.assertRegex(text, r'Product By Lot\n2.00\nUnits\nLOT0003', "There should be a line that specifies 2 x LOT0003")
-        self.assertNotIn('LOT0001', text)
+        self.assertRegex(
+            text,
+            r"Product By Lot\n6.00\nUnits\nLOT0002",
+            "There should be a line that specifies 6 x LOT0002",
+        )
+        self.assertRegex(
+            text,
+            r"Product By Lot\n2.00\nUnits\nLOT0003",
+            "There should be a line that specifies 2 x LOT0003",
+        )
+        self.assertNotIn("LOT0001", text)

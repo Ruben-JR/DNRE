@@ -63,7 +63,7 @@ publicWidget.registry.websiteSaleDelivery = publicWidget.Widget.extend({
     },
     /**
      * Update the total cost according to the selected shipping method
-     * 
+     *
      * @private
      * @param {float} amount : The new total amount of to be paid
      */

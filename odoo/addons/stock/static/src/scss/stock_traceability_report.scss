@@ -28,7 +28,7 @@
             @include o-stock-reports-lines($border-width: 1px, $font-weight: normal, $border-top-style: solid, $border-bottom-style: groove);
         }
         .o_stock_reports_table {
-            thead { 
+            thead {
                 display: table-row-group;
             }
             white-space: nowrap;

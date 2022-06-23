@@ -15,4 +15,3 @@ List of contributors:
 Michael de Villiers michael@systemworks.co.za https://github.com/COUR4G3
 Mziwakhe Ndinga mzi@systemworks.co.za https://github.com/mndinga
 Alex Zimmerman alexz@systemworks.co.za https://github.com/AFZimmers
-

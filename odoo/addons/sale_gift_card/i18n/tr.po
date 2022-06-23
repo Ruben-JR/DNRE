@@ -1,14 +1,14 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* sale_gift_card
-# 
+#
 # Translators:
 # Ediz Duman <neps1192@gmail.com>, 2021
 # Martin Trigaux, 2021
 # Umur Akın <umura@projetgrup.com>, 2021
 # abc Def <hdogan1974@gmail.com>, 2021
 # omerfarukcakmak <omerfarukckmk@protonmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

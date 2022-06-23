@@ -336,15 +336,15 @@ $o-cw-filter-avatar-size: 20px;
                 .fc-content {
                     display: flex;
                     justify-content: start;
-                    flex-direction: row;                    
-                    margin: 4px 4px 3px;                    
+                    flex-direction: row;
+                    margin: 4px 4px 3px;
                 }
 
                 .fc-time:not(:empty) {
                     padding-right: 0.5em;
                 }
 
-                .o_event_title {                    
+                .o_event_title {
                     @include text-truncate();
                 }
 
@@ -909,7 +909,7 @@ $o-filter_colors: lighten(#000, 46.7%), #F06050, #F4A460, #F7CD1F, #6CC1ED, #814
                     background-color: $color;
                 }
             }
-        
+
             &.o_attendee_status_tentative {
                 color: color-yiq($color);
                 .fc-bg {

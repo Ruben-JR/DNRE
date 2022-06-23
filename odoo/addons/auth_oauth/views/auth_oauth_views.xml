@@ -22,7 +22,7 @@
                     </sheet>
                 </form>
             </field>
-        </record>        
+        </record>
         <record id="view_oauth_provider_tree" model="ir.ui.view">
             <field name="name">auth.oauth.provider.tree</field>
             <field name="model">auth.oauth.provider</field>

@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * mass_mailing
-# 
+#
 # Translators:
 # Sitthykun LY <ly.sitthykun@gmail.com>, 2018
 # Chan Nath <channath@gmail.com>, 2018

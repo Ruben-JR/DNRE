@@ -4,7 +4,7 @@ import Widget from 'web.Widget';
 
 export const FullscreenIndication = Widget.extend({
     xmlDependencies: ['/website/static/src/xml/website.xml'],
-    template: 'website.fullscreen_indication', 
+    template: 'website.fullscreen_indication',
 
     init: function () {
         this.visible = false;
@@ -29,7 +29,7 @@ export const FullscreenIndication = Widget.extend({
     },
     /**
      * Hides the fullscreen indication modal with optionnal transition
-     * 
+     *
      * @param {boolean} [withTransition=false]
      */
     hide: function (withTransition = false) {

@@ -104,7 +104,7 @@ const DynamicSnippetProducts = DynamicSnippetCarousel.extend({
         });
     },
     /**
-     * @override 
+     * @override
      * @private
      */
     _renderContent() {

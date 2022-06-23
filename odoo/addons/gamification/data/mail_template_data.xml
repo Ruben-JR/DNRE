@@ -117,7 +117,7 @@
             <field name="lang">{{ object.user_id.lang }}</field>
             <field name="auto_delete" eval="True"/>
         </record>
-        
+
         <record id="simple_report_template" model="mail.template">
             <field name="name">Challenge: Simple Challenge Report Progress</field>
             <field name="model_id" ref="gamification.model_gamification_challenge"/>
@@ -184,12 +184,12 @@
                                         <td colspan="5" style="height:1px;background-color:#e3e3e3;"></td>
                                     </tr>
                                 </tbody>
-                            </table>                   
+                            </table>
                         </t>
                         <t t-else="">
                             <span style="color:#A8A8A8;font-size:13px;">
                                 Challenge: <strong t-out="object.name or ''"></strong>.
-                            </span> 
+                            </span>
                             <t t-foreach="challenge_lines" t-as="line">
                                 <!-- Header + Button table -->
                                 <table cellspacing="0" cellpadding="0" width="100%" style="margin-top:35px;">
@@ -269,7 +269,7 @@
                                                     <tr style="color:#9A6C8E; font-size:12px;">
                                                         <th style="width:15%;text-align:center;">Rank</th>
                                                         <th style="width:25%;text-align:left;">Name</th>
-                                                        <th style="width:30%;text-align:right;">Performance 
+                                                        <th style="width:30%;text-align:right;">Performance
                                                             <t t-if="line['suffix']">
                                                                 (<t t-out="line['suffix'] or ''"></t>)
                                                             </t>
@@ -303,7 +303,7 @@
                                             </table>
                                         </td>
                                     </tr>
-                                </table> 
+                                </table>
                             </t>
                         </t>
                     </td></tr>

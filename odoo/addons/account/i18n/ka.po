@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* account
-# 
+#
 # Translators:
 # Giorgi Shvelidze <giorgi.shvelidze@maxinai.com>, 2021
 # Nika Chikhradze <nika@globaltravel.ge>, 2021
@@ -17,7 +17,7 @@
 # Giorgi Jvaridze <giorgi.jvaridze@gmail.com>, 2021
 # Vasil Grigalashvili <info@clouddesk.info>, 2022
 # Jarji Janadze, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

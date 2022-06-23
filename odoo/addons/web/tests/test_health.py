@@ -5,8 +5,8 @@ from odoo.tests import HttpCase
 
 class TestWebController(HttpCase):
     def test_health(self):
-        response = self.url_open('/web/health')
+        response = self.url_open("/web/health")
         self.assertEqual(response.status_code, 200)
         payload = response.json()
-        self.assertEqual(payload['status'], 'pass')
-        self.assertNotIn('session_id', response.cookies)
+        self.assertEqual(payload["status"], "pass")
+        self.assertNotIn("session_id", response.cookies)

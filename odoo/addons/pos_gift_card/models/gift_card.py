@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import api, fields, models
@@ -22,7 +21,7 @@ class GiftCard(models.Model):
         super()._compute_balance()
         for record in self:
             confirmed_line = record.redeem_pos_order_line_ids.sudo().filtered(
-                lambda l: l.order_id.state in ('paid', 'done', 'invoiced')
+                lambda l: l.order_id.state in ("paid", "done", "invoiced")
             )
             balance = record.balance
             if confirmed_line:
@@ -41,4 +40,8 @@ class GiftCard(models.Model):
 
     def can_be_used_in_pos(self):
         # expired state are computed once a day, so can be not synchro
-        return self.state == 'valid' and self.balance > 0 and self.expired_date >= fields.Date.today()
+        return (
+            self.state == "valid"
+            and self.balance > 0
+            and self.expired_date >= fields.Date.today()
+        )

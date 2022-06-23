@@ -14,4 +14,3 @@ List of contributors:
 
 Guido Notari guido.notari@gmail.com https://github.com/gnotari
 Matteo Bilotta byloth@gmail.com https://github.com/Byloth
-

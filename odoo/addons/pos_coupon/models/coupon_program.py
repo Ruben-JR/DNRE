@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 # NOTE Use black to automatically format this code.
@@ -6,6 +5,7 @@
 from odoo import api, fields, models, _
 
 import ast
+
 
 class CouponProgram(models.Model):
     _inherit = "coupon.program"
@@ -28,7 +28,8 @@ class CouponProgram(models.Model):
         "This is automatically generated when promo_code is changed.",
     )
     pos_order_ids = fields.Many2many(
-        "pos.order", help="The PoS orders where this program is applied.",
+        "pos.order",
+        help="The PoS orders where this program is applied.",
     )
     pos_order_count = fields.Integer(
         "PoS Order Count", compute="_compute_pos_order_count"
@@ -54,7 +55,7 @@ class CouponProgram(models.Model):
     def write(self, vals):
         if "promo_code" in vals:
             vals.update({"promo_barcode": self.env["coupon.coupon"]._generate_code()})
-        return super(CouponProgram, self).write(vals)
+        return super().write(vals)
 
     def action_view_pos_orders(self):
         self.ensure_one()
@@ -70,17 +71,25 @@ class CouponProgram(models.Model):
     @api.depends("rule_products_domain")
     def _compute_valid_product_ids(self):
         for program in self:
-            domain = ast.literal_eval(program.rule_products_domain) if program.rule_products_domain else []
+            domain = (
+                ast.literal_eval(program.rule_products_domain)
+                if program.rule_products_domain
+                else []
+            )
             program.valid_product_ids = self.env["product.product"].search(domain).ids
 
     @api.depends("rule_partners_domain")
     def _compute_valid_partner_ids(self):
         for program in self:
-            domain = ast.literal_eval(program.rule_partners_domain) if program.rule_partners_domain else []
+            domain = (
+                ast.literal_eval(program.rule_partners_domain)
+                if program.rule_partners_domain
+                else []
+            )
             program.valid_partner_ids = self.env["res.partner"].search(domain).ids
 
-    @api.depends('pos_order_ids')
+    @api.depends("pos_order_ids")
     def _compute_total_order_count(self):
-        super(CouponProgram, self)._compute_total_order_count()
+        super()._compute_total_order_count()
         for program in self:
             program.total_order_count += len(program.pos_order_ids)

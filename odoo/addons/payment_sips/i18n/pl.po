@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* payment_sips
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # Dariusz Żbikowski <darek@krokus.com.pl>, 2021
 # Piotr Szlązak <szlazakpiotr@gmail.com>, 2021
 # Maja Stawicka <mjstwck@wp.pl>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

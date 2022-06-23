@@ -64,7 +64,7 @@ const dynamicSnippetOptions = options.Class.extend({
 
     /**
      * See from updateUI in s_website_form
-     * 
+     *
      * @override
      */
     async updateUI() {

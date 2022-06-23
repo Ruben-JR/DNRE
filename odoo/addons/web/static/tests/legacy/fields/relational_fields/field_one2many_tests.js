@@ -9881,7 +9881,7 @@ QUnit.module('fields', {}, function () {
 
         QUnit.test("Editable list's field widgets call on_attach_callback on row update", async function (assert) {
             // We use here a badge widget (owl component, does have a on_attach_callback method) and check its decoration
-            // is properly managed in this scenario.       
+            // is properly managed in this scenario.
             assert.expect(3);
 
             this.data.partner.records[0].p = [1, 2];

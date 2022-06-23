@@ -3954,4 +3954,3 @@ var DocumentViewer = Widget.extend({
 });
 return DocumentViewer;
 });
-

@@ -20,17 +20,17 @@ interface Assert {
      * Example: assert.containsN(document.body, '.modal', 0)
      */
     containsN(target: HTMLElement, selector: String, n: Number, msg?: string): void;
-  
+
     /**
      * Checks that the target contains exactly 0 match for the selector.
      */
     containsNone(target: HTMLElement, selector: String, msg?: string): void;
-  
+
     /**
      * Checks that the target contains exactly 1 match for the selector.
      */
     containsOnce(target: HTMLElement, selector: String, msg?: string): void;
-  
+
     /**
      * Helper function, to check if a given element has (or has not) classnames.
      *
@@ -38,17 +38,17 @@ interface Assert {
      * @param {HTMLElement|jQuery|Widget} el
      */
     _checkClass(el: HTMLElement, classNames: String, shouldHaveClass: boolean, msg?: string): void;
-  
+
     /**
      * Checks that the target element has the given classnames.
      */
     hasClass(el: HTMLElement, classNames: String, msg?: string): void;
-  
+
     /**
      * Checks that the target element does not have the given classnames.
      */
     doesNotHaveClass(el: HTMLElement, classNames: String, msg?: string): void;
-  
+
     /**
      * Checks that the target element (described by widget/jquery or html element)
      * - exists
@@ -58,7 +58,7 @@ interface Assert {
      * @param {Widget|jQuery|HTMLElement|owl.Component} target
      */
     hasAttrValue(target: HTMLElement, attr: string, value: string, msg?: string): void;
-  
+
     /**
      * Helper function, to check if a given element
      * - is unique (if it is a jquery node set)
@@ -68,17 +68,17 @@ interface Assert {
      * @param {HTMLElement|jQuery|Widget} el
      */
     _checkVisible(el: HTMLElement, shouldBeVisible: boolean, msg?: string): void;
-    
+
     /**
      * Check if element is visible
-     * 
+     *
      * @param {HTMLElement|jQuery|Widget} el
      */
     isVisible(el: HTMLElement, msg?: string): void;
-    
+
     /**
      * Check if element is visible
-     * 
+     *
      * @param {HTMLElement|jQuery|Widget} el
      */
     isNotVisible(el:HTMLElement , msg?: string): void;
@@ -86,7 +86,7 @@ interface Assert {
     // -----------------------------------------------------------------------------
     // End of Odoo added asserts
     // -----------------------------------------------------------------------------
-  
+
     /**
      * Instruct QUnit to wait for an asynchronous operation.
      *
@@ -100,7 +100,7 @@ interface Assert {
      * @param {number} [acceptCallCount=1] Number of expected callbacks before the test is done.
      */
     async(acceptCallCount?: number): () => void;
-  
+
     /**
      * A deep recursive comparison, working on primitive types, arrays, objects,
      * regular expressions, dates and functions.
@@ -117,7 +117,7 @@ interface Assert {
      * @param {string} [message] A short description of the assertion
      */
     deepEqual<T>(actual: T, expected: T, message?: string): void;
-  
+
     /**
      * A non-strict comparison, roughly equivalent to JUnit's assertEquals.
      *
@@ -136,7 +136,7 @@ interface Assert {
      * @param {string} [message] A short description of the assertion
      */
     equal(actual: any, expected: any, message?: string): void;
-  
+
     /**
      * Specify how many assertions are expected to run within a test.
      *
@@ -148,7 +148,7 @@ interface Assert {
      * @param {number} amount Number of assertions in this test.
      */
     expect(amount: number): void;
-  
+
     /**
      * An inverted deep recursive comparison, working on primitive types,
      * arrays, objects, regular expressions, dates and functions.
@@ -158,7 +158,7 @@ interface Assert {
      * @param {string} [message] A short description of the assertion
      */
     notDeepEqual(actual: any, expected: any, message?: string): void;
-  
+
     /**
      * A non-strict comparison, checking for inequality.
      *
@@ -177,7 +177,7 @@ interface Assert {
      * @param {string} [message] A short description of the assertion
      */
     notEqual(actual: any, expected: any, message?: string): void;
-  
+
     /**
      * A boolean check, inverse of `ok()` and CommonJS's `assert.ok()`, and
      * equivalent to JUnit's `assertFalse()`. Passes if the first argument is
@@ -191,7 +191,7 @@ interface Assert {
      * @param {string} [message] A short description of the assertion
      */
     notOk(state: any, message?: string): void;
-  
+
     /**
      * A strict comparison of an object's own properties, checking for inequality.
      *
@@ -212,7 +212,7 @@ interface Assert {
      * @param {string} [message] A short description of the assertion
      */
     notPropEqual(actual: any, expected: any, message?: string): void;
-  
+
     /**
      * A strict comparison, checking for inequality.
      *
@@ -231,7 +231,7 @@ interface Assert {
      * @param {string} [message] A short description of the assertion
      */
     notStrictEqual(actual: any, expected: any, message?: string): void;
-  
+
     /**
      * A boolean check, equivalent to CommonJS's assert.ok() and JUnit's
      * assertTrue(). Passes if the first argument is truthy.
@@ -245,7 +245,7 @@ interface Assert {
      * @param {string} message A short description of the assertion
      */
     ok(state: any, message?: string): void;
-  
+
     /**
      * A strict type and value comparison of an object's own properties.
      *
@@ -263,7 +263,7 @@ interface Assert {
      * @param {string} [message] A short description of the assertion
      */
     propEqual(actual: any, expected: any, message?: string): void;
-  
+
     /**
      * Report the result of a custom assertion
      *
@@ -285,7 +285,7 @@ interface Assert {
       expected: any;
       message: string;
     }): void;
-  
+
     /**
      * A strict type and value comparison.
      *
@@ -301,7 +301,7 @@ interface Assert {
      * @param {string} [message] A short description of the assertion
      */
     strictEqual<T>(actual: T, expected: T, message?: string): void;
-  
+
     /**
      * Test if a callback throws an exception, and optionally compare the thrown
      * error.
@@ -317,7 +317,7 @@ interface Assert {
      */
     throws(block: () => void, expected?: any, message?: any): void;
     raises(block: () => void, expected?: any, message?: any): void;
-  
+
     /**
      * Test if the provided promise rejects, and optionally compare the
      * rejection value.
@@ -345,7 +345,7 @@ interface Assert {
       expectedMatcher?: any,
       message?: string
     ): Promise<void>;
-  
+
     /**
      * A marker for progress in a given test.
      *
@@ -359,7 +359,7 @@ interface Assert {
      * @param message Message to display for the step
      */
     step(message: string): void;
-  
+
     /**
      * A helper assertion to verify the order and number of steps in a test.
      *
@@ -372,7 +372,7 @@ interface Assert {
      */
     verifySteps(steps: string[], message?: string): void;
   }
-  
+
   interface Config {
     altertitle: boolean;
     autostart: boolean;
@@ -399,53 +399,53 @@ interface Assert {
       value?: string | string[] | { [key: string]: string };
     }[];
   }
-  
+
   interface Hooks {
     /**
      * Runs after the last test. If additional tests are defined after the
      * module's queue has emptied, it will not run this hook again.
      */
     after?: (assert: Assert) => void | Promise<void>;
-  
+
     /**
      * Runs after each test.
      */
     afterEach?: (assert: Assert) => void | Promise<void>;
-  
+
     /**
      * Runs before the first test.
      */
     before?: (assert: Assert) => void | Promise<void>;
-  
+
     /**
      * Runs before each test.
      */
     beforeEach?: (assert: Assert) => void | Promise<void>;
   }
-  
+
   interface NestedHooks {
     /**
      * Runs after the last test. If additional tests are defined after the
      * module's queue has emptied, it will not run this hook again.
      */
     after: (fn: (assert: Assert) => void | Promise<void>) => void;
-  
+
     /**
      * Runs after each test.
      */
     afterEach: (fn: (assert: Assert) => void | Promise<void>) => void;
-  
+
     /**
      * Runs before the first test.
      */
     before: (fn: (assert: Assert) => void | Promise<void>) => void;
-  
+
     /**
      * Runs before each test.
      */
     beforeEach: (fn: (assert: Assert) => void | Promise<void>) => void;
   }
-  
+
   type moduleFunc1 = (
     name: string,
     hooks?: Hooks,
@@ -456,7 +456,7 @@ interface Assert {
     nested?: (hooks: NestedHooks) => void
   ) => void;
   type ModuleOnly = { only: moduleFunc1 & moduleFunc2 };
-  
+
   declare namespace QUnit {
     interface BeginDetails {
       totalTests: number;
@@ -500,7 +500,7 @@ interface Assert {
       module: string;
     }
   }
-  
+
   interface QUnit {
     /**
      * Namespace for QUnit assertions
@@ -512,7 +512,7 @@ interface Assert {
      * This object has properties for each of QUnit's built-in assertion methods.
      */
     assert: Assert;
-  
+
     /**
      * Register a callback to fire whenever the test suite begins.
      *
@@ -521,7 +521,7 @@ interface Assert {
      * @callback callback Callback to execute.
      */
     begin(callback: (details: QUnit.BeginDetails) => void | Promise<void>): void;
-  
+
     /**
      * Configuration for QUnit
      *
@@ -529,14 +529,14 @@ interface Assert {
      * useful to override. Check the description for each option for details.
      */
     config: Config;
-  
+
     /**
      * Register a callback to fire whenever the test suite ends.
      *
      * @param callback Callback to execute
      */
     done(callback: (details: QUnit.DoneDetails) => void | Promise<void>): void;
-  
+
     /**
      * Advanced and extensible data dumping for JavaScript.
      *
@@ -556,7 +556,7 @@ interface Assert {
       maxDepth: number;
       parse(data: any): string;
     };
-  
+
     /**
      * Copy the properties defined by the `mixin` object into the `target` object.
      *
@@ -569,7 +569,7 @@ interface Assert {
      * @param mixin An object describing which properties should be modified
      */
     extend(target: any, mixin: any): void;
-  
+
     /**
      * Register a callback to fire whenever an assertion completes.
      *
@@ -580,7 +580,7 @@ interface Assert {
      * @param callback Callback to execute
      */
     log(callback: (details: QUnit.LogDetails) => void): void;
-  
+
     /**
      * Group related tests under a single label.
      *
@@ -620,7 +620,7 @@ interface Assert {
      * @param nested A callback with grouped tests and nested modules to run under the current module label
      */
     module: moduleFunc1 & moduleFunc2 & ModuleOnly;
-  
+
     /**
      * Register a callback to fire whenever a module ends.
      *
@@ -629,7 +629,7 @@ interface Assert {
     moduleDone(
       callback: (details: QUnit.ModuleDoneDetails) => void | Promise<void>
     ): void;
-  
+
     /**
      * Register a callback to fire whenever a module begins.
      *
@@ -638,7 +638,7 @@ interface Assert {
     moduleStart(
       callback: (details: QUnit.ModuleStartDetails) => void | Promise<void>
     ): void;
-  
+
     /**
      * Adds a test to exclusively run, preventing all other tests from running.
      *
@@ -656,7 +656,7 @@ interface Assert {
      * @param callback Function to close over assertions
      */
     only(name: string, callback: (assert: Assert) => void | Promise<void>): void;
-  
+
     /**
      * DEPRECATED: Report the result of a custom assertion.
      *
@@ -673,7 +673,7 @@ interface Assert {
      * @deprecated
      */
     push(result: boolean, actual: any, expected: any, message: string): void;
-  
+
     /**
      * Adds a test like object to be skipped.
      *
@@ -687,7 +687,7 @@ interface Assert {
      * @param {string} Title of unit being tested
      */
     skip(name: string, callback?: (assert: Assert) => void | Promise<void>): void;
-  
+
     /**
      * Returns a single line string representing the stacktrace (call stack).
      *
@@ -704,7 +704,7 @@ interface Assert {
      * @param {number} offset Set the stacktrace line offset.
      */
     stack(offset?: number): string;
-  
+
     /**
      * `QUnit.start()` must be used to start a test run that has
      * `QUnit.config.autostart` set to `false`.
@@ -716,7 +716,7 @@ interface Assert {
      * corresponding number of `QUnit.stop()` increments.
      */
     start(): void;
-  
+
     /**
      * Add a test to run.
      *
@@ -733,7 +733,7 @@ interface Assert {
      * @param callback Function to close over assertions
      */
     test(name: string, callback: (assert: Assert) => void | Promise<void>): void;
-  
+
     /**
      * Register a callback to fire whenever a test ends.
      *
@@ -749,7 +749,7 @@ interface Assert {
         runtime: number;
       }) => void | Promise<void>
     ): void;
-  
+
     /**
      * Register a callback to fire whenever a test begins.
      *
@@ -758,7 +758,7 @@ interface Assert {
     testStart(
       callback: (details: QUnit.TestStartDetails) => void | Promise<void>
     ): void;
-  
+
     /**
      * Adds a test which expects at least one failing assertion during its run.
      *
@@ -773,7 +773,7 @@ interface Assert {
      * @param callback Function to close over assertions
      */
     todo(name: string, callback?: (assert: Assert) => void | Promise<void>): void;
-  
+
     /**
      * Compares two values. Returns true if they are equivalent.
      *
@@ -781,15 +781,14 @@ interface Assert {
      * @param b The second value
      */
     equiv<T>(a: T, b: T): boolean;
-  
+
     /**
      * Are the test running from the server or not.
      */
     isLocal: boolean;
-  
+
     /**
      * QUnit version
      */
     version: string;
   }
-  

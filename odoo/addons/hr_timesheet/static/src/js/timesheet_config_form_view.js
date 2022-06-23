@@ -7,7 +7,7 @@ odoo.define('hr_timesheet.res.config.form', function (require) {
     const viewRegistry = require('web.view_registry');
     const BaseSetting = require('base.settings');
     const QWeb = core.qweb;
-    
+
     const _t = core._t;
 
     const TimesheetConfigQRCodeDialog = Dialog.extend({

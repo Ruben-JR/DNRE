@@ -7,7 +7,7 @@ odoo.define('pos_six.chrome', function (require) {
     const PosSixChrome = (Chrome) =>
         class extends Chrome {
             get balanceButtonIsShown() {
-                return this.env.pos.payment_methods.some(pm => pm.use_payment_terminal === 'six'); 
+                return this.env.pos.payment_methods.some(pm => pm.use_payment_terminal === 'six');
             }
         };
 

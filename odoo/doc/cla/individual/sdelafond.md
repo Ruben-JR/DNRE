@@ -9,4 +9,3 @@ this declaration.
 Signed,
 
 Sébastien Delafond <sdelafond@gmail.com> https://github.com/sdelafond
-

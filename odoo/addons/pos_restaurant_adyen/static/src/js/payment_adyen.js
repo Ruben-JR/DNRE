@@ -13,7 +13,7 @@ odoo.define('pos_restaurant_adyen.payment', function (require) {
             } else {
                 data.SaleToPOIRequest.PaymentRequest.SaleData.SaleToAcquirerData = "authorisationType=PreAuth";
             }
-    
+
             return data;
         },
 

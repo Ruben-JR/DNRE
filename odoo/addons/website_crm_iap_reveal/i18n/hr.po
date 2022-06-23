@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* crm_iap_lead_website
-# 
+#
 # Translators:
 # Vojislav Opačić <vojislav.opacic@gmail.com>, 2022
 # Karolina Tonković <karolina.tonkovic@storm.hr>, 2022
@@ -13,7 +13,7 @@
 # Tina Milas, 2022
 # Martin Trigaux, 2022
 # Ivica Dimjašević <ivica.dimjasevic@storm.hr>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

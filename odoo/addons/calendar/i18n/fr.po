@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* calendar
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # Alexandra Jubert <aju@odoo.com>, 2021
@@ -11,7 +11,7 @@
 # Camille Dantinne <cmd@odoo.com>, 2022
 # Khadija Mbazaa <khadija.mbazaa@gmail.com>, 2022
 # Alice Van Goethem <vga@odoo.com>, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* base_address_extended
-# 
+#
 # Translators:
 # Martin Trigaux, 2021
 # Alex Bonyhai <alex.s.bony.02@gmail.com>, 2021
 # Foldi Robert <foldirobert@nexterp.ro>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

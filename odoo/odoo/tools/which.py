@@ -19,7 +19,7 @@
        Return a generator which yields full paths in which the *file* name exists
        in a directory that is part of the file name, or on *path*,
        and has the given *mode*.
-       By default, *mode* matches an inclusive OR of os.F_OK and os.X_OK - an 
+       By default, *mode* matches an inclusive OR of os.F_OK and os.X_OK - an
        existing executable file.
        The *path* is, by default, the ``PATH`` variable on the platform,
        or the string/iterable passed in as *path*.
@@ -38,73 +38,78 @@
        or raise IOError(errno.ENOENT).
 
 """
-__docformat__ = 'restructuredtext en'
-__all__ = 'which which_files pathsep defpath defpathext F_OK R_OK W_OK X_OK'.split()
+__docformat__ = "restructuredtext en"
+__all__ = "which which_files pathsep defpath defpathext F_OK R_OK W_OK X_OK".split()
 
 import sys
 from os import access, defpath, pathsep, environ, F_OK, R_OK, W_OK, X_OK
 from os.path import exists, dirname, split, join
+
 ENOENT = 2
 
-windows = sys.platform.startswith('win')
+windows = sys.platform.startswith("win")
 
-defpath = environ.get('PATH', defpath).split(pathsep)
+defpath = environ.get("PATH", defpath).split(pathsep)
 
 if windows:
-    defpath.insert(0, '.') # can insert without checking, when duplicates are removed
+    defpath.insert(0, ".")  # can insert without checking, when duplicates are removed
     # given the quite usual mess in PATH on Windows, let's rather remove duplicates
     seen = set()
-    defpath = [dir for dir in defpath if dir.lower() not in seen and not seen.add(dir.lower())]
+    defpath = [
+        dir for dir in defpath if dir.lower() not in seen and not seen.add(dir.lower())
+    ]
     del seen
 
-    defpathext = [''] + environ.get('PATHEXT',
-        '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC').lower().split(pathsep)
+    defpathext = [""] + environ.get(
+        "PATHEXT", ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC"
+    ).lower().split(pathsep)
 else:
-    defpathext = ['']
+    defpathext = [""]
+
 
 def which_files(file, mode=F_OK | X_OK, path=None, pathext=None):
-    """ Locate a file in a path supplied as a part of the file name,
-        or the user's path, or a supplied path.
-        The function yields full paths (not necessarily absolute paths),
-        in which the given file name matches an existing file in a directory on the path.
+    """Locate a file in a path supplied as a part of the file name,
+    or the user's path, or a supplied path.
+    The function yields full paths (not necessarily absolute paths),
+    in which the given file name matches an existing file in a directory on the path.
 
-        >>> def test_which(expected, *args, **argd):
-        ...     result = list(which_files(*args, **argd))
-        ...     assert result == expected, 'which_files: %s != %s' % (result, expected)
-        ...
-        ...     try:
-        ...         result = [ which(*args, **argd) ]
-        ...     except IOError:
-        ...         result = []
-        ...     assert result[:1] == expected[:1], 'which: %s != %s' % (result[:1], expected[:1])
+    >>> def test_which(expected, *args, **argd):
+    ...     result = list(which_files(*args, **argd))
+    ...     assert result == expected, 'which_files: %s != %s' % (result, expected)
+    ...
+    ...     try:
+    ...         result = [ which(*args, **argd) ]
+    ...     except IOError:
+    ...         result = []
+    ...     assert result[:1] == expected[:1], 'which: %s != %s' % (result[:1], expected[:1])
 
-        >>> if windows: cmd = environ['COMSPEC']
-        >>> if windows: test_which([cmd], 'cmd')
-        >>> if windows: test_which([cmd], 'cmd.exe')
-        >>> if windows: test_which([cmd], 'cmd', path=dirname(cmd))
-        >>> if windows: test_which([cmd], 'cmd', pathext='.exe')
-        >>> if windows: test_which([cmd], cmd)
-        >>> if windows: test_which([cmd], cmd, path='<nonexistent>')
-        >>> if windows: test_which([cmd], cmd, pathext='<nonexistent>')
-        >>> if windows: test_which([cmd], cmd[:-4])
-        >>> if windows: test_which([cmd], cmd[:-4], path='<nonexistent>')
+    >>> if windows: cmd = environ['COMSPEC']
+    >>> if windows: test_which([cmd], 'cmd')
+    >>> if windows: test_which([cmd], 'cmd.exe')
+    >>> if windows: test_which([cmd], 'cmd', path=dirname(cmd))
+    >>> if windows: test_which([cmd], 'cmd', pathext='.exe')
+    >>> if windows: test_which([cmd], cmd)
+    >>> if windows: test_which([cmd], cmd, path='<nonexistent>')
+    >>> if windows: test_which([cmd], cmd, pathext='<nonexistent>')
+    >>> if windows: test_which([cmd], cmd[:-4])
+    >>> if windows: test_which([cmd], cmd[:-4], path='<nonexistent>')
 
-        >>> if windows: test_which([], 'cmd', path='<nonexistent>')
-        >>> if windows: test_which([], 'cmd', pathext='<nonexistent>')
-        >>> if windows: test_which([], '<nonexistent>/cmd')
-        >>> if windows: test_which([], cmd[:-4], pathext='<nonexistent>')
+    >>> if windows: test_which([], 'cmd', path='<nonexistent>')
+    >>> if windows: test_which([], 'cmd', pathext='<nonexistent>')
+    >>> if windows: test_which([], '<nonexistent>/cmd')
+    >>> if windows: test_which([], cmd[:-4], pathext='<nonexistent>')
 
-        >>> if not windows: sh = '/bin/sh'
-        >>> if not windows: test_which([sh], 'sh')
-        >>> if not windows: test_which([sh], 'sh', path=dirname(sh))
-        >>> if not windows: test_which([sh], 'sh', pathext='<nonexistent>')
-        >>> if not windows: test_which([sh], sh)
-        >>> if not windows: test_which([sh], sh, path='<nonexistent>')
-        >>> if not windows: test_which([sh], sh, pathext='<nonexistent>')
+    >>> if not windows: sh = '/bin/sh'
+    >>> if not windows: test_which([sh], 'sh')
+    >>> if not windows: test_which([sh], 'sh', path=dirname(sh))
+    >>> if not windows: test_which([sh], 'sh', pathext='<nonexistent>')
+    >>> if not windows: test_which([sh], sh)
+    >>> if not windows: test_which([sh], sh, path='<nonexistent>')
+    >>> if not windows: test_which([sh], sh, pathext='<nonexistent>')
 
-        >>> if not windows: test_which([], 'sh', mode=W_OK)  # not running as root, are you?
-        >>> if not windows: test_which([], 'sh', path='<nonexistent>')
-        >>> if not windows: test_which([], '<nonexistent>/sh')
+    >>> if not windows: test_which([], 'sh', mode=W_OK)  # not running as root, are you?
+    >>> if not windows: test_which([], 'sh', path='<nonexistent>')
+    >>> if not windows: test_which([], '<nonexistent>/sh')
     """
     filepath, file = split(file)
 
@@ -120,8 +125,10 @@ def which_files(file, mode=F_OK | X_OK, path=None, pathext=None):
     elif isinstance(pathext, str):
         pathext = pathext.split(pathsep)
 
-    if not '' in pathext:
-        pathext.insert(0, '') # always check command without extension, even for custom pathext
+    if not "" in pathext:
+        pathext.insert(
+            0, ""
+        )  # always check command without extension, even for custom pathext
 
     for dir in path:
         basepath = join(dir, file)
@@ -130,20 +137,25 @@ def which_files(file, mode=F_OK | X_OK, path=None, pathext=None):
             if exists(fullpath) and access(fullpath, mode):
                 yield fullpath
 
-def which(file, mode=F_OK | X_OK, path=None, pathext=None):
-    """ Locate a file in a path supplied as a part of the file name,
-        or the user's path, or a supplied path.
-        The function returns full path (not necessarily absolute path),
-        in which the given file name matches an existing file in a directory on the path,
-        or raises IOError(errno.ENOENT).
 
-        >>> # for doctest see which_files()
+def which(file, mode=F_OK | X_OK, path=None, pathext=None):
+    """Locate a file in a path supplied as a part of the file name,
+    or the user's path, or a supplied path.
+    The function returns full path (not necessarily absolute path),
+    in which the given file name matches an existing file in a directory on the path,
+    or raises IOError(errno.ENOENT).
+
+    >>> # for doctest see which_files()
     """
     path = next(which_files(file, mode, path, pathext), None)
     if path is None:
-        raise IOError(ENOENT, '%s not found' % (mode & X_OK and 'command' or 'file'), file)
+        raise OSError(
+            ENOENT, "%s not found" % (mode & X_OK and "command" or "file"), file
+        )
     return path
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod()

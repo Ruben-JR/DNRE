@@ -283,7 +283,7 @@
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active survey_graph"
                 t-att-id="'survey_graph_question_%d' % question.id"
-                t-att-data-question_id="question.id" 
+                t-att-data-question_id="question.id"
                 t-att-data-graph-type="'pie' if question.question_type == 'simple_choice' else 'bar'"
                 t-att-data-graph-data="graph_data">
                 <!-- canvas element for drawing bar chart -->

@@ -139,7 +139,7 @@ var PartnerAutocompleteMixin = {
 
                 // The vat should be returned for free. This is the reason why
                 // we add it into the data of 'company' even if an error such as
-                // an insufficient credit error is raised. 
+                // an insufficient credit error is raised.
                 if (company_data.error && company_data.vat) {
                     company.vat = company_data.vat;
                 }

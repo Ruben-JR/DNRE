@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 # @author -  Fekete Mihai <feketemihai@gmail.com>, Tatár Attila <atta@nvm.ro>
@@ -12,11 +11,11 @@
     "name": "Romania - Accounting",
     "author": "Fekete Mihai (NextERP Romania SRL)",
     "website": "https://www.nexterp.ro",
-    'category': 'Accounting/Localizations/Account Charts',
-    'version': '1.0',
+    "category": "Accounting/Localizations/Account Charts",
+    "version": "1.0",
     "depends": [
-        'account',
-        'base_vat',
+        "account",
+        "base_vat",
     ],
     "description": """
 This is the module to manage the Accounting Chart, VAT structure, Fiscal Position and Tax Mapping.
@@ -25,21 +24,22 @@ It also adds the Registration Number for Romania in Odoo.
 
 Romanian accounting chart and localization.
     """,
-    "data": ['views/res_partner_view.xml',
-             'data/l10n_ro_chart_data.xml',
-             'data/account.group.template.csv',
-             'data/account.account.template.csv',
-             'data/l10n_ro_chart_post_data.xml',
-             'data/account_tax_group_data.xml',
-             'data/account_tax_report_data.xml',
-             'data/account_tax_data.xml',
-             'data/account_fiscal_position_data.xml',
-             'data/account_reconcile_model_template_data.xml',
-             'data/account_chart_template_data.xml',
-             'data/res.bank.csv',
-             ],
-    'demo': [
-        'demo/demo_company.xml',
+    "data": [
+        "views/res_partner_view.xml",
+        "data/l10n_ro_chart_data.xml",
+        "data/account.group.template.csv",
+        "data/account.account.template.csv",
+        "data/l10n_ro_chart_post_data.xml",
+        "data/account_tax_group_data.xml",
+        "data/account_tax_report_data.xml",
+        "data/account_tax_data.xml",
+        "data/account_fiscal_position_data.xml",
+        "data/account_reconcile_model_template_data.xml",
+        "data/account_chart_template_data.xml",
+        "data/res.bank.csv",
     ],
-    'license': 'LGPL-3',
+    "demo": [
+        "demo/demo_company.xml",
+    ],
+    "license": "LGPL-3",
 }

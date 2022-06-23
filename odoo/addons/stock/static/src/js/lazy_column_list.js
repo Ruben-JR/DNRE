@@ -78,7 +78,7 @@ const LazyColumnListModel = ListModel.extend({
         }
         return dataPoint;
     },
-    
+
     _fetchRecord: function(record, options) {
         record.specialData.lastUpdateLazy = Date.now();
         return this._super.apply(this, arguments);

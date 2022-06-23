@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "Test RPC",
     "version": "1.0",
@@ -8,5 +7,5 @@
     "installable": True,
     "auto_install": False,
     "data": ["ir.model.access.csv"],
-    'license': 'LGPL-3',
+    "license": "LGPL-3",
 }

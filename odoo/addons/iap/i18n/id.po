@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* iap
-# 
+#
 # Translators:
 # Abdul Munif Hanafi <amunifhanafi@gmail.com>, 2022
 # pnyet <david@zeromail.us>, 2022
 # William Surya Permana <zarambie_game@yahoo.com>, 2022
 # Martin Trigaux, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

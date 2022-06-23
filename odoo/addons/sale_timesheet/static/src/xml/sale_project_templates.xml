@@ -15,7 +15,7 @@
 
     <t t-name="sale_timesheet.SoldSection" owl="1">
         <t t-set="sold_items" t-value="state.data.sold_items"/>
-        <t t-if="sold_items.number_sols and sold_items.allow_billable"> 
+        <t t-if="sold_items.number_sols and sold_items.allow_billable">
             <div name="sold" class="o_rightpanel_section">
                 <div class="o_rightpanel_header">
                     <div class="o_rightpanel_title">
@@ -35,7 +35,7 @@
 
     <t t-name="sale_timesheet.TotalSoldSection" owl="1">
         <t t-set="sold_items" t-value="state.data.sold_items"/>
-        <t t-if="sold_items.allow_billable"> 
+        <t t-if="sold_items.allow_billable">
             <div name="total_sold" class="o_rightpanel_section">
                 <div class="o_rightpanel_header">
                     <div class="o_rightpanel_title">
@@ -60,7 +60,7 @@
             </div>
         </t>
     </t>
-    
+
     <t t-name="sale_timesheet.ProfitabilitySection" owl="1">
         <t t-if="state.data.user.is_project_user &amp;&amp; state.data.profitability_items.data.length > 0 &amp;&amp; state.data.analytic_account_id">
             <t t-set="profitability_items" t-value="state.data.profitability_items"/>

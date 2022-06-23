@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * account_payment
-# 
+#
 # Translators:
 # Sengtha Chay <sengtha@gmail.com>, 2018
 msgid ""

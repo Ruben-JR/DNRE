@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 """The Odoo Exceptions module defines a few core exception types.
@@ -35,12 +34,13 @@ class UserError(Exception):
     def name(self):
         warnings.warn(
             "UserError attribute 'name' is a deprecated alias to args[0]",
-            DeprecationWarning)
+            DeprecationWarning,
+        )
         return self.args[0]
 
 
 class RedirectWarning(Exception):
-    """ Warning with a possibility to redirect the user instead of simply
+    """Warning with a possibility to redirect the user instead of simply
     displaying the warning message.
 
     :param str message: exception message and frontend modal content
@@ -50,6 +50,7 @@ class RedirectWarning(Exception):
     :param dict additional_context: parameter passed to action_id.
            Can be used to limit a view to active_ids for example.
     """
+
     def __init__(self, message, action, button_text, additional_context=None):
         super().__init__(message, action, button_text, additional_context)
 
@@ -58,7 +59,8 @@ class RedirectWarning(Exception):
     def name(self):
         warnings.warn(
             "RedirectWarning attribute 'name' is a deprecated alias to args[0]",
-            DeprecationWarning)
+            DeprecationWarning,
+        )
         return self.args[0]
 
 
@@ -78,7 +80,7 @@ class AccessDenied(UserError):
         super().__init__(message)
         self.with_traceback(None)
         self.__cause__ = None
-        self.traceback = ('', '', '')
+        self.traceback = ("", "", "")
 
 
 class AccessError(UserError):
@@ -99,7 +101,7 @@ class CacheMiss(KeyError):
     """
 
     def __init__(self, record, field):
-        super().__init__("%r.%s" % (record, field.name))
+        super().__init__(f"{record!r}.{field.name}")
 
 
 class MissingError(UserError):
@@ -124,17 +126,25 @@ class ValidationError(UserError):
 # removed in the future *without* any further notice than the Deprecation
 # Warning.
 
+
 class except_orm(UserError):
     def __init__(self, name, value=None):
-        warnings.warn("except_orm is a deprecated alias to UserError.", DeprecationWarning)
+        warnings.warn(
+            "except_orm is a deprecated alias to UserError.", DeprecationWarning
+        )
         super().__init__(f"{name}: {value}")
+
 
 class Warning(UserError):
     def __init__(self, *args, **kwargs):
         warnings.warn("Warning is a deprecated alias to UserError.", DeprecationWarning)
         super().__init__(*args, **kwargs)
 
+
 class QWebException(Exception):
     def __init__(self, *args, **kwargs):
-        warnings.warn("qweb.QWebException is the exception you are looking for.", DeprecationWarning)
+        warnings.warn(
+            "qweb.QWebException is the exception you are looking for.",
+            DeprecationWarning,
+        )
         super().__init__(*args, **kwargs)

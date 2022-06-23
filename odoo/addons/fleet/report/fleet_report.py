@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from psycopg2 import sql
 
@@ -10,21 +9,22 @@ class FleetReport(models.Model):
     _name = "fleet.vehicle.cost.report"
     _description = "Fleet Analysis Report"
     _auto = False
-    _order = 'date_start desc'
+    _order = "date_start desc"
 
-    company_id = fields.Many2one('res.company', 'Company', readonly=True)
-    vehicle_id = fields.Many2one('fleet.vehicle', 'Vehicle', readonly=True)
-    name = fields.Char('Vehicle Name', readonly=True)
-    driver_id = fields.Many2one('res.partner', 'Driver', readonly=True)
-    fuel_type = fields.Char('Fuel', readonly=True)
-    date_start = fields.Date('Date', readonly=True)
-    vehicle_type = fields.Selection([('car', 'Car'), ('bike', 'Bike')], readonly=True)
+    company_id = fields.Many2one("res.company", "Company", readonly=True)
+    vehicle_id = fields.Many2one("fleet.vehicle", "Vehicle", readonly=True)
+    name = fields.Char("Vehicle Name", readonly=True)
+    driver_id = fields.Many2one("res.partner", "Driver", readonly=True)
+    fuel_type = fields.Char("Fuel", readonly=True)
+    date_start = fields.Date("Date", readonly=True)
+    vehicle_type = fields.Selection([("car", "Car"), ("bike", "Bike")], readonly=True)
 
-    cost = fields.Float('Cost', readonly=True)
-    cost_type = fields.Selection(string='Cost Type', selection=[
-        ('contract', 'Contract'),
-        ('service', 'Service')
-    ], readonly=True)
+    cost = fields.Float("Cost", readonly=True)
+    cost_type = fields.Selection(
+        string="Cost Type",
+        selection=[("contract", "Contract"), ("service", "Service")],
+        readonly=True,
+    )
 
     def init(self):
         query = """
@@ -152,6 +152,6 @@ FROM (
         tools.drop_view_if_exists(self.env.cr, self._table)
         self.env.cr.execute(
             sql.SQL("""CREATE or REPLACE VIEW {} as ({})""").format(
-                sql.Identifier(self._table),
-                sql.SQL(query)
-            ))
+                sql.Identifier(self._table), sql.SQL(query)
+            )
+        )

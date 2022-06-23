@@ -59,7 +59,7 @@
                                         <div class="col-sm">
                                             <textarea name="description" class="form-control" required="True"/>
                                         </div>
-                                    </div>    
+                                    </div>
                                     <div class="row form-group">
                                         <label class="col-form-label col-sm-auto" for="tags" style="width: 200px">Categories</label>
                                         <div class="col-sm o_website_event_track_proposal_form_tags">
@@ -97,7 +97,7 @@
                                         <div class="col-sm"><textarea name="partner_biography" class="form-control"/></div>
                                     </div>
                                 </div>
-                                <t t-call="website_event_track.event_track_proposal_contact_details"/>   
+                                <t t-call="website_event_track.event_track_proposal_contact_details"/>
                                 <div class="form-group o_form_buttons">
                                     <button type="submit" class="btn btn-primary o_wetrack_proposal_submit_button">Submit Proposal</button>
                                     <span class="o_wetrack_proposal_error_section text-danger d-none ml8">
@@ -159,7 +159,7 @@
             <h4><b>Contact Information</b></h4>
             <div class="form-text text-muted mb16">
                 How can our team get in touch with you?
-            </div> 
+            </div>
             <div class="row form-group">
                 <label class="col-form-label col-sm-auto" style="width: 200px">
                     <span for="contact_name">Name</span>
@@ -175,7 +175,7 @@
                 <label class="col-form-label col-sm-auto" for="contact_phone" style="width: 200px" >Phone</label>
                 <div class="col-sm"><input name="contact_phone" type="text" class="form-control o_wetrack_contact_mean o_wetrack_contact_phone_input"/></div>
             </div>
-        </div> 
+        </div>
     </div>
 </template>
 

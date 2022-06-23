@@ -1,97 +1,146 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.tests import TransactionCase, tagged
 
 
-@tagged('post_install', '-at_install')
+@tagged("post_install", "-at_install")
 class TestDisableSnippetsAssets(TransactionCase):
     def setUp(self):
         super().setUp()
-        self.View = self.env['ir.ui.view']
-        self.WebsiteMenu = self.env['website.menu']
-        self.Website = self.env['website']
-        self.IrAsset = self.env['ir.asset']
+        self.View = self.env["ir.ui.view"]
+        self.WebsiteMenu = self.env["website.menu"]
+        self.Website = self.env["website"]
+        self.IrAsset = self.env["ir.asset"]
 
-        self.homepage = self.View.create({
-            'name': 'Home',
-            'type': 'qweb',
-            'arch_db': HOMEPAGE_OUTDATED,
-            'key': 'website.homepage',
-        })
-        self.mega_menu = self.WebsiteMenu.create({
-            'name': 'Image Gallery V001',
-            'mega_menu_content': MEGA_MENU_UP_TO_DATE,
-        })
+        self.homepage = self.View.create(
+            {
+                "name": "Home",
+                "type": "qweb",
+                "arch_db": HOMEPAGE_OUTDATED,
+                "key": "website.homepage",
+            }
+        )
+        self.mega_menu = self.WebsiteMenu.create(
+            {
+                "name": "Image Gallery V001",
+                "mega_menu_content": MEGA_MENU_UP_TO_DATE,
+            }
+        )
 
         self.initial_active_snippets_assets = self._get_active_snippets_assets()
 
     def test_homepage_outdated_and_mega_menu_up_to_date(self):
         self.Website._disable_unused_snippets_assets()
         # Old snippet with scss and js
-        s_website_form_000_scss = self._get_snippet_asset('s_website_form', '000', 'scss')
-        s_website_form_001_scss = self._get_snippet_asset('s_website_form', '001', 'scss')
-        s_website_form_000_js = self._get_snippet_asset('s_website_form', '000', 'js')
+        s_website_form_000_scss = self._get_snippet_asset(
+            "s_website_form", "000", "scss"
+        )
+        s_website_form_001_scss = self._get_snippet_asset(
+            "s_website_form", "001", "scss"
+        )
+        s_website_form_000_js = self._get_snippet_asset("s_website_form", "000", "js")
         self.assertEqual(s_website_form_000_scss.active, True)
         self.assertEqual(s_website_form_001_scss.active, True)
         self.assertEqual(s_website_form_000_js.active, True)
 
         # Old snippet with scss and scss variables
-        s_masonry_block_000_scss = self._get_snippet_asset('s_masonry_block', '000', 'scss')
-        s_masonry_block_000_variables_scss = self._get_snippet_asset('s_masonry_block', '000_variables', 'scss')
-        s_masonry_block_001_scss = self._get_snippet_asset('s_masonry_block', '001', 'scss')
+        s_masonry_block_000_scss = self._get_snippet_asset(
+            "s_masonry_block", "000", "scss"
+        )
+        s_masonry_block_000_variables_scss = self._get_snippet_asset(
+            "s_masonry_block", "000_variables", "scss"
+        )
+        s_masonry_block_001_scss = self._get_snippet_asset(
+            "s_masonry_block", "001", "scss"
+        )
         self.assertEqual(s_masonry_block_000_scss.active, True)
         self.assertEqual(s_masonry_block_000_variables_scss.active, True)
         self.assertEqual(s_masonry_block_001_scss.active, True)
 
         # New snippet
-        s_image_gallery_000 = self._get_snippet_asset('s_image_gallery', '000', 'scss')
-        s_image_gallery_001 = self._get_snippet_asset('s_image_gallery', '001', 'scss')
+        s_image_gallery_000 = self._get_snippet_asset("s_image_gallery", "000", "scss")
+        s_image_gallery_001 = self._get_snippet_asset("s_image_gallery", "001", "scss")
         self.assertEqual(s_image_gallery_000.active, False)
         self.assertEqual(s_image_gallery_001.active, True)
 
-        unwanted_snippets_assets_changes = set(self.initial_active_snippets_assets) - set(self._get_active_snippets_assets()) - set([s_image_gallery_000.path])
+        unwanted_snippets_assets_changes = (
+            set(self.initial_active_snippets_assets)
+            - set(self._get_active_snippets_assets())
+            - {s_image_gallery_000.path}
+        )
 
         # The vaccuum should not have activated/deactivated any other snippet asset than the original ones
         self.assertEqual(
-          len(unwanted_snippets_assets_changes),
-          0,
-          'Following snippets are not following the snippet versioning system structure, or their previous assets have not been deactivated:\n'
-            + '\n'.join(unwanted_snippets_assets_changes))
+            len(unwanted_snippets_assets_changes),
+            0,
+            "Following snippets are not following the snippet versioning system structure, or their previous assets have not been deactivated:\n"
+            + "\n".join(unwanted_snippets_assets_changes),
+        )
 
     def test_homepage_up_to_date_and_mega_menu_outdated(self):
-        self.homepage.write({
-            'arch_db': HOMEPAGE_UP_TO_DATE,
-        })
-        self.mega_menu.write({
-            'mega_menu_content': MEGA_MENU_OUTDATED,
-        })
+        self.homepage.write(
+            {
+                "arch_db": HOMEPAGE_UP_TO_DATE,
+            }
+        )
+        self.mega_menu.write(
+            {
+                "mega_menu_content": MEGA_MENU_OUTDATED,
+            }
+        )
         self.Website._disable_unused_snippets_assets()
 
-        s_website_form_000_scss = self._get_snippet_asset('s_website_form', '000', 'scss')
-        s_website_form_001_scss = self._get_snippet_asset('s_website_form', '001', 'scss')
-        s_website_form_000_js = self._get_snippet_asset('s_website_form', '000', 'js')
+        s_website_form_000_scss = self._get_snippet_asset(
+            "s_website_form", "000", "scss"
+        )
+        s_website_form_001_scss = self._get_snippet_asset(
+            "s_website_form", "001", "scss"
+        )
+        s_website_form_000_js = self._get_snippet_asset("s_website_form", "000", "js")
         self.assertEqual(s_website_form_000_scss.active, False)
         self.assertEqual(s_website_form_001_scss.active, True)
         self.assertEqual(s_website_form_000_js.active, True)
 
-        s_masonry_block_000_scss = self._get_snippet_asset('s_masonry_block', '000', 'scss')
-        s_masonry_block_000_variables_scss = self._get_snippet_asset('s_masonry_block', '000_variables', 'scss')
-        s_masonry_block_001_scss = self._get_snippet_asset('s_masonry_block', '001', 'scss')
+        s_masonry_block_000_scss = self._get_snippet_asset(
+            "s_masonry_block", "000", "scss"
+        )
+        s_masonry_block_000_variables_scss = self._get_snippet_asset(
+            "s_masonry_block", "000_variables", "scss"
+        )
+        s_masonry_block_001_scss = self._get_snippet_asset(
+            "s_masonry_block", "001", "scss"
+        )
         self.assertEqual(s_masonry_block_000_scss.active, False)
         self.assertEqual(s_masonry_block_000_variables_scss.active, False)
         self.assertEqual(s_masonry_block_001_scss.active, True)
 
-        s_image_gallery_000 = self._get_snippet_asset('s_image_gallery', '000', 'scss')
-        s_image_gallery_001 = self._get_snippet_asset('s_image_gallery', '001', 'scss')
+        s_image_gallery_000 = self._get_snippet_asset("s_image_gallery", "000", "scss")
+        s_image_gallery_001 = self._get_snippet_asset("s_image_gallery", "001", "scss")
         self.assertEqual(s_image_gallery_000.active, True)
         self.assertEqual(s_image_gallery_001.active, True)
 
     def _get_snippet_asset(self, snippet_id, asset_version, asset_type):
-        return self.IrAsset.search([('path', '=', 'website/static/src/snippets/' + snippet_id + '/' + asset_version + '.' + asset_type)], limit=1)
+        return self.IrAsset.search(
+            [
+                (
+                    "path",
+                    "=",
+                    "website/static/src/snippets/"
+                    + snippet_id
+                    + "/"
+                    + asset_version
+                    + "."
+                    + asset_type,
+                )
+            ],
+            limit=1,
+        )
 
     def _get_active_snippets_assets(self):
-        return self.IrAsset.search([('path', 'like', 'snippets'), ('active', '=', True)]).mapped('path')
+        return self.IrAsset.search(
+            [("path", "like", "snippets"), ("active", "=", True)]
+        ).mapped("path")
+
 
 HOMEPAGE_UP_TO_DATE = """
 <t name="Homepage" t-name="website.homepage1">

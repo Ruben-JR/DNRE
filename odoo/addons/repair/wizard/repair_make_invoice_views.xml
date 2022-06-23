@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        
+
         <!--  Make Invoice -->
-        
+
         <record id="view_make_invoice" model="ir.ui.view">
             <field name="name">Make Invoice</field>
             <field name="model">repair.order.make_invoice</field>

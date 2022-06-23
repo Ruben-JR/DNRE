@@ -46,10 +46,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		Support space in IE by reparsing the responseText
 			xmlhttp.responseXML.loadXML(xmlhttp.responseText); ?
 
-		Preprocess: (nice optimization) 
+		Preprocess: (nice optimization)
 			preprocess by flattening all non t- element to a TEXT_NODE.
 			count the number of "\n" in text nodes to give an aproximate LINE NUMBER on elements for error reporting
-			if from IE HTMLDOM use if(a[i].specified) to avoid 88 empty attributes per element during the preprocess, 
+			if from IE HTMLDOM use if(a[i].specified) to avoid 88 empty attributes per element during the preprocess,
 
 		implement t-trim 'left' 'right' 'both', is it needed ? inner=render_trim(l_inner.join(), t_att)
 
@@ -413,7 +413,7 @@ var QWeb = {
         if (e.constructor == String) {
             e = this.load_xml(e);
         }
-        
+
         var ec = e.documentElement ? e.documentElement.childNodes : ( e.childNodes ? e.childNodes : [] );
 
         for (var i = 0; i < ec.length; i++) {
@@ -432,4 +432,3 @@ var QWeb = {
         return "template " + name + " not found";
     }
 };
-

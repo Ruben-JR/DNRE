@@ -8,7 +8,7 @@ import { _t } from "web.core";
  * in the traceback if necessary (Chrome already does it by default, but not
  * other browser. yay for non standard APIs)
  *
- * @param {Error} error 
+ * @param {Error} error
  * @returns {string}
  */
 export function formatTraceback(error) {
@@ -31,8 +31,8 @@ export function formatTraceback(error) {
 * it needs to fetch the sourcemaps for each script involved in the error,
 * then compute the correct file/line numbers and add the information to the
 * correct line.
-* 
-* @param {Error} error 
+*
+* @param {Error} error
 * @returns {Promise<string>}
 */
 export async function annotateTraceback(error) {

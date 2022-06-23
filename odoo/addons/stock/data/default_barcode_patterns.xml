@@ -9,7 +9,7 @@
             <field name="encoding">ean13</field>
             <field name="pattern">21.....{NNDDD}</field>
         </record>
-        
+
         <record id="barcode_rule_package" model="barcode.rule">
             <field name="name">Package barcodes</field>
             <field name="barcode_nomenclature_id" ref="barcodes.default_barcode_nomenclature"/>

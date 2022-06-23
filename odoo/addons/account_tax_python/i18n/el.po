@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* account_tax_python
-# 
+#
 # Translators:
 # Martin Trigaux, 2022
 # Kostas Goutoudis <goutoudis@gmail.com>, 2022
 # 90e8f02d78b92ba12665b5bc7dbb6988_82b10c6, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"

@@ -558,7 +558,7 @@
     </record>
 
     <!--  Company is in Newfoundland and Labrador (default is hst13) -->
-    
+
     <!-- Already created by nb2ab_sale
     <record id="fiscal_position_tax_template_nl2ab_sale_en" model="account.fiscal.position.tax.template">
         <field name="position_id" ref="fiscal_position_template_ab_en"/>
@@ -910,7 +910,7 @@
     </record>
     -->
 
-    <!-- Purchases --> 
+    <!-- Purchases -->
 
     <!-- Already created by intl2nb_purc
     <record id="fiscal_position_tax_template_intl2on_purc_en" model="account.fiscal.position.tax.template">

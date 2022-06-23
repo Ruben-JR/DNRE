@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from . import controllers
@@ -13,4 +12,4 @@ def post_init(cr, registry):
     from odoo import api, SUPERUSER_ID
 
     env = api.Environment(cr, SUPERUSER_ID, {})
-    env['ir.config_parameter'].init(force=True)
+    env["ir.config_parameter"].init(force=True)

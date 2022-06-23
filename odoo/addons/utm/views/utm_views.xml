@@ -70,7 +70,7 @@
             </search>
         </field>
     </record>
-    
+
     <record id="utm_medium_action" model="ir.actions.act_window">
         <field name="name">Mediums</field>
         <field name="res_model">utm.medium</field>

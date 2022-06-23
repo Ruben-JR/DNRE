@@ -94,4 +94,3 @@ Manage your <a href="https://www.odoo.com/app/crm">sales funnel</a> with no
 effort. Attract leads, follow-up on phone calls and meetings. Analyse the
 quality of your leads to make informed decisions and save time by integrating
 emails directly into the application.
-

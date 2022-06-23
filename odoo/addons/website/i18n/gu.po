@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * website
-# 
+#
 # Translators:
 # Martin Trigaux, 2018
 # Ranjit Pillai <rpi@odoo.com>, 2018

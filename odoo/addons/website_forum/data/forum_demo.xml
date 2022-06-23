@@ -79,7 +79,7 @@ The CMS editor in Odoo web is nice but I prefer Drupal for customization and the
             <field name="user_id" ref="base.user_demo"/>
             <field name="vote">1</field>
         </record>
-        
+
         <!-- Run Scheduler -->
         <function model="gamification.challenge" name="_cron_update">
             <value eval="False"/>

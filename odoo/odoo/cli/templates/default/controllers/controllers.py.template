@@ -22,4 +22,3 @@
 #         return http.request.render('{{ mod }}.object', {
 #             'object': obj
 #         })
-

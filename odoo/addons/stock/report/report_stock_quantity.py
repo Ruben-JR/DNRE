@@ -1,26 +1,29 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import fields, models, tools
 
 
 class ReportStockQuantity(models.Model):
-    _name = 'report.stock.quantity'
+    _name = "report.stock.quantity"
     _auto = False
-    _description = 'Stock Quantity Report'
+    _description = "Stock Quantity Report"
 
-    date = fields.Date(string='Date', readonly=True)
-    product_tmpl_id = fields.Many2one('product.template', readonly=True)
-    product_id = fields.Many2one('product.product', string='Product', readonly=True)
-    state = fields.Selection([
-        ('forecast', 'Forecasted Stock'),
-        ('in', 'Forecasted Receipts'),
-        ('out', 'Forecasted Deliveries'),
-    ], string='State', readonly=True)
-    product_qty = fields.Float(string='Quantity', readonly=True)
-    move_ids = fields.One2many('stock.move', readonly=True)
-    company_id = fields.Many2one('res.company', readonly=True)
-    warehouse_id = fields.Many2one('stock.warehouse', readonly=True)
+    date = fields.Date(string="Date", readonly=True)
+    product_tmpl_id = fields.Many2one("product.template", readonly=True)
+    product_id = fields.Many2one("product.product", string="Product", readonly=True)
+    state = fields.Selection(
+        [
+            ("forecast", "Forecasted Stock"),
+            ("in", "Forecasted Receipts"),
+            ("out", "Forecasted Deliveries"),
+        ],
+        string="State",
+        readonly=True,
+    )
+    product_qty = fields.Float(string="Quantity", readonly=True)
+    move_ids = fields.One2many("stock.move", readonly=True)
+    company_id = fields.Many2one("res.company", readonly=True)
+    warehouse_id = fields.Many2one("stock.warehouse", readonly=True)
 
     def init(self):
         """
@@ -35,7 +38,7 @@ class ReportStockQuantity(models.Model):
             - the dest warehouse is kept if the SM is not the duplicated one and is not an interwarehouse
                 OR the SM is the duplicated one and is an interwarehouse
         """
-        tools.drop_view_if_exists(self._cr, 'report_stock_quantity')
+        tools.drop_view_if_exists(self._cr, "report_stock_quantity")
         query = """
 CREATE or REPLACE VIEW report_stock_quantity AS (
 WITH
@@ -57,16 +60,16 @@ WITH
     ),
     all_sm (id, product_id, tmpl_id, product_qty, date, state, company_id, whs_id, whd_id) AS (
         SELECT sm.id, sm.product_id, sm.tmpl_id,
-            CASE 
+            CASE
                 WHEN is_duplicated = 0 THEN sm.product_qty
                 WHEN sm.whs_id IS NOT NULL AND sm.whd_id IS NOT NULL AND sm.whs_id != sm.whd_id THEN sm.product_qty
                 ELSE 0
-            END, 
+            END,
             sm.date, sm.state, sm.company_id,
             CASE WHEN is_duplicated = 0 THEN sm.whs_id END,
-            CASE 
-                WHEN is_duplicated = 0 AND NOT (sm.whs_id IS NOT NULL AND sm.whd_id IS NOT NULL AND sm.whs_id != sm.whd_id) THEN sm.whd_id 
-                WHEN is_duplicated = 1 AND (sm.whs_id IS NOT NULL AND sm.whd_id IS NOT NULL AND sm.whs_id != sm.whd_id) THEN sm.whd_id 
+            CASE
+                WHEN is_duplicated = 0 AND NOT (sm.whs_id IS NOT NULL AND sm.whd_id IS NOT NULL AND sm.whs_id != sm.whd_id) THEN sm.whd_id
+                WHEN is_duplicated = 1 AND (sm.whs_id IS NOT NULL AND sm.whd_id IS NOT NULL AND sm.whs_id != sm.whd_id) THEN sm.whd_id
             END
         FROM
             GENERATE_SERIES(0, 1, 1) is_duplicated,

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from collections import OrderedDict
@@ -7,13 +6,15 @@ from odoo import models, fields
 
 
 class ProductAttribute(models.Model):
-    _inherit = 'product.attribute'
+    _inherit = "product.attribute"
 
-    visibility = fields.Selection([('visible', 'Visible'), ('hidden', 'Hidden')], default='visible')
+    visibility = fields.Selection(
+        [("visible", "Visible"), ("hidden", "Hidden")], default="visible"
+    )
 
 
 class ProductTemplateAttributeLine(models.Model):
-    _inherit = 'product.template.attribute.line'
+    _inherit = "product.template.attribute.line"
 
     def _prepare_single_value_for_display(self):
         """On the product page group together the attribute lines that concern
@@ -26,7 +27,12 @@ class ProductTemplateAttributeLine(models.Model):
         on the order of the attribute lines.
         """
         single_value_lines = self.filtered(lambda ptal: len(ptal.value_ids) == 1)
-        single_value_attributes = OrderedDict([(pa, self.env['product.template.attribute.line']) for pa in single_value_lines.attribute_id])
+        single_value_attributes = OrderedDict(
+            [
+                (pa, self.env["product.template.attribute.line"])
+                for pa in single_value_lines.attribute_id
+            ]
+        )
         for ptal in single_value_lines:
             single_value_attributes[ptal.attribute_id] |= ptal
         return single_value_attributes

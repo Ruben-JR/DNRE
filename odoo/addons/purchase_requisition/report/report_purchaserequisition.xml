@@ -67,7 +67,7 @@
                             </tbody>
                         </table>
                     </t>
-                    
+
                     <t t-if="o.purchase_ids">
                         <h3>Requests for Quotation Details</h3>
                         <table class="table table-sm">

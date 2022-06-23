@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo.http import Controller, request, route
@@ -14,6 +13,7 @@ class TestBusController(Controller):
     in test mode, we need to mock a 'message added' notification that is normally triggered by the bus.
     In Normal mode, the bus triggers itself the notification.
     """
-    @route('/bus/test_mode_activated', type="json", auth="public")
+
+    @route("/bus/test_mode_activated", type="json", auth="public")
     def is_test_mode_activated(self):
         return request.registry.in_test_mode()

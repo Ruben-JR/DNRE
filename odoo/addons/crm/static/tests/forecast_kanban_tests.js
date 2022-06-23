@@ -52,7 +52,7 @@ QUnit.module('Crm Forecast Model Extension', {
                 },
             },
             groupBy: ['date_deadline'],
-            
+
         };
         this.unPatchDate = testUtils.mock.patchDate(2021, 1, 10, 0, 0, 0);
     },
@@ -173,7 +173,7 @@ QUnit.module('Crm Fill Temporal Service', {
 
 }, function () {
     /**
-     * Since mock_server does not support fill_temporal, 
+     * Since mock_server does not support fill_temporal,
      * we only check the domain and the context sent to the read_group, as well
      * as the end value of the FillTemporal Service after the read_group (which should have been updated in the model)
      */
@@ -214,7 +214,7 @@ QUnit.module('Crm Fill Temporal Service', {
     });
 
     /**
-     * Since mock_server does not support fill_temporal, 
+     * Since mock_server does not support fill_temporal,
      * we only check the domain and the context sent to the read_group, as well
      * as the end value of the FillTemporal Service after the read_group (which should have been updated in the model)
      */
@@ -227,7 +227,7 @@ QUnit.module('Crm Fill Temporal Service', {
             {id: 3, name: 'Lead 3', date_deadline: '2027-11-01'},
         ];
         this.testKanbanView.groupBy = ['date_deadline:year'];
-        this.testKanbanView.archs["crm.lead,false,search"] = 
+        this.testKanbanView.archs["crm.lead,false,search"] =
             this.testKanbanView.archs["crm.lead,false,search"].replace("'date_deadline'", "'date_deadline:year'");
         this.testKanbanView.mockRPC = function (route, args) {
             if (route === '/web/dataset/call_kw/crm.lead/web_read_group') {

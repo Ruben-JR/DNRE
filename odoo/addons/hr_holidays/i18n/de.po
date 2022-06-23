@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* hr_holidays
-# 
+#
 # Translators:
 # Chris Egal <sodaswed@web.de>, 2021
 # Martin Trigaux, 2021
@@ -12,7 +12,7 @@
 # Daniel Waldmann, 2022
 # Christian Kubicki, 2022
 # Friederike Fasterling-Nesselbosch, 2022
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"

@@ -430,7 +430,7 @@
             this.element.on({
                 'click.daterangepicker': $.proxy(this.show, this),
                 // odoo cutomization, to align behavior of the daterange widget with the date picker one
-                // 'focus.daterangepicker': $.proxy(this.show, this), 
+                // 'focus.daterangepicker': $.proxy(this.show, this),
                 'keyup.daterangepicker': $.proxy(this.elementChanged, this),
                 'keydown.daterangepicker': $.proxy(this.keydown, this) //IE 11 compatibility
             });

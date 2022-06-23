@@ -1,5 +1,5 @@
 <odoo>
-    <data>        
+    <data>
         <record id="l10n_eg_res_partner_1" model="res.partner">
             <field name="name">Egyptian Furniture</field>
             <field eval="[Command.set([ref('base.res_partner_category_14'), ref('base.res_partner_category_12')])]" name="category_id"/>

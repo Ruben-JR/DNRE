@@ -96,4 +96,3 @@ registerNewModel('test.address', factoryAddress);
 registerNewModel('test.contact', factoryContact);
 registerNewModel('test.hobby', factoryHobby);
 registerNewModel('test.task', factoryTask);
-

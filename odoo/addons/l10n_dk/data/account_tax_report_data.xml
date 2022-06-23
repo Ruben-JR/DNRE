@@ -38,7 +38,7 @@
         <field name="parent_id" ref="l10n_dk.account_tax_report_line_sales_group"/>
         <field name="report_id" ref="account_tax_report_skat_dk"/>
     </record>
-    
+
     <!--  Deduction VAT  -->
     <record id="account_tax_report_line_deduction_group" model="account.tax.report.line">
         <field name="name">Fradrag</field>

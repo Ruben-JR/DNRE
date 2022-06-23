@@ -27,28 +27,28 @@
             <Año falló="agüero">
                 <span>aaa</span>
                 <span>foo default</span>
-                
+
                 <span>bbb</span>
             </Año>
-        
+
             <span>5</span>
             <Año falló="agüero">
                 <span>aaa</span>
                 <span>foo default</span>
-                
+
                 <span>bbb</span>
             </Año>
-        
+
             <span>6</span>
             <Año falló="agüero">
                 <span>aaa</span>
                 <span>foo default</span>
-                
+
                 <span>bbb</span>
             </Año>
-        
+
         <div>toto default</div>
-        
+
         <div><i truc="True">i</i></div>
     ]]></result>
 </templates>

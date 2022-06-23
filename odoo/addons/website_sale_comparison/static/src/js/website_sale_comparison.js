@@ -303,7 +303,7 @@ publicWidget.registry.ProductComparison = publicWidget.Widget.extend(cartHandler
         const $form = $(ev.currentTarget);
         const cellIndex = $(ev.currentTarget).closest('td')[0].cellIndex;
         this.getCartHandlerOptions(ev);
-        // Override product image container for animation. 
+        // Override product image container for animation.
         this.$itemImgContainer = this.$('#o_comparelist_table tr').first().find('td').eq(cellIndex);
         const $inputProduct = $form.find('input[type="hidden"][name="product_id"]').first();
         const productId = parseInt($inputProduct.val());

@@ -1,4 +1,4 @@
-/* 
+/*
 WebGLImageFilter - MIT Licensed
 
 2013, Dominic Szablewski - phoboslab.org
@@ -73,7 +73,7 @@ var WebGLImageFilter = window.WebGLImageFilter = function (params) {
 	if (!params)
 		params = { };
 
-	var 
+	var
 		gl = null,
 		_drawCount = 0,
 		_sourceTexture = null,
@@ -81,7 +81,7 @@ var WebGLImageFilter = window.WebGLImageFilter = function (params) {
 		_currentFramebufferIndex = -1,
 		_tempFramebuffers = [null, null],
 		_filterChain = [],
-		_width = -1, 
+		_width = -1,
 		_height = -1,
 		_vertexBuffer = null,
 		_currentProgram = null,
@@ -95,7 +95,7 @@ var WebGLImageFilter = window.WebGLImageFilter = function (params) {
 		throw "Couldn't get WebGL context";
 	}
 
-	
+
 	this.addFilter = function( name ) {
 		var args = Array.prototype.slice.call(arguments, 1);
 		var filter = _filter[name];
@@ -106,7 +106,7 @@ var WebGLImageFilter = window.WebGLImageFilter = function (params) {
 	this.reset = function() {
 		_filterChain = [];
 	};
-	
+
 	this.apply = function( image ) {
 		_resize( image.width, image.height );
 		_drawCount = 0;
@@ -119,7 +119,7 @@ var WebGLImageFilter = window.WebGLImageFilter = function (params) {
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
-		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST); 
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
 		gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
 
 		// No filters? Just draw
@@ -170,8 +170,8 @@ var WebGLImageFilter = window.WebGLImageFilter = function (params) {
 	};
 
 	var _getTempFramebuffer = function( index ) {
-		_tempFramebuffers[index] = 
-			_tempFramebuffers[index] || 
+		_tempFramebuffers[index] =
+			_tempFramebuffers[index] ||
 			_createFramebufferTexture( _width, _height );
 
 		return _tempFramebuffers[index];
@@ -202,7 +202,7 @@ var WebGLImageFilter = window.WebGLImageFilter = function (params) {
 	};
 
 	var _draw = function( flags ) {
-		var source = null, 
+		var source = null,
 			target = null,
 			flipY = false;
 
@@ -308,7 +308,7 @@ var WebGLImageFilter = window.WebGLImageFilter = function (params) {
 		var shader = (1==m[18]&&0==m[3]&&0==m[8]&&0==m[13]&&0==m[15]&&0==m[16]&&0==m[17]&&0==m[19])
 			? _filter.colorMatrix.SHADER.WITHOUT_ALPHA
 			: _filter.colorMatrix.SHADER.WITH_ALPHA;
-		
+
 		var program = _compileShader(shader);
 		gl.uniform1fv(program.uniform.m, m);
 		_draw();
@@ -372,7 +372,7 @@ var WebGLImageFilter = window.WebGLImageFilter = function (params) {
 	_filter.contrast = function( amount ) {
 		var v = (amount || 0) + 1;
 		var o = -128 * (v-1);
-		
+
 		_filter.colorMatrix([
 			v, 0, 0, 0, o,
 			0, v, 0, 0, o,

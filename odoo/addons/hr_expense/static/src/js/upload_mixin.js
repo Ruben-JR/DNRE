@@ -38,7 +38,7 @@ var DocumentUploadMixin = {
         var attachent_ids = attachments.reduce(function(filtered, record) {
             if (record.id) {
                 filtered.push(record.id);
-            } 
+            }
             return filtered;
         }, []);
         if (!attachent_ids.length) {

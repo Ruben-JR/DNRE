@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * resource
-# 
+#
 # Translators:
 # Martin Trigaux, 2018
 # Jay Vora <jay.vora@serpentcs.com>, 2018

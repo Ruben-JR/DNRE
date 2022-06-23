@@ -28,7 +28,7 @@
         </field>
     </record>
 
-    
+
     <record id="badge_list_view" model="ir.ui.view">
         <field name="name">Badge List</field>
         <field name="model">gamification.badge</field>

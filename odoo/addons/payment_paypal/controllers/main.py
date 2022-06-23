@@ -15,15 +15,19 @@ _logger = logging.getLogger(__name__)
 
 
 class PaypalController(http.Controller):
-    _return_url = '/payment/paypal/dpn/'
-    _notify_url = '/payment/paypal/ipn/'
+    _return_url = "/payment/paypal/dpn/"
+    _notify_url = "/payment/paypal/ipn/"
 
     @http.route(
-        _return_url, type='http', auth='public', methods=['GET', 'POST'], csrf=False,
-        save_session=False
+        _return_url,
+        type="http",
+        auth="public",
+        methods=["GET", "POST"],
+        csrf=False,
+        save_session=False,
     )
     def paypal_dpn(self, **data):
-        """ Route used by the PDT notification.
+        """Route used by the PDT notification.
 
         The "PDT notification" is actually POST data sent along the user redirection.
         The route also allows the GET method in case the user clicks on "go back to merchant site".
@@ -43,16 +47,18 @@ class PaypalController(http.Controller):
             try:
                 notification_data = self._validate_pdt_data_authenticity(**data)
             except ValidationError:
-                _logger.exception("could not verify the origin of the PDT; discarding it")
+                _logger.exception(
+                    "could not verify the origin of the PDT; discarding it"
+                )
             else:
-                request.env['payment.transaction'].sudo()._handle_feedback_data(
-                    'paypal', notification_data
+                request.env["payment.transaction"].sudo()._handle_feedback_data(
+                    "paypal", notification_data
                 )
 
-        return request.redirect('/payment/status')
+        return request.redirect("/payment/status")
 
     def _validate_pdt_data_authenticity(self, **data):
-        """ Validate the authenticity of PDT data and return the retrieved notification data.
+        """Validate the authenticity of PDT data and return the retrieved notification data.
 
         The validation is done in four steps:
 
@@ -70,66 +76,87 @@ class PaypalController(http.Controller):
         :return: The retrieved notification data
         :raise ValidationError: if the authenticity could not be verified
         """
-        if 'tx' not in data:  # We did not receive PDT data but directly notification data
+        if (
+            "tx" not in data
+        ):  # We did not receive PDT data but directly notification data
             # When PDT is not enabled, PayPal sends directly the notification data instead. We can't
             # verify them but we can process them as is.
             notification_data = data
         else:
-            acquirer_sudo = request.env['payment.transaction'].sudo()._get_tx_from_feedback_data(
-                'paypal', data
-            ).acquirer_id
-            if not acquirer_sudo.paypal_pdt_token:  # We received PDT data but can't verify them
-                raise ValidationError("PayPal: The PDT token is not set; cannot verify data origin")
+            acquirer_sudo = (
+                request.env["payment.transaction"]
+                .sudo()
+                ._get_tx_from_feedback_data("paypal", data)
+                .acquirer_id
+            )
+            if (
+                not acquirer_sudo.paypal_pdt_token
+            ):  # We received PDT data but can't verify them
+                raise ValidationError(
+                    "PayPal: The PDT token is not set; cannot verify data origin"
+                )
             else:  # The PayPal account is configured to receive PDT data, and the PDT token is set
                 # Request a PDT data authenticity check and the notification data to PayPal
                 url = acquirer_sudo._paypal_get_api_url()
                 payload = {
-                    'cmd': '_notify-synch',
-                    'tx': data['tx'],
-                    'at': acquirer_sudo.paypal_pdt_token,
+                    "cmd": "_notify-synch",
+                    "tx": data["tx"],
+                    "at": acquirer_sudo.paypal_pdt_token,
                 }
                 try:
                     response = requests.post(url, data=payload, timeout=10)
                     response.raise_for_status()
                 except (ConnectionError, HTTPError):
-                    raise ValidationError("PayPal: Encountered an error when verifying PDT origin")
+                    raise ValidationError(
+                        "PayPal: Encountered an error when verifying PDT origin"
+                    )
                 else:
-                    notification_data = self._parse_pdt_validation_response(response.text)
+                    notification_data = self._parse_pdt_validation_response(
+                        response.text
+                    )
                     if notification_data is None:
-                        raise ValidationError("PayPal: The PDT origin was not verified by PayPal")
+                        raise ValidationError(
+                            "PayPal: The PDT origin was not verified by PayPal"
+                        )
 
         return notification_data
 
     @staticmethod
     def _parse_pdt_validation_response(response_content):
-        """ Parse the validation response and return the parsed notification data.
+        """Parse the validation response and return the parsed notification data.
 
         :param str response_content: The PDT validation request response
         :return: The parsed notification data
         :rtype: dict
         """
         response_items = response_content.splitlines()
-        if response_items[0] == 'SUCCESS':
+        if response_items[0] == "SUCCESS":
             notification_data = {}
             for notification_data_param in response_items[1:]:
-                key, raw_value = notification_data_param.split('=', 1)
+                key, raw_value = notification_data_param.split("=", 1)
                 notification_data[key] = urls.url_unquote_plus(raw_value)
             return notification_data
         return None
 
-    @http.route(_notify_url, type='http', auth='public', methods=['GET', 'POST'], csrf=False)
+    @http.route(
+        _notify_url, type="http", auth="public", methods=["GET", "POST"], csrf=False
+    )
     def paypal_ipn(self, **data):
-        """ Route used by the IPN. """
+        """Route used by the IPN."""
         _logger.info("beginning IPN with post data:\n%s", pprint.pformat(data))
         try:
             self._validate_ipn_data_authenticity(**data)
-            request.env['payment.transaction'].sudo()._handle_feedback_data('paypal', data)
+            request.env["payment.transaction"].sudo()._handle_feedback_data(
+                "paypal", data
+            )
         except ValidationError:  # Acknowledge the notification to avoid getting spammed
-            _logger.exception("unable to handle the IPN data; skipping to acknowledge the notif")
-        return ''
+            _logger.exception(
+                "unable to handle the IPN data; skipping to acknowledge the notif"
+            )
+        return ""
 
     def _validate_ipn_data_authenticity(self, **data):
-        """ Validate the authenticity of IPN data.
+        """Validate the authenticity of IPN data.
 
         The verification is done in three steps:
 
@@ -144,28 +171,32 @@ class PaypalController(http.Controller):
         :return: None
         :raise ValidationError: if the authenticity could not be verified
         """
-        tx_sudo = request.env['payment.transaction'].sudo()._get_tx_from_feedback_data(
-            'paypal', data
+        tx_sudo = (
+            request.env["payment.transaction"]
+            .sudo()
+            ._get_tx_from_feedback_data("paypal", data)
         )
         acquirer_sudo = tx_sudo.acquirer_id
 
         # Request PayPal for an authenticity check
-        data['cmd'] = '_notify-validate'
+        data["cmd"] = "_notify-validate"
         response = requests.post(acquirer_sudo._paypal_get_api_url(), data, timeout=60)
         response.raise_for_status()
 
         # Inspect the response code and raise if not 'VERIFIED'.
         response_code = response.text
-        if response_code == 'VERIFIED':
+        if response_code == "VERIFIED":
             _logger.info("authenticity of notification data verified")
         else:
-            if response_code == 'INVALID':
-                error_message = "PayPal: " + _("Notification data were not acknowledged.")
+            if response_code == "INVALID":
+                error_message = "PayPal: " + _(
+                    "Notification data were not acknowledged."
+                )
             else:
                 error_message = "PayPal: " + _(
                     "Received unrecognized authentication check response code: received %s, "
                     "expected VERIFIED or INVALID.",
-                    response_code
+                    response_code,
                 )
             tx_sudo._set_error(error_message)
             raise ValidationError(error_message)

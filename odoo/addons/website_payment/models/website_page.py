@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import models
 
 
 class Page(models.Model):
-    _inherit = 'website.page'
+    _inherit = "website.page"
 
     @classmethod
     def _get_cached_blacklist(cls):

@@ -65,13 +65,13 @@ This path puts us uniquely equipped to lead projects implementation, training an
     <record id="base.res_partner_2" model="res.partner">
         <field name="website_short_description">Agrolait is a specialized service provider for 10 years in the implementation of open source ERP , BI and e-commerce solutions. Audaxis has 100 employees based in France , Belgium, Luxembourg and Switzerland. Building on 20 years of...</field>
         <field name="website_description"><![CDATA[Agrolait is a specialized service provider for 10 years in the implementation of open source ERP , BI and e- commerce solutions. Audaxis has 100 employees based in France , Belgium, Luxembourg and Switzerland.<br /> <br />
- 
+
 Building on 20 years of experience in ERP solutions , our consultants combine technological expertise , application and business to bring you informed throughout your Odoo project board.<br /> <br />
- 
+
 Our project methodology , designed for SMEs / SMIs , is a quality assurance guarantee : architecture , installation, integration , customization, training , project management , support, maintenance , and migration , our commitment to you is total.<br /> <br />
 
 Premium Partner PTC Agrolait is certified by Odoo to provide functional and technical training in France and Tunisia. <br /> <br />
- 
+
 We operate in several sectors : distribution, retail , industry, services , associations, with strong expertise in the supply chain management (SCM) and the specific accounting for the Belgian and French markets . With its cluster of web expertise , Agrolait makes you benefit from the best advice in Odoo integration with portals .]]></field>
     </record>
 
@@ -98,7 +98,7 @@ With OpenCorp, you are guaranteed a controlled implementation of an operational 
     <record id="base.res_partner_2" model="res.partner">
         <field name="website_short_description">Míng is a consulting firm with expertise in Finance and in Business Intelligence. (1) Outsourced financial director: implementation of flexible and customized data management system, financial reporting and KPI for an...</field>
         <field name="website_description"><![CDATA[Míng is a consulting firm with expertise in Finance and in Business Intelligence.<br />
- 
+
 (1) <b>Outsourced financial director: </b>implementation of flexible and customized data management system, financial reporting and KPI for an easy decision making process. <br />
 
 (2) <b>Outsourced financial task force: </b>set-up of business plan, zero budget, company valuation, audits on internal controlling. <br />
@@ -163,7 +163,7 @@ Above all, you need reliable and professional advisors who will listen to your c
     <record id="base.res_partner_3" model="res.partner">
         <field name="website_short_description">Luminous is a technology company, dynamic, innovative and agile Business Management develops solutions through its own system of Artificial Intelligence "NEUROVIP" NEUROVIP convie is a system that...</field>
         <field name="website_description"><![CDATA[<p style="padding-left:15px;">Luminous is a technology company, dynamic, innovative and agile Business Management develops solutions through its own system of Artificial Intelligence "NEUROVIP".<br/> <br/>NEUROVIP is a system that converts data from Enterprise Management tools (ERP's, CRM's, DMS's, GMP's, etc..) Into relevant information for Strategic Decision Making Company.<br/> <br/>
- 
+
 Luminous with its own artificial intelligence system "NEUROVIP" addresses all types of organizations, whether public or private sector.
  <br/> <br/>
 Its usefulness is that strategic decisions in a timely and efficient manner to achieve business competitiveness to globalization and its environment.
@@ -191,9 +191,9 @@ Founded in 2006, our clients range from SMEs to globally recognised brands and p
     <record id="base.res_partner_3" model="res.partner">
         <field name="website_short_description">Millennium Industries is a London based Odoo partner.  Their specialist areas include accounting, CRM, manufacturing, stock, logistics, and supply chain management.  The company has completed over 15 projects with intric...</field>
         <field name="website_description"><![CDATA[Millennium Industries is a London based Odoo partner.  Their specialist areas include accounting, CRM, manufacturing, stock, logistics, and supply chain management.  The company has completed over 15 projects with intricate consolidation and stock-accounting requirements for which they can provide references. <br/> <br/>
- 
+
 Millennium Industries have developed several accounting modules for Odoo and are the leading experts in the UK for this area.  Additionally, a forefront success story of theirs is the nominal level data migrations from Sage Line 50 to Odoo that allows unprecedented efficiency in system switchover. <br/> <br/>
- 
+
 Last but not least, Millennium Industries is the only UK partner with their own Europe-based fully staffed development centre, aimed to deliver to the exact client specification projects of any complexity. <br/> <br/>
 Please contact Millennium Industries direct to discuss your business requirement and the company would be delighted to help.]]></field>
     </record>
@@ -211,7 +211,7 @@ Implementations of feature rich, extensible, and cost-effective Open Source soft
 <li>A highly-responsive support model </li>
 <li>A strategy that drives US Localization and adds new capabilities to Odoo </li>
 </ul><br/><br/>
- 
+
 The Jackson Group’s Odoo consulting services include: <br/>
 <ul> <li>
 Roadmap Development </li>

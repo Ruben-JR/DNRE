@@ -1,11 +1,11 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* google_recaptcha
-# 
+#
 # Translators:
 # cafonso <cafonso62@gmail.com>, 2021
 # Reinaldo Ramos <reinaldo.ramos@arxi.pt>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server saas~14.4\n"
