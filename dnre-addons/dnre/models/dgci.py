@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class dgci_doc(models.Model):
@@ -14,6 +14,19 @@ class dgci_doc(models.Model):
     tc = fields.Integer(string="TC")
     r = fields.Char(string="Regime")
     dgci = fields.One2many("dnre.dgci", string="DGCI lines", readonly="True")
+
+    # @api.depends("nc")
+    # def init(self):
+    #    self._cr.execute(
+    #        """
+    #        CREATE OR REPLACE VIEW dnre_dgci_doc AS(
+    #            SELECT row_number() over () AS id,
+    #            sol.nc, sol.dc, sol.ca, sol.da, sol.mr, sol.tc, sol.r, sol.dga
+    #            FROM dnre.dgci_doc sol
+    #            LEFT JOIN dnre_dga so ON (so.id = dga_id)
+    #        )
+    #    """
+    #    )
 
 
 class dgci(models.Model):
