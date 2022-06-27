@@ -15,19 +15,6 @@ class dga_doc(models.Model):
     r = fields.Char(string="Regime")
     dga = fields.One2many("dnre.dga", "dga_id", string="DGA Lines", readonly="True")
 
-    # @api.depends("nc")
-    # def init(self):
-    #    self._cr.execute(
-    #        """
-    #        CREATE OR REPLACE VIEW dnre_dga_doc AS(
-    #            SELECT row_number() over () AS id,
-    #            sol.nc, sol.dc, sol.ca, sol.da, sol.mr, sol.tc, sol.r, sol.dga
-    #            FROM dnre_dga_doc sol
-    #            LEFT JOIN dnre_dga so ON (so.id = dga_id)
-    #        )
-    #    """
-    #    )
-
 
 class dga(models.Model):
     _name = "dnre.dga"

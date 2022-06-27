@@ -39,7 +39,7 @@
       </field>
     </record>
 
-    <!--TODO: explicit list view definition -->
+    <!-- explicit list view definition -->
     <record model="ir.ui.view" id="dnre.list_dga">
       <field name="name">dnre dga list</field>
       <field name="model">dnre.dga_doc</field>
