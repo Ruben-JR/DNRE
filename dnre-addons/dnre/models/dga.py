@@ -1,4 +1,4 @@
-from odoo import models, fields, api, tools
+from odoo import models, fields
 
 
 class dga_doc(models.Model):
@@ -13,7 +13,7 @@ class dga_doc(models.Model):
     mr = fields.Date(string="MR")
     tc = fields.Integer(string="TC")
     r = fields.Char(string="Regime")
-    dga = fields.One2many("dnre.dga", string="DGA Lines", readonly="True")
+    dga = fields.One2many("dnre.dga", "dga_id", string="DGA Lines", readonly="True")
 
     # @api.depends("nc")
     # def init(self):
@@ -33,7 +33,7 @@ class dga(models.Model):
     _name = "dnre.dga"
     _description = "DGA Funcionarios"
 
-    dga_id = fields.Many2one(string="dga", readonly="True")
+    dga_id = fields.Many2one("dnre.dga_doc", string="dga", readonly="True")
     nums = fields.Integer(string="Nº segurado", required=True)
     ns = fields.Char(string="Nome segurado", required=True)
     cp = fields.Char(string="CP")

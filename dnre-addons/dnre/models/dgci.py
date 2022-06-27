@@ -13,7 +13,7 @@ class dgci_doc(models.Model):
     mr = fields.Date(string="MR")
     tc = fields.Integer(string="TC")
     r = fields.Char(string="Regime")
-    dgci = fields.One2many("dnre.dgci", string="DGCI lines", readonly="True")
+    dgci = fields.One2many("dnre.dgci", "dgci_id", string="DGCI lines", readonly="True")
 
     # @api.depends("nc")
     # def init(self):
@@ -33,7 +33,7 @@ class dgci(models.Model):
     _name = "dnre.dgci"
     _description = "DGCI Funcionarios"
 
-    dgci_id = fields.Many2one(string="dgci", readonly="True")
+    dgci_id = fields.Many2one("dnre.dgci_doc", string="dgci", readonly="True")
     nums = fields.Integer(string="Nº segurado", required=True)
     ns = fields.Char(string="Nome segurado", required=True)
     cp = fields.Char(string="CP")
