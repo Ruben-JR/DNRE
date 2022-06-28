@@ -20,7 +20,7 @@ class dga(models.Model):
     _name = "dnre.dga"
     _description = "DGA Funcionarios"
 
-    dga_id = fields.Many2one("dnre.dga_doc", string="dga", readonly="True")
+    dga_id = fields.Many2one(string="dga", readonly="True")
     nums = fields.Integer(string="Nº segurado", required=True)
     ns = fields.Char(string="Nome segurado", required=True)
     cp = fields.Char(string="CP")
