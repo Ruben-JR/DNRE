@@ -20,7 +20,7 @@ class dgci(models.Model):
     _name = "dnre.dgci"
     _description = "DGCI Funcionarios"
 
-    dgci_id = fields.Many2one("dnre.dgci_doc", string="dgci", readonly="True")
+    dgci_id = fields.Many2one(string="dgci", readonly="True")
     nums = fields.Integer(string="Nº segurado", required=True)
     ns = fields.Char(string="Nome segurado", required=True)
     cp = fields.Char(string="CP")
