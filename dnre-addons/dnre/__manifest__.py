@@ -18,8 +18,7 @@
     # always loaded
     "data": [
         "security/ir.model.access.csv",
-        "views/dga.xml",
-        "views/dgci.xml",
+        "views/fos.xml",
         "views/templates.xml",
     ],
     # only loaded in demonstration mode
