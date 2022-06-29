@@ -6,7 +6,7 @@
     <menuitem name="DNRE" id="dnre.menu_root" />
 
     <!-- menu categories -->
-    <menuitem name="FOS" id="dnre.menu_1" parent="dnre.menu_root" />
+    <menuitem name="FOS" id="dnre.menu_1" parent="dnre.menu_root" action="dnre.action_fos"/>
 
      <!-- actions opening views on models -->
      <record model="ir.actions.act_window" id="dnre.action_fos">
