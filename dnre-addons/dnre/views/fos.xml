@@ -8,27 +8,17 @@
     <!-- menu categories -->
     <menuitem name="FOS" id="dnre.menu_1" parent="dnre.menu_root" />
 
-    <!-- actions -->
-    <menuitem name="DGA" id="dnre.menu_1_list" parent="dnre.menu_1" action="dnre.action_dga" />
-    <menuitem name="DGCI" id="dnre.menu_2_list" parent="dnre.menu_1" action="dnre.action_dgci" />
-
-    <!-- actions opening views on models -->
-    <record model="ir.actions.act_window" id="dnre.action_dga">
+     <!-- actions opening views on models -->
+     <record model="ir.actions.act_window" id="dnre.action_fos">
       <field name="name">Folha de Orçamento Salarial</field>
-      <field name="res_model">dnre.dga_doc</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-
-    <record model="ir.actions.act_window" id="dnre.action_dgci">
-      <field name="name">Folha de Orçamento Salarial</field>
-      <field name="res_model">dnre.dgci_doc</field>
+      <field name="res_model">dnre.fos</field>
       <field name="view_mode">tree,form</field>
     </record>
 
     <!-- server action to the one above -->
     <record model="ir.actions.server" id="dnre.action_server">
       <field name="name">dnre server</field>
-      <field name="model_id" ref="model_dnre_dgci_doc" />
+      <field name="model_id" ref="model_dnre_fos" />
       <field name="state">code</field>
       <field name="code">
         action = {
@@ -40,9 +30,9 @@
     </record>
 
     <!-- explicit list view definition -->
-    <record model="ir.ui.view" id="dnre.list_dgci">
-      <field name="name">dnre dgci list</field>
-      <field name="model">dnre.dgci_doc</field>
+    <record model="ir.ui.view" id="dnre.list_fos">
+      <field name="name">dnre fos list</field>
+      <field name="model">dnre.fos</field>
       <field name="arch" type="xml">
         <form>
           <group string="Informação do documento">
@@ -57,8 +47,23 @@
             </group>
           </group>
           <notebook>
+            <page string="Funcionários DGA">
+              <field name="dga_ids">
+                <tree>
+                  <field name="nums" />
+                  <field name="ns" />
+                  <field name="cp" />
+                  <field name="pc" />
+                  <field name="ndt" />
+                  <field name="sl" />
+                  <field name="cs" />
+                  <field name="cf" />
+                  <field name="cep" />
+                </tree>
+              </field>
+            </page>
             <page string="Funcionários DGCI">
-              <field name="dgci">
+              <field name="dgci_ids">
                 <tree>
                   <field name="nums" />
                   <field name="ns" />
