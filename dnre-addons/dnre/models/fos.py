@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class fos(models.Model):
@@ -18,20 +18,22 @@ class fos(models.Model):
         "dnre.dgci", "dgci_id", string="DGCI lines", readonly="True"
     )
 
-    def init(self):
-        self._cr.execute(
+    @api.model
+    def __init__(self):
+        self.env.cr.execute(
             """
-            CREATE OR REPLACE VIEW dnre_fos AS (
-                SELECT row_number() OVER() as id,
-                so.nums as nums, so.ns as ns, so.cp as cp, so.pc as pc, so.ndt as ndt, so.sl as sl, so.cs as cs, so.cf as cf, so.cep as cep, so.dga.id as dga_ids, so.dgci.id = dgci_ids
-                FROM dnre_fos
-                JOIN dnre_dga ON so.dga_ids = dga.id
-                JOIN dnre_dgci ON so dgci_ids = dgci.id
-            )
+            SELECT fos.nc, fos.dc, fos.ca, fos.da, fos.mr, fos.tc, fos.r
+            FROM dnre.fos AS fos,
+            INNER JOIN dnre.dga AS dga
+            ON fos.dga_ids = dga.dga_id
+            INNER JOIN dnre.dgci AS dgci
+            ON fos.dgci_ids = dgci.dgci_ids
         """
         )
+        self.env.cr.fetchall()
 
 
+# fos.nc as nc, fos.dc as dc, fos.ca as ca, fos.da as da, fos.mr as mr, fos.tc as tc, fos.r as r
 class dga(models.Model):
     _name = "dnre.dga"
     _description = "DGA Funcionarios"
@@ -46,19 +48,6 @@ class dga(models.Model):
     cf = fields.Integer(string="CF")
     cep = fields.Integer(string="CEP")
     dga_id = fields.Many2one("dnre.fos", string="dga", readonly="True")
-
-    def init(self):
-        self._cr.execute(
-            """
-            CREATE OR REPLACE VIEW dnre_dga AS (
-                SELECT row_number() OVER() as id,
-                so.nums as nums, so.ns as ns, so.cp as cp, so.pc as pc, so.ndt as ndt, so.sl as sl, so.cs as cs, so.cf as cf, so.cep as cep, so.dga.id as dga_ids, so.dgci.id = dgci_ids
-                FROM dnre_fos
-                JOIN dnre_fos ON so.dga_ids = dga.id
-                JOIN dnre_dgci ON so dgci_ids = dgci.id
-            )
-        """
-        )
 
 
 class dgci(models.Model):
@@ -76,15 +65,16 @@ class dgci(models.Model):
     cep = fields.Integer(string="CEP")
     dgci_id = fields.Many2one("dnre.fos", string="dgci", readonly="True")
 
-    def init(self):
-        self._cr.execute(
-            """
-            CREATE OR REPLACE VIEW dnre_dgci AS (
-                SELECT row_number() OVER() as id,
-                so.nums as nums, so.ns as ns, so.cp as cp, so.pc as pc, so.ndt as ndt, so.sl as sl, so.cs as cs, so.cf as cf, so.cep as cep, so.dga.id as dga_ids, so.dgci.id = dgci_ids
-                FROM dnre_fos
-                JOIN dnre_dga ON so.dga_ids = dga.id
-                JOIN dnre_dgci ON so dgci_ids = dgci.id
-            )
-        """
-        )
+
+#   def init(self):
+#       self._cr.execute(
+#           """
+#           CREATE OR REPLACE VIEW dnre_fos AS (
+#               SELECT row_number() OVER() as id,
+#               so.nums as nums, so.ns as ns, so.cp as cp, so.pc as pc, so.ndt as ndt, so.sl as sl, so.cs as cs, so.cf as cf, so.cep as cep, so.dga.id as dga_ids, so.dgci.id = dgci_ids
+#               FROM dnre_fos
+#               JOIN dnre_dga ON so.dga_ids = dga.id
+#               JOIN dnre_dgci ON so dgci_ids = dgci.id
+#           )
+#       """
+#       )
