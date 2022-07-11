@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, tools
 
 
 class fos(models.Model):
@@ -18,22 +18,22 @@ class fos(models.Model):
         "dnre.dgci", "dgci_id", string="DGCI lines", readonly="True"
     )
 
-    @api.model
-    def __init__(self):
-        self.env.cr.execute(
+    @api.depends("nc")
+    def __init__(self, pool, cr):
+        tools.drop_view_if_exists(self.nc, self._table)
+        self.nc(
             """
-            SELECT fos.nc, fos.dc, fos.ca, fos.da, fos.mr, fos.tc, fos.r
-            FROM dnre.fos AS fos,
-            INNER JOIN dnre.dga AS dga
-            ON fos.dga_ids = dga.dga_id
-            INNER JOIN dnre.dgci AS dgci
-            ON fos.dgci_ids = dgci.dgci_ids
+            SELECT dnre.fos.nc, dnre.fos.dc, dnre.fos.ca, dnre.fos.da, dnre.fos.mr, dnre.fos.tc, dnre.fos.r, dnre.fos.dga_ids, dnre.fos.dgci_ids
+                   dnre.dga.nums, dnre.dga.ns, dnre.dga.cp, dnre.dga.pc, dnre.dga.ndt, dnre.dga.sl, dnre.dga.cs, dnre.dga.cf, dnre.dga.cep,
+                   dnre.dgci.nums, dnre.dgci.ns, dnre.dgci.cp, dnre.dgci.pc, dnre.dgci.ndt, dnre.dgci.sl, dnre.dgci.cs, dnre.dgci.cf, dnre.dgci.cep,
+            FROM dnre.fos,
+            INNER JOIN dnre.dga
+            ON dnre.fos.dga_ids = dnre.dga.dga_id
+            INNER JOIN dnre.dgci
+            ON dnre.fos.dgci_ids = dnre.dgci.dgci_id
         """
         )
-        self.env.cr.fetchall()
-
-
-# fos.nc as nc, fos.dc as dc, fos.ca as ca, fos.da as da, fos.mr as mr, fos.tc as tc, fos.r as r
+        # self.env.cr.fetchall()
 
 
 class dga(models.Model):

@@ -4,7 +4,7 @@ from odoo import http
 class Dnre(http.Controller):
     @http.route("/dnre/dnre", auth="public")
     def index(self, **kw):
-        return "Hello, world"
+        return "Bem vindo a DNRE"
 
     @http.route("/dnre/dnre/objects", auth="public")
     def list(self, **kw):
