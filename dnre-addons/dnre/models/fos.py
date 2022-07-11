@@ -34,6 +34,8 @@ class fos(models.Model):
 
 
 # fos.nc as nc, fos.dc as dc, fos.ca as ca, fos.da as da, fos.mr as mr, fos.tc as tc, fos.r as r
+
+
 class dga(models.Model):
     _name = "dnre.dga"
     _description = "DGA Funcionarios"
@@ -64,17 +66,3 @@ class dgci(models.Model):
     cf = fields.Integer(string="CF")
     cep = fields.Integer(string="CEP")
     dgci_id = fields.Many2one("dnre.fos", string="dgci", readonly="True")
-
-
-#   def init(self):
-#       self._cr.execute(
-#           """
-#           CREATE OR REPLACE VIEW dnre_fos AS (
-#               SELECT row_number() OVER() as id,
-#               so.nums as nums, so.ns as ns, so.cp as cp, so.pc as pc, so.ndt as ndt, so.sl as sl, so.cs as cs, so.cf as cf, so.cep as cep, so.dga.id as dga_ids, so.dgci.id = dgci_ids
-#               FROM dnre_fos
-#               JOIN dnre_dga ON so.dga_ids = dga.id
-#               JOIN dnre_dgci ON so dgci_ids = dgci.id
-#           )
-#       """
-#       )
