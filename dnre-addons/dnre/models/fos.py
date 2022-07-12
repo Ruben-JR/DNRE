@@ -1,4 +1,4 @@
-from odoo import models, fields, api, tools
+from odoo import api, fields, models, tools
 
 
 class fos(models.Model):
@@ -6,6 +6,7 @@ class fos(models.Model):
     _auto = False
     _description = "DNRE - Recursos Humanos"
 
+    _ids = fields.Integer(String="Identificação", readonly="True")
     nc = fields.Integer(string="Nº contribuente", required=True)
     dc = fields.Char(string="Designação contribuente", required=True)
     ca = fields.Integer(string="CA")
@@ -23,17 +24,17 @@ class fos(models.Model):
         tools.drop_view_if_exists(self.nc, self._table)
         self.nc(
             """
-            SELECT dnre.fos.nc, dnre.fos.dc, dnre.fos.ca, dnre.fos.da, dnre.fos.mr, dnre.fos.tc, dnre.fos.r, dnre.fos.dga_ids, dnre.fos.dgci_ids
-                   dnre.dga.nums, dnre.dga.ns, dnre.dga.cp, dnre.dga.pc, dnre.dga.ndt, dnre.dga.sl, dnre.dga.cs, dnre.dga.cf, dnre.dga.cep,
-                   dnre.dgci.nums, dnre.dgci.ns, dnre.dgci.cp, dnre.dgci.pc, dnre.dgci.ndt, dnre.dgci.sl, dnre.dgci.cs, dnre.dgci.cf, dnre.dgci.cep,
-            FROM dnre.fos,
-            INNER JOIN dnre.dga
-            ON dnre.fos.dga_ids = dnre.dga.dga_id
-            INNER JOIN dnre.dgci
-            ON dnre.fos.dgci_ids = dnre.dgci.dgci_id
+            SELECT fos.nc, fos.dc, fos.ca, fos.da, fos.mr, fos.tc, fos.r, fos.dga_ids, fos.dgci_ids
+                   dga.nums, dga.ns, dga.cp, dga.pc, dga.ndt, dga.sl, dga.cs, dga.cf, dga.cep,
+                   dgci.nums, dgci.ns, dgci.cp, dgci.pc, dgci.ndt, dgci.sl, dgci.cs, dgci.cf, dgci.cep,
+            FROM dnre.fos AS fos,
+            INNER JOIN dnre.dga AS dga
+            ON fos.dga_ids = dga.dga_id
+            INNER JOIN dnre.dgci AS dgci
+            ON fos.dgci_ids = dgci.dgci_id
         """
         )
-        # self.env.cr.fetchall()
+        self.nc.fetchall()
 
 
 class dga(models.Model):
