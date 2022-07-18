@@ -6,6 +6,7 @@ class fos(models.Model):
     _auto = False
     _description = "DNRE - Recursos Humanos"
 
+    # _ids = fields.Integer(string="Identificacao", readonly="True")
     nc = fields.Integer(string="Nº contribuente", required=True)
     dc = fields.Char(string="Designação contribuente", required=True)
     ca = fields.Integer(string="CA")
@@ -21,8 +22,7 @@ class fos(models.Model):
     @api.model("self")
     def __init__(self, pool, cr):
         tools.drop_view_if_exists(self.env.cr, self._table)
-        self.env.cr.execute(
-            """
+        query = """
            SELECT fos.nc, fos.dc, fos.ca, fos.da, fos.mr, fos.tc, fos.r,
                   dga.nums, dga.ns, dga.cp, dga.pc, dga.ndt, dga.sl, dga.cs, dga.cf, dga.cep,
                   dgci.nums, dgci.ns, dgci.cp, dgci.pc, dgci.ndt, dgci.sl, dgci.cs, dgci.cf, dgci.cep,
@@ -32,8 +32,8 @@ class fos(models.Model):
            INNER JOIN dnre.dgci AS dgci
            ON fos.dgci.ids = dgci.dgci_id
        """
-        )
-        self.env.cr.fetchall()
+        self.env.cr.execute(query)
+        self.fetchall()
 
 
 class dga(models.Model):
