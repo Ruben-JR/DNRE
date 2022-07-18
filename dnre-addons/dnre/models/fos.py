@@ -18,20 +18,22 @@ class fos(models.Model):
         "dnre.dgci", "dgci_id", string="DGCI lines", readonly="True"
     )
 
-    # @api.model('self')
-    # def __init__(self, pool, cr):
-    #    tools.drop_view_if_exists(self.env.cr, self._table)
-    #    self.env.cr.execute("""
-    #        SELECT fos.nc, fos.dc, fos.ca, fos.da, fos.mr, fos.tc, fos.r,
-    #               dga.nums, dga.ns, dga.cp, dga.pc, dga.ndt, dga.sl, dga.cs, dga.cf, dga.cep,
-    #               dgci.nums, dgci.ns, dgci.cp, dgci.pc, dgci.ndt, dgci.sl, dgci.cs, dgci.cf, dgci.cep,
-    #        FROM dnre.fos AS fos,
-    #        INNER JOIN dnre.dga AS dga
-    #        ON fos.dga.ids = dga.dga_id
-    #        INNER JOIN dnre.dgci AS dgci
-    #        ON fos.dgci.ids = dgci.dgci_id
-    #    """)
-    #    self.env.cr.fetchall()
+    @api.model("self")
+    def __init__(self, pool, cr):
+        tools.drop_view_if_exists(self.env.cr, self._table)
+        self.env.cr.execute(
+            """
+           SELECT fos.nc, fos.dc, fos.ca, fos.da, fos.mr, fos.tc, fos.r,
+                  dga.nums, dga.ns, dga.cp, dga.pc, dga.ndt, dga.sl, dga.cs, dga.cf, dga.cep,
+                  dgci.nums, dgci.ns, dgci.cp, dgci.pc, dgci.ndt, dgci.sl, dgci.cs, dgci.cf, dgci.cep,
+           FROM dnre.fos AS fos,
+           INNER JOIN dnre.dga AS dga
+           ON fos.dga.ids = dga.dga_id
+           INNER JOIN dnre.dgci AS dgci
+           ON fos.dgci.ids = dgci.dgci_id
+       """
+        )
+        self.env.cr.fetchall()
 
 
 class dga(models.Model):
