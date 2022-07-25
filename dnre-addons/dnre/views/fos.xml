@@ -2,35 +2,24 @@
 
 <odoo>
   <data>
-    <!-- Top menu item -->
-    <menuitem name="DNRE" id="dnre.menu_root" />
-
-    <!-- menu categories -->
-    <menuitem name="FOS" id="dnre.menu_1" parent="dnre.menu_root" action="dnre.action_fos"/>
-
-     <!-- actions opening views on models -->
-     <record model="ir.actions.act_window" id="dnre.action_fos">
-      <field name="name">Folha de Orçamento Salarial</field>
-      <field name="res_model">dnre.fos</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-
-    <!-- server action to the one above -->
-    <record model="ir.actions.server" id="dnre.action_server">
-      <field name="name">dnre server</field>
-      <field name="model_id" ref="model_dnre_fos" />
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="dnre.tree_fos">
+      <field name="name">dnre fos list</field>
+      <field name="model">dnre.fos</field>
+      <field name="arch" type="xml">
+        <tree create="true">
+          <field name="nc" />
+          <field name="dc" />
+          <field name="ca" />
+          <field name="da" />
+          <field name="mr" />
+          <field name="tc" />
+          <field name="r" />
+        </tree>
       </field>
     </record>
 
-    <!-- explicit list view definition -->
-    <record model="ir.ui.view" id="dnre.list_fos">
+    <record model="ir.ui.view" id="dnre.form_fos">
       <field name="name">dnre fos list</field>
       <field name="model">dnre.fos</field>
       <field name="arch" type="xml">
@@ -81,5 +70,33 @@
         </form>
       </field>
     </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="dnre.action_fos">
+      <field name="name">Folha de Orçamento Salarial</field>
+      <field name="res_model">dnre.fos</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <record model="ir.actions.server" id="dnre.action_server">
+      <field name="name">dnre server</field>
+      <field name="model_id" ref="model_dnre_fos" />
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="DNRE" id="dnre.menu_root" />
+
+    <!-- menu categories -->
+    <menuitem name="FOS" id="dnre.menu_1" parent="dnre.menu_root" action="dnre.action_fos"/>
+
   </data>
 </odoo>

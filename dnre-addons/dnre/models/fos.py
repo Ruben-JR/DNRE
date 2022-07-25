@@ -3,10 +3,8 @@ from odoo import api, fields, models, tools
 
 class fos(models.Model):
     _name = "dnre.fos"
-    _auto = False
     _description = "DNRE - Recursos Humanos"
 
-    # _ids = fields.Integer(string="Identificacao", readonly="True")
     nc = fields.Integer(string="Nº contribuente", required=True)
     dc = fields.Char(string="Designação contribuente", required=True)
     ca = fields.Integer(string="CA")
@@ -14,26 +12,8 @@ class fos(models.Model):
     mr = fields.Date(string="MR")
     tc = fields.Integer(string="TC")
     r = fields.Char(string="Regime")
-    dga_ids = fields.One2many("dnre.dga", "dga_id", string="DGA Lines", readonly="True")
-    dgci_ids = fields.One2many(
-        "dnre.dgci", "dgci_id", string="DGCI lines", readonly="True"
-    )
-
-    @api.model("self")
-    def __init__(self, pool, cr):
-        tools.drop_view_if_exists(self.env.cr, self._table)
-        query = """
-           SELECT fos.nc, fos.dc, fos.ca, fos.da, fos.mr, fos.tc, fos.r,
-                  dga.nums, dga.ns, dga.cp, dga.pc, dga.ndt, dga.sl, dga.cs, dga.cf, dga.cep,
-                  dgci.nums, dgci.ns, dgci.cp, dgci.pc, dgci.ndt, dgci.sl, dgci.cs, dgci.cf, dgci.cep,
-           FROM dnre.fos AS fos,
-           INNER JOIN dnre.dga AS dga
-           ON fos.dga.ids = dga.dga_id
-           INNER JOIN dnre.dgci AS dgci
-           ON fos.dgci.ids = dgci.dgci_id
-       """
-        self.env.cr.execute(query)
-        self.fetchall()
+    dga_ids = fields.One2many("dnre.dga", "dga_id")
+    dgci_ids = fields.One2many("dnre.dgci", "dgci_id")
 
 
 class dga(models.Model):
@@ -49,7 +29,7 @@ class dga(models.Model):
     cs = fields.Char(string="CS")
     cf = fields.Integer(string="CF")
     cep = fields.Integer(string="CEP")
-    dga_id = fields.Many2one("dnre.fos", string="dga", readonly="True")
+    dga_id = fields.Many2one("dnre.fos", readonly="True")
 
 
 class dgci(models.Model):
@@ -65,4 +45,4 @@ class dgci(models.Model):
     cs = fields.Char(string="CS")
     cf = fields.Integer(string="CF")
     cep = fields.Integer(string="CEP")
-    dgci_id = fields.Many2one("dnre.fos", string="dgci", readonly="True")
+    dgci_id = fields.Many2one("dnre.fos", readonly="True")
