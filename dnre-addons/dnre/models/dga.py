@@ -2,7 +2,7 @@ from odoo import fields, models
 
 
 class fos(models.Model):
-    _name = "dnre.fos"
+    _name = "dnre.fos_dga"
     _description = "DNRE - Recursos Humanos"
 
     nc = fields.Integer(string="Nº contribuente", required=True)
@@ -13,7 +13,6 @@ class fos(models.Model):
     tc = fields.Integer(string="TC")
     r = fields.Char(string="Regime")
     dga_ids = fields.One2many("dnre.dga", "dga_id")
-    dgci_ids = fields.One2many("dnre.dgci", "dgci_id")
 
 
 class dga(models.Model):
@@ -30,19 +29,3 @@ class dga(models.Model):
     cf = fields.Integer(string="CF")
     cep = fields.Integer(string="CEP")
     dga_id = fields.Many2one("dnre.fos", readonly="True")
-
-
-class dgci(models.Model):
-    _name = "dnre.dgci"
-    _description = "DGCI Funcionarios"
-
-    nums = fields.Integer(string="Nº segurado", required=True)
-    ns = fields.Char(string="Nome segurado", required=True)
-    cp = fields.Char(string="CP")
-    pc = fields.Char(string="P/C")
-    ndt = fields.Integer(string="Nº DT")
-    sl = fields.Integer(string="SL")
-    cs = fields.Char(string="CS")
-    cf = fields.Integer(string="CF")
-    cep = fields.Integer(string="CEP")
-    dgci_id = fields.Many2one("dnre.fos", readonly="True")

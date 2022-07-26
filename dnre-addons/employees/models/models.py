@@ -2,14 +2,13 @@ from odoo import models, fields
 
 
 class employees(models.Model):
-    _name = "employees.employees"
-    _description = "employees.employees"
-    _inherit = "hr.employee.base"
+    _inherit = "hr.employee"
 
-    nc = fields.Integer(string="Nº contribuente", required=True)
-    dc = fields.Char(string="Designação contribuente", required=True)
-    ca = fields.Integer(string="CA")
-    da = fields.Char(string="DA")
-    mr = fields.Date(string="MR")
-    tc = fields.Integer(string="TC")
-    r = fields.Char(string="Regime")
+    nums = fields.Integer(string="Nº segurado", required="True")
+    cp = fields.Char(string="CP")
+    pc = fields.Char(string="P/C")
+    ndt = fields.Integer(string="Nº DT")
+    sl = fields.Integer(string="SL")
+    cs = fields.Char(string="CS")
+    cf = fields.Integer(string="CF")
+    cep = fields.Integer(string="CEP")

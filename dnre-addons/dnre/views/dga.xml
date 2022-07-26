@@ -3,11 +3,11 @@
 <odoo>
   <data>
     <!-- explicit tree view definition -->
-    <record model="ir.ui.view" id="dnre.tree_fos">
-      <field name="name">dnre fos list</field>
-      <field name="model">dnre.fos</field>
+    <record model="ir.ui.view" id="dnre.tree_dga">
+      <field name="name">dnre fos_dga list</field>
+      <field name="model">dnre.fos_dga</field>
       <field name="arch" type="xml">
-        <tree create="true">
+        <tree>
           <field name="nc" />
           <field name="dc" />
           <field name="ca" />
@@ -20,9 +20,9 @@
     </record>
 
     <!-- explicit form view definition -->
-    <record model="ir.ui.view" id="dnre.form_fos">
-      <field name="name">dnre fos list</field>
-      <field name="model">dnre.fos</field>
+    <record model="ir.ui.view" id="dnre.form_dga">
+      <field name="name">dnre fos_dga list</field>
+      <field name="model">dnre.fos_dga</field>
       <field name="arch" type="xml">
         <form>
           <group string="Informação do documento">
@@ -52,37 +52,28 @@
                 </tree>
               </field>
             </page>
-            <page string="Funcionários DGCI">
-              <field name="dgci_ids">
-                <tree>
-                  <field name="nums" />
-                  <field name="ns" />
-                  <field name="cp" />
-                  <field name="pc" />
-                  <field name="ndt" />
-                  <field name="sl" />
-                  <field name="cs" />
-                  <field name="cf" />
-                  <field name="cep" />
-                </tree>
-              </field>
-            </page>
           </notebook>
         </form>
       </field>
     </record>
 
     <!-- actions opening views on models -->
-    <record model="ir.actions.act_window" id="dnre.action_fos">
-      <field name="name">Folha de Orçamento Salarial</field>
-      <field name="res_model">dnre.fos</field>
+    <record model="ir.actions.act_window" id="dnre.action_dga">
+      <field name="name">Folha de Orçamento Salarial - DGA</field>
+      <field name="res_model">dnre.fos_dga</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="dnre.action_dgci">
+      <field name="name">Folha de Orçamento Salarial - DGCI</field>
+      <field name="res_model">dnre.fos_dgci</field>
       <field name="view_mode">tree,form</field>
     </record>
 
     <!-- server action to the one above -->
     <record model="ir.actions.server" id="dnre.action_server">
       <field name="name">dnre server</field>
-      <field name="model_id" ref="model_dnre_fos" />
+      <field name="model_id" ref="model_dnre_fos_dga" />
       <field name="state">code</field>
       <field name="code">
         action = {
@@ -97,7 +88,11 @@
     <menuitem name="DNRE" id="dnre.menu_root" />
 
     <!-- menu categories -->
-    <menuitem name="FOS" id="dnre.menu_1" parent="dnre.menu_root" action="dnre.action_fos"/>
+    <menuitem name="FOS" id="dnre.menu_1" parent="dnre.menu_root"/>
+
+    <!--actions-->
+    <menuitem name="DGA" id="dnre.dga" parent="dnre.menu_1" action="dnre.action_dga"/>
+    <menuitem name="DGCI" id="dnre.dgci" parent="dnre.menu_1" action="dnre.action_dgci"/>
 
   </data>
 </odoo>
