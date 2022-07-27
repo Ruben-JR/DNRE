@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import fields, models, api
 
 
 class fos(models.Model):
@@ -14,6 +14,11 @@ class fos(models.Model):
     r = fields.Char(string="Regime")
     dga_ids = fields.One2many("dnre.dga", "dga_id")
 
+    # @api.model
+    # def _generated(self):
+    #    models = self.env['res.request.link'].search([])
+    #    return [(x.nc, x.name) for x in models]
+
 
 class dga(models.Model):
     _name = "dnre.dga"
@@ -28,4 +33,4 @@ class dga(models.Model):
     cs = fields.Char(string="CS")
     cf = fields.Integer(string="CF")
     cep = fields.Integer(string="CEP")
-    dga_id = fields.Many2one("dnre.fos", readonly="True")
+    dga_id = fields.Many2one("dnre.fos_dga", readonly="True")

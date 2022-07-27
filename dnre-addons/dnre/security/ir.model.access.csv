@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_dnre_fos_dga,dnre.fos_dga,model_dnre_fos_dga,base.group_user,1,1,1,1
-access_dnre_dga,dnre.dga,model_dnre_dga,base.group_user,1,1,1,1
+access_dnre_fos_dga,dnre.fos_dga,model_dnre_fos_dga,base.group_user,1,0,1,0
+access_dnre_dga,dnre.dga,model_dnre_dga,base.group_user,1,0,1,0
 
-access_dnre_fos_dgci,dnre.fos_dgci,model_dnre_fos_dgci,base.group_user,1,1,1,1
-access_dnre_dgci,dnre.dgci,model_dnre_dgci,base.group_user,1,1,1,1
+access_dnre_fos_dgci,dnre.fos_dgci,model_dnre_fos_dgci,base.group_user,1,0,1,0
+access_dnre_dgci,dnre.dgci,model_dnre_dgci,base.group_user,1,0,1,0

@@ -28,4 +28,4 @@ class dgci(models.Model):
     cs = fields.Char(string="CS")
     cf = fields.Integer(string="CF")
     cep = fields.Integer(string="CEP")
-    dgci_id = fields.Many2one("dnre.fos", readonly="True")
+    dgci_id = fields.Many2one("dnre.fos_dgci", readonly="True")
