@@ -14,10 +14,10 @@ class fos(models.Model):
     r = fields.Char(string="Regime")
     dga_ids = fields.One2many("dnre.dga", "dga_id")
 
-    # @api.model
-    # def _generated(self):
-    #    models = self.env['res.request.link'].search([])
-    #    return [(x.nc, x.name) for x in models]
+    def get_datas(self):
+        department = self.env["hr.department"].search([])
+        for l in department:
+            print("Numero de contribuente", l.nc)
 
 
 class dga(models.Model):
