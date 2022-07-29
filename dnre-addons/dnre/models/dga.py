@@ -5,8 +5,8 @@ class fos(models.Model):
     _name = "dnre.fos_dga"
     _description = "DNRE - Recursos Humanos"
 
-    nc = fields.Integer(string="Nº contribuente", required=True)
-    dc = fields.Char(string="Designação contribuente", required=True)
+    nc = fields.Integer(string="Nº contribuente")
+    dc = fields.Char(string="Designação contribuente")
     ca = fields.Integer(string="CA")
     da = fields.Char(string="DA")
     mr = fields.Date(string="MR")
@@ -14,10 +14,17 @@ class fos(models.Model):
     r = fields.Char(string="Regime")
     dga_ids = fields.One2many("dnre.dga", "dga_id")
 
-    def get_datas(self):
+    def get_departamento(self):
         department = self.env["hr.department"].search([])
         for l in department:
-            print("Numero de contribuente", l.nc)
+            if l.name == "DGA":
+                self.nc = l.nc
+                self.dc = l.dc
+                self.ca = l.ca
+                self.da = l.da
+                self.mr = l.mr
+                self.tc = l.tc
+                self.r = l.r
 
 
 class dga(models.Model):
@@ -34,3 +41,16 @@ class dga(models.Model):
     cf = fields.Integer(string="CF")
     cep = fields.Integer(string="CEP")
     dga_id = fields.Many2one("dnre.fos_dga", readonly="True")
+
+    def get_funcionarios(self):
+        employee = self.env["hr.employee"].search([])
+        for l in employee:
+            self.nums = l.nums
+            self.ns = l.ns
+            self.cp = l.cp
+            self.pc = l.pc
+            self.ndt = l.ndt
+            self.sl = l.sl
+            self.cs = l.cs
+            self.cf = l.cf
+            self.cep = l.cep

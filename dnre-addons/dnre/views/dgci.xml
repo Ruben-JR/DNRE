@@ -24,6 +24,9 @@
       <field name="name">dnre fos_dgci list</field>
       <field name="model">dnre.fos_dgci</field>
       <field name="arch" type="xml">
+        <header>
+          <button class="btn btn-primary" type="object" name="get_datas_dgci" string="Gerar fos"></button>
+        </header>
         <form>
           <group string="Informação do documento">
             <group colspan="4" col="6">
