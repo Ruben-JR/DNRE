@@ -25,7 +25,7 @@
       <field name="model">dnre.fos_dga</field>
       <field name="arch" type="xml">
         <header>
-          <button class="btn btn-primary" type="object" name="get_departamento" string="Gerar fos"/>
+          <button class="btn btn-primary" type="object" name="get_datas" string="Gerar fos"/>
         </header>
         <form>
           <group string="Informação do documento">
